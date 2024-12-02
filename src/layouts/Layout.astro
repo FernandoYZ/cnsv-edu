@@ -1,22 +1,32 @@
+---
+import Footer from '../components/partials/Footer.astro'
+import Header from '../components/partials/Header.astro'
+interface Props {
+	title: string;
+}
+
+const {title} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+		<meta name="keywords" content="educación primaria, educación secundaria, seminario menor, educación religiosa, valores, formación integral, colegio con residencia, colegio internado">
+		<meta property="og:url" content="https://cnsv.edu.pe">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Colegio Nuestra Señora del Valle Seminario Menor">
+		<meta property="og:description" content="Brindamos formación académica y valores en un ambiente integral y humano, promoviendo el desarrollo integral de nuestros estudiantes.">
+		<meta name="description" content="En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia.">
+		<title>CNSV - Colegio Nuestra Señora del Valle {title}</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
