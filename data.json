@@ -1,4 +1,7 @@
 {
+    "navbar": {
+        "images": "logo_cnsv_navbar"
+    },
     "footer": {
         "email": "cnsv.rectorado@gmail.com",
         "celular": "+51 940 768 184",
