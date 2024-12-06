@@ -6,9 +6,10 @@ interface Props {
     celular: string;
     description: string;
     direccion: string;
+    imagen: string;
 }
 
-const {email, celular, direccion, description} = data.footer;
+const {email, celular, direccion, description, imagen} = data.footer;
 
 ---
 
@@ -18,12 +19,12 @@ const {email, celular, direccion, description} = data.footer;
 
         <section class="flex flex-col items-center md:items-start">
             <div class="mb-4">
-                <a href="" aria-label="Inicio">
+                <a href="/" aria-label="Inicio">
                     <picture>
-                        <source srcset="" type="image/avif">
-                        <source srcset="" type="image/webp">
+                        <source srcset={`/images/${imagen}.avif`} type="image/avif">
+                        <source srcset={`/images/${imagen}.webp`} type="image/webp">
                         <img
-                            src=""
+                            src={`/images/${imagen}.png`}
                             alt="Logo del colegio Seminario Menor Nuestra Señora del Valle - CNSV"
                             width="96"
                             height="96"
