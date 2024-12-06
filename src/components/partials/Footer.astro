@@ -1,1 +1,95 @@
-<footer>Aquí irá el footer</footer>
+---
+import data from '@data';
+
+interface Props {
+    email: string;
+    celular: string;
+    description: string;
+    direccion: string;
+}
+
+const {email, celular, direccion, description} = data.footer;
+
+---
+
+<footer class="font-monserat bg-neutral-950 py-12 text-neutral-400 text-sm" role="contentinfo">
+    <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-52">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <section class="flex flex-col items-center md:items-start">
+            <div class="mb-4">
+                <a href="" aria-label="Inicio">
+                    <picture>
+                        <source srcset="" type="image/avif">
+                        <source srcset="" type="image/webp">
+                        <img
+                            src=""
+                            alt="Logo del colegio Seminario Menor Nuestra Señora del Valle - CNSV"
+                            width="96"
+                            height="96"
+                            loading="lazy"
+                            class="w-28 h-auto"
+                        />
+                    </picture>
+                </a>
+            </div>
+            <p class="text-sm text-center md:text-left lg:pr-16 pr-0">{description}</p>
+        </section>
+
+        <nav class="flex justify-center" aria-label="Secciones">
+          <div>
+            <h2 class="font-bold mb-4 text-md md:text-md uppercase">Secciones</h2>
+            <ul class="space-y-2">
+              <li><a href="/" class="relative hover:text-white">Inicio</a></li>
+              <li><a href="/sobre-nosotros" class="relative hover:text-white">¿Quiénes somos?</a></li>
+              <li><a href="/visitanos" class="relative hover:text-white">Visítanos</a></li>
+              <li><a href="/donacion" class="relative hover:text-white">Donaciones</a></li>
+            </ul>
+            <div class="mt-6">
+              <h2 class="font-bold mb-4 text-md uppercase">Matrículas</h2>
+              <a
+                href="/"
+                class="text-sm font-bold py-2.5 px-6 rounded-full border border-white text-white hover:bg-white hover:border-white hover:text-neutral-900 transition duration-300"
+                aria-label="Ir a la página de matrículas"
+                data-type=""
+            >
+                Admisión
+            </a>
+            </div>
+          </div>
+        </nav>
+
+        <section class="flex flex-col items-center md:items-start text-center md:text-left" aria-labelledby="contact-heading">
+          <h2 id="contact-heading" class="font-bold mb-4 text-md md:text-md uppercase">Contacto</h2>
+          <div class="space-y-5">
+            <div>
+              <h3 class="font-semibold mb-2">Dirección</h3>
+              <p class="font-normal">{direccion}</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Teléfono</h3>
+              <p class="font-normal">{celular}</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">Correo electrónico</h3>
+                <p class="font-normal">
+                    <a href="mailto:{email}" class="hover:text-white" rel="noopener noreferrer">{email}</a>
+                </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+</footer>
+
+<footer class="font-roboto bg-black text-neutral-400 py-6" role="contentinfo">
+    <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-52">
+        <p class="text-center md:text-left text-xs">
+            &copy; 2024 CNSV. Todos los derechos reservados.
+            <span>Realizado por</span>
+            <a href="#" class="font-semibold hover:transition-all hover:text-white" rel="noopener noreferrer">IntelligenceQB</a>
+        </p>
+    </div>
+</footer>
+
+
