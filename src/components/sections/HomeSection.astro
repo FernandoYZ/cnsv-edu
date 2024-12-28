@@ -1,1 +1,171 @@
-<div>Sección para la vista inicio</div>
+---
+import { Image } from 'astro:assets';
+import heroImage from '@assets/images/hero/home_hero_org.webp';
+import data from '@data';
+
+const { hero, caracteristicas } = data.index;
+const preloadImageUrl = await import('@assets/images/hero/home_hero_org.webp?url').then(m => m.default);
+---
+
+<link rel="preload" href={preloadImageUrl} as="image" />
+
+<section 
+    class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-950 to-gray-500/30"
+    style="content-visibility: auto;"
+>
+    <!-- Optimized background with improved overlay -->
+    <div class="absolute inset-0">
+        <Image
+            src={heroImage}
+            alt="Estudiantes en el campus"
+            class="w-full h-full object-cover mix-blend-soft-light opacity-60"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            quality={90}
+            format="webp"
+            widths={[375, 640, 768, 1024, 1280, 1536, 1920]}
+            sizes="100vw"
+        />
+        <div 
+            class="absolute inset-0 bg-dot-pattern opacity-20"
+            aria-hidden="true"
+        ></div>
+    </div>
+
+    <!-- Enhanced main content container -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <!-- Left column: Enhanced text content -->
+            <div class="text-left space-y-8">
+                <div class="space-y-6">
+                    <span class="inline-flex py-2 px-4 rounded-full bg-white/10 text-white text-sm font-medium backdrop-blur-sm border border-white/20 shadow-lg">
+                        {hero.etiqueta}
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight animate-title">
+                        {hero.titulo}
+                    </h1>
+                </div>
+                
+                <p class="text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl animate-fade-in">
+                    {hero.descripcion}
+                </p>
+
+                <!-- Improved CTA buttons -->
+                <div class="flex flex-col sm:flex-row gap-5 pt-8 animate-fade-in">
+                    <a
+                            href="/admision"
+                            class="group relative inline-flex items-center px-6 py-3 text-base font-bold text-white rounded-lg transition-all duration-300 overflow-hidden w-full sm:w-auto justify-center sm:justify-start bg-gradient-to-r from-red-800 to-red-700 hover:from-red-700 hover:to-red-600 shadow-md hover:shadow-lg transform"
+                            aria-label="Ir a la página de admisión"
+                        >
+                            <span class="relative z-10 flex items-center">
+                                Iniciar Admisión
+                                <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </span>
+                            </span>
+                        <span class="absolute inset-0 w-full h-full bg-red-900 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left shadow-inner"/>
+                    </a>
+                    <a 
+                            href="/sobre-nosotros" 
+                            class="group relative inline-flex items-center justify-center sm:justify-start px-6 py-3 text-base font-bold border-2 border-white/85 text-white rounded-lg overflow-hidden transition-colors duration-300 w-full sm:w-auto backdrop-blur-sm hover:border-white"
+                        >
+                            <span class="relative z-10 flex items-center">
+                                Explorar Propuesta
+                                <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </span>
+                            </span>
+                        <span class="absolute inset-0 w-full h-full bg-white/10 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right column: Enhanced stats grid -->
+            <div class="hidden lg:grid grid-cols-2 gap-6 animate-fade-in-up">
+                {caracteristicas.map(({ titulo, valor }) => (
+                    <div class="group relative bg-white/10 backdrop-blur-md rounded-2xl p-8 transition-all duration-300 border border-white/20 hover:border-white/40 hover:bg-white/15">
+                        <div class="relative z-10">
+                            <p class="text-4xl font-bold text-white mb-3 transition-transform duration-300">{valor}</p>
+                            <p class="text-white/90 text-lg">{titulo}</p>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced gradient overlay -->
+    <div class="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-gray-950/80 via-gray-950/50 to-transparent"></div>
+</section>
+
+<style>  
+    .bg-dot-pattern {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    .animate-title {
+        animation: slideUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+        animation-delay: 0.3s;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+        animation-delay: 0.6s;
+    }
+
+    @keyframes slideUp {
+        from { 
+            transform: translateY(40px); 
+            opacity: 0; 
+        }
+        to { 
+            transform: translateY(0); 
+            opacity: 1; 
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        from { 
+            transform: translateY(30px); 
+            opacity: 0; 
+        }
+        to { 
+            transform: translateY(0); 
+            opacity: 1; 
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-title,
+        .animate-fade-in,
+        .animate-fade-in-up,
+        .transition-all,
+        .transition-transform,
+        .group-hover\:translate-x-1,
+        .group-hover\:scale-105 {
+            animation: none;
+            transition: none;
+            transform: none;
+            opacity: 1;
+        }
+    }
+</style>
