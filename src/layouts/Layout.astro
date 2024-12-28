@@ -1,6 +1,8 @@
 ---
-import Footer from '../components/partials/Footer.astro'
-import Header from '../components/partials/Header.astro'
+import Footer from '@components/partials/Footer.astro'
+import Header from '@components/partials/Header.astro'
+import data from '@data';
+import { ViewTransitions } from 'astro:transitions';
 interface Props {
 	title: string;
 }
@@ -19,6 +21,7 @@ const {title} = Astro.props;
 		<meta property="og:title" content="Colegio Nuestra Señora del Valle Seminario Menor">
 		<meta property="og:description" content="Brindamos formación académica y valores en un ambiente integral y humano, promoviendo el desarrollo integral de nuestros estudiantes.">
 		<meta name="description" content="En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia.">
+    	<ViewTransitions />
 		<title>CNSV - Colegio Nuestra Señora del Valle {title}</title>
 	</head>
 	<body>
