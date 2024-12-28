@@ -1,12 +1,49 @@
 {
-    "navbar": {
-        "images": "logo_cnsv_navbar"
+    "navegacion": {
+        "escritorio": [
+            { "href": "/", "label": "Inicio" },
+            { "href": "/sobre-nosotros", "label": "¿Quiénes somos?" },
+            { "href": "/visitanos", "label": "Visítanos" },
+            { "href": "/donacion", "label": "Donaciones" }
+        ],
+        "movil": []
     },
-    "footer": {
-        "email": "cnsv.rectorado@gmail.com",
-        "celular": "+51 940 768 184",
-        "direccion": "Carretera a Lunahuana km. 8, Apdo. 69, Nuevo Imperial, Peru",
-        "description": "En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia.",
-        "imagen": "logo_cnsv_footer"
+    "contacto": {
+        "direccion": {
+            "titulo": "Dirección",
+            "contenido": "Carretera a Lunahuana km. 8, Apdo. 69, Nuevo Imperial, Peru",
+            "esEnlace": false
+        },
+        "telefono": {
+            "titulo": "Teléfono",
+            "contenido": "+51 940 768 184",
+            "esEnlace": false
+        },
+        "correo": {
+            "titulo": "Correo electrónico",
+            "contenido": "cnsv.rectorado@gmail.com",
+            "esEnlace": true
+        }
+    },
+    "marca": {
+        "logo": {
+            "pie": "logo_cnsv_footer",
+            "alt": "Logo CNSV"
+        },
+        "descripcion": "En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia."
+    },
+    "index": {
+        "hero": {
+            "titulo": "Formando Líderes del Mañana",
+            "descripcion": "Educación integral de excelencia con valores sólidos y metodología innovadora para el desarrollo pleno de nuestros estudiantes.",
+            "etiqueta": "Educación religiosa",
+            "imagen": "home_hero_org"
+        },
+        "caracteristicas": [
+            { "titulo": "Años de Experiencia", "valor": "25+" },
+            { "titulo": "Alumnos Graduados", "valor": "5000+" },
+            { "titulo": "Docentes Calificados", "valor": "100+" },
+            { "titulo": "Programas Especiales", "valor": "12+" }
+        ]
     }
 }
