@@ -1,47 +1,171 @@
 ---
-import data from '@data';
+// Navbar.astro
+import { getImage } from 'astro:assets';
+import logoSrc from '@assets/images/logo_cnsv_navbar.png';
 
-interface Props {
-    images: string;
-}
+// Preoptimiza las imágenes
+const optimizedLogo = await getImage({
+    src: logoSrc,
+    width: 96,
+    height: 96,
+    format: 'webp',
+});
 
-const {images} = data.navbar;
+const optimizedLogoAvif = await getImage({
+    src: logoSrc,
+    width: 96,
+    height: 96,
+    format: 'avif',
+});
+const navigationItems = [
+    { href: '/', label: 'Inicio' },
+    { href: '/sobre-nosotros', label: '¿Quiénes somos?' },
+    { href: '/visitanos', label: 'Visítanos' },
+    { href: '/donacion', label: 'Donaciones' },
+];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<nav class="navbar font-semibold fixed top-0 left-1/2 transform -translate-x-1/2 w-full z-40 bg-transparent text-neutral-400 transition-all duration-300" aria-label="Main navigation">
-    <div class="container mx-auto px-6 md:px-8 lg:px-16 xl:px-52">
-        <header class="contenido rounded-full bg-transparent flex justify-between items-center px-8 py-4">
-            <a href="/" class="block text-lg font-bold relative" aria-label="Inicio">
-                <picture>
-                    <source srcset={`/images/${images}.avif`} type="image/avif">
-                    <source srcset={`/images/${images}.webp`} type="image/webp">
-                    <img 
-                    src={`/images/${images}.png`}
-                    alt="{{ 'Logo de' . $name }}" 
-                    width="96" 
-                    height="96" 
-                    class="w-12 h-auto" 
-                    loading="lazy">
-                </picture>
-            </a>
+<nav 
+    class="hidden lg:block fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out"
+    aria-label="Navegación principal"
+    role="navigation"
+    id="main-nav"
+>
+    <div class="max-w-7xl px-4 mx-auto">
+        <div class="mt-4 rounded-2xl backdrop-blur py-1 transition-all duration-500" id="nav-container">
+            <div class="relative flex h-16 items-center justify-center px-6">
+                <!-- Logo -->
+                <div class="absolute left-6 top-1/2 -translate-y-1/2">
+                    <a 
+                        href="/" 
+                        class="group"
+                        aria-label="Ir a página de inicio"
+                    >
+                        <div class="relative overflow-hidden">
+                            <picture class="block">
+                                <source srcset={optimizedLogoAvif.src} type="image/avif" />
+                                <source srcset={optimizedLogo.src} type="image/webp" />
+                                <img 
+                                    src={optimizedLogo.src}
+                                    alt="Logo CNSV"
+                                    class="h-10 w-auto object-contain"
+                                    width={optimizedLogo.attributes.width}
+                                    height={optimizedLogo.attributes.height}
+                                    loading="eager"
+                                    decoding="async"
+                                    fetchpriority="high"
+                                />
+                            </picture>
+                        </div>
+                    </a>
+                </div>
 
-            <nav aria-label="Menú principal">
-                <ul id="menu-toggle" class="hidden md:flex-grow md:flex md:justify-center space-x-6" role="menubar">
-                    <li role="menuitem"><a href="/" data-type="item" class="hover:text-white relative">Inicio</a></li>
-                    <li role="menuitem"><a href="/sobre-nosotros" data-type="item" class="hover:text-white relative">¿Quiénes somos?</a></li>
-                    <li role="menuitem"><a href="/visitanos" data-type="item" class="hover:text-white relative">Visítanos</a></li>
-                    <li role="menuitem"><a href="/donacion" data-type="item" class="hover:text-white relative">Donaciones</a></li>
-                </ul>
-            </nav>
+                <!-- Navigation Links -->
+                <nav 
+                    class="w-auto px-8 py-1 transition-transform duration-500"
+                    aria-label="Menú principal"
+                    id="nav-links"
+                >
+                    <ul class="flex items-center space-x-8" role="menubar">
+                        {navigationItems.map((item) => (
+                            <li role="none">
+                                <a 
+                                    href={item.href}
+                                    class:list={[
+                                        'relative py-2 text-base font-semibold transition-colors duration-300 group',
+                                        {
+                                            'text-red-800': currentPath === item.href,
+                                            'text-gray-300 hover:text-red-800': currentPath !== item.href
+                                        }
+                                    ]}
+                                    role="menuitem"
+                                    aria-current={currentPath === item.href ? 'page' : undefined}
+                                >
+                                    {item.label}
+                                    <span 
+                                        class:list={[
+                                            'absolute left-0 bottom-0.5 w-full h-[1.6px] transform origin-left transition-transform duration-300 bg-red-800',
+                                            {
+                                                'scale-x-100': currentPath === item.href,
+                                                'scale-x-0 group-hover:scale-x-100': currentPath !== item.href
+                                            }
+                                        ]}
+                                    />
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
 
-            <a
-                href="/admision"
-                class="text-sm font-bold py-2.5 px-6 rounded-full border border-white text-white hover:bg-white hover:border-white hover:text-neutral-900 transition duration-300"
-                aria-label="Ir a la página de admisión"
-                data-type="button-link"
-            >
-                ¡Inscríbite ya!
-            </a>
-        </header>
+                <!-- CTA Button -->
+                <div class="absolute right-6 top-1/2 -translate-y-1/2">
+                    <a
+                        href="/admision"
+                        class:list={[
+                            'group relative inline-flex items-center px-6 py-2.5 text-sm font-bold border-2 border-red-800 rounded-lg transition-colors duration-300 overflow-hidden',
+                            {
+                                'text-white bg-red-800': currentPath === '/admision',
+                                'text-red-800 hover:text-white': currentPath !== '/admision'
+                            }
+                        ]}
+                        aria-label="Ir a la página de admisión"
+                        aria-current={currentPath === '/admision' ? 'page' : undefined}
+                    >
+                        <span class="relative z-10 flex items-center">
+                            ¡Inscríbete ya!
+                            <span class="ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1">
+                                <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="absolute inset-0 w-full h-full bg-red-800 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </nav>
+
+<script>
+let timeoutId: number | undefined;
+
+function handleScroll() {
+    if (timeoutId) return;
+    
+    timeoutId = window.setTimeout(() => {
+        const navContainer = document.getElementById('nav-container');
+        const navLinks = document.getElementById('nav-links');
+        
+        if (navContainer && navLinks) {
+            if (window.scrollY > 20) {
+                navContainer.classList.add('bg-white/95', 'shadow-lg', 'shadow-gray-200/20');
+                navLinks.classList.add('scale-95');
+                
+                // Update text colors for scrolled state
+                document.querySelectorAll('#nav-links a:not([aria-current="page"])').forEach(link => {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-gray-900');
+                });
+            } else {
+                navContainer.classList.remove('bg-white/95', 'shadow-lg', 'shadow-gray-200/20');
+                navLinks.classList.remove('scale-95');
+                
+                // Restore original text colors
+                document.querySelectorAll('#nav-links a:not([aria-current="page"])').forEach(link => {
+                    link.classList.add('text-gray-300');
+                    link.classList.remove('text-gray-900');
+                });
+            }
+        }
+        
+        timeoutId = undefined;
+    }, 100);
+}
+
+// Initialize scroll handler
+handleScroll();
+window.addEventListener('scroll', handleScroll, { passive: true });
+</script>
