@@ -1,1 +1,214 @@
-<div>Aquí estará el Navbar para celulares</div>
+---
+const navigationItems = [
+    { 
+        href: '/', 
+        label: 'Inicio',
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`
+    },
+    { 
+        href: '/sobre-nosotros', 
+        label: 'Nosotros',
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
+    },
+    { 
+        href: '/visitanos', 
+        label: 'Visítanos',
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>`
+    },
+    { 
+        href: '/donacion', 
+        label: 'Donar',
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
+    },
+    { 
+        href: '/admision', 
+        label: 'Inscríbete',
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>`
+    }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="lg:hidden">
+    <!-- Espaciador para evitar que el contenido se oculte detrás del navbar -->
+    
+    
+    <!-- Gradiente de fondo -->
+    <div 
+        class="fixed bottom-0 left-0 w-full h-20 bg-gradient-to-t from-gray-950/90 to-transparent pointer-events-none z-40"
+        style="view-transition-name: nav-gradient;"
+    ></div>
+    
+    <!-- Navegación móvil -->
+    <nav 
+        class="fixed bottom-0 left-0 w-full transition-transform duration-500 ease-out will-change-transform translate-y-0 z-50"
+        style="view-transition-name: mobile-nav;"
+        aria-label="Navegación móvil"
+        id="mobile-nav"
+    >
+        <div 
+            class="mx-4 mb-4 bg-white/90 backdrop-blur-xl rounded-2xl shadow-lg shadow-black/5 border border-gray-100/50 transition-colors duration-300"
+            style="view-transition-name: nav-container;"
+        >
+            <ul class="flex items-center justify-around h-16 px-2 relative">
+                {navigationItems.map((item) => {
+                    const isActive = currentPath === item.href;
+                    
+                    return (
+                        <li class="relative">
+                            <a
+                                href={item.href}
+                                data-astro-prefetch
+                                class:list={[
+                                    "relative flex flex-col items-center w-16 py-2 transition-transform duration-300 hover:scale-105 active:scale-95",
+                                ]}
+                                aria-current={isActive ? 'page' : undefined}
+                            >
+                                {/* Línea indicadora */}
+                                {isActive && (
+                                    <div 
+                                        class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-red-800 rounded-b-full shadow-sm"
+                                        style="view-transition-name: nav-indicator;"
+                                        aria-hidden="true"
+                                    />
+                                )}
+                                
+                                <div class:list={[
+                                    "transition-transform duration-300 ease-out",
+                                    isActive ? "-translate-y-1" : "group-hover:-translate-y-0.5"
+                                ]}>
+                                    <div class:list={[
+                                        "transition-colors duration-300",
+                                        isActive ? "text-red-800" : "text-gray-400 group-hover:text-gray-600"
+                                    ]}>
+                                        <Fragment set:html={item.icon} />
+                                    </div>
+                                </div>
+
+                                <span class:list={[
+                                    "text-xs font-medium mt-1 transition-colors duration-300",
+                                    isActive ? "text-red-800" : "text-gray-500 group-hover:text-gray-700"
+                                ]}>
+                                    {item.label}
+                                </span>
+                            </a>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<style>
+/* Asegura que el contenido no se oculte detrás del navbar en dispositivos con "notch" */
+@supports (padding: max(0px)) {
+    .h-safe-area-bottom {
+        height: max(24px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Mejora las transiciones */
+.transition-transform {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+</style>
+
+<script>
+class NavbarController {
+    private static SCROLL_THRESHOLD = 10;
+    private static TOUCH_THRESHOLD = 5;
+    
+    private lastScrollY: number;
+    private touchStart: number | null = null;
+    private animationFrame: number | null = null;
+    private nav: HTMLElement | null;
+    
+    constructor() {
+        this.lastScrollY = window.scrollY;
+        this.nav = document.getElementById('mobile-nav');
+        this.init();
+    }
+    
+    private updateNav = (show: boolean) => {
+        if (!this.nav) return;
+        this.nav.style.transform = show ? 'translateY(0)' : 'translateY(100%)';
+    };
+    
+    private handleScroll = () => {
+        if (this.animationFrame) return;
+        
+        this.animationFrame = requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+            if (Math.abs(currentScrollY - this.lastScrollY) > NavbarController.SCROLL_THRESHOLD) {
+                this.updateNav(currentScrollY < this.lastScrollY);
+                this.lastScrollY = currentScrollY;
+            }
+            this.animationFrame = null;
+        });
+    };
+    
+    private handleTouchStart = (e: TouchEvent) => {
+        this.touchStart = e.touches[0].clientY;
+    };
+    
+    private handleTouchMove = (e: TouchEvent) => {
+        if (this.touchStart === null) return;
+        
+        const touchEnd = e.touches[0].clientY;
+        const diff = this.touchStart - touchEnd;
+        
+        if (Math.abs(diff) > NavbarController.TOUCH_THRESHOLD) {
+            this.updateNav(diff > 0);
+        }
+        
+        this.touchStart = null;
+    };
+    
+    public init() {
+        // Añadir event listeners
+        window.addEventListener('scroll', this.handleScroll, { passive: true });
+        window.addEventListener('touchstart', this.handleTouchStart, { passive: true });
+        window.addEventListener('touchmove', this.handleTouchMove, { passive: true });
+    }
+    
+    public destroy() {
+        // Limpiar event listeners
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('touchstart', this.handleTouchStart);
+        window.removeEventListener('touchmove', this.handleTouchMove);
+        
+        // Cancelar cualquier animación pendiente
+        if (this.animationFrame) {
+            cancelAnimationFrame(this.animationFrame);
+            this.animationFrame = null;
+        }
+    }
+}
+
+let navController: NavbarController | null = null;
+
+// Función para reinicializar el controlador
+function setupNavController() {
+    // Destruir la instancia anterior si existe
+    if (navController) {
+        navController.destroy();
+    }
+    
+    // Crear nueva instancia
+    navController = new NavbarController();
+}
+
+// Inicializar en la carga de la página
+document.addEventListener('astro:page-load', setupNavController);
+
+// Limpiar al desmontar
+document.addEventListener('astro:before-swap', () => {
+    if (navController) {
+        navController.destroy();
+        navController = null;
+    }
+});
+</script>
