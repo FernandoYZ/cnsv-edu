@@ -1,1 +1,153 @@
-<div>Redirige a la vista donación</div>
+---
+import PrimaryButton from '@components/buttons/PrimaryButton.astro';
+import SecundaryButton from '@components/buttons/SecundaryButton.astro';
+import { Image } from 'astro:assets';
+---
+
+<section class="relative py-24 overflow-hidden">
+    <!-- Enhanced gradient background with religious motif -->
+    <div class="absolute inset-0">
+        <!-- Base gradient that transitions from StatisticsSection -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-white"></div>
+        
+        <!-- Subtle grid pattern -->
+        <div class="absolute inset-0" 
+             style="background-image: linear-gradient(#800020 0.5px, transparent 0.5px), linear-gradient(to right, #800020 0.5px, transparent 0.5px);
+                    background-size: 40px 40px;
+                    opacity: 0.03;">
+        </div>
+        
+        <!-- Decorative shapes -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-[#800020]/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#800020]/5 rounded-full blur-3xl"></div>
+        </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Content Column -->
+            <div class="relative z-10 space-y-10">
+                <!-- Enhanced Header -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-[#800020] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-[#800020]"></span>
+                        </span>
+                        <span class="inline-flex items-center rounded-full bg-[#800020]/5 border border-[#800020]/10 px-4 py-1 text-sm font-medium text-[#800020]">
+                            Unidos por la Educación
+                        </span>
+                    </div>
+
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                        Contribuye al
+                        <span class="relative whitespace-nowrap text-[#800020]">
+                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                                <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
+                            </svg>
+                            <span class="relative">Futuro</span>
+                        </span>
+                        de Nuestros Estudiantes
+                    </h2>
+
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                        Tu generosidad permite que más jóvenes tengan acceso a una educación integral basada en valores cristianos y excelencia académica.
+                    </p>
+                </div>
+
+                <!-- Enhanced Features -->
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <span class="flex-none inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/10 text-[#800020] group-hover:scale-110 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Transparencia Total</h3>
+                            <p class="text-gray-600">Informes detallados del uso de cada donación</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="flex-none inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/10 text-[#800020]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Donación Deducible</h3>
+                            <p class="text-gray-600">Beneficios tributarios para personas y empresas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced CTA -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <PrimaryButton href="donacion" nombre="Realizar Donación" label="donación" />
+                    <SecundaryButton href="donacion" nombre="Ver Impacto" label="impacto" />
+                </div>
+            </div>
+
+            <!-- Right Column: Impact Showcase -->
+            <div class="relative lg:mt-0">
+                <!-- Main Card -->
+                <div class="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+                    <div class="flex items-center gap-6 mb-8">
+                        <span class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-[#800020]/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Tu Ayuda Transforma Vidas</h3>
+                            <p class="text-gray-600">Impacto directo en la educación</p>
+                        </div>
+                    </div>
+
+                    <!-- Impact Cards -->
+                    <div class="space-y-4">
+                        {[
+                            'Mejora de infraestructura educativa',
+                            'Programas de formación espiritual',
+                            'Materiales y recursos académicos',
+                            'Desarrollo de talentos'
+                        ].map(item => (
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300">
+                                <span class="flex-none inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#800020]/10 text-[#800020]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </span>
+                                <span class="text-gray-700 font-medium">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+                <!-- Decorative Elements -->
+                <div class="absolute -inset-4 -z-10">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#800020]/20 to-transparent opacity-50 blur-2xl rounded-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (prefers-reduced-motion: reduce) {
+        .transition-all,
+        .transition-transform,
+        .transition-colors,
+        .transition-opacity,
+        .animate-ping,
+        .group-hover\:scale-110,
+        .group-hover\:translate-x-1,
+        .group-hover\:opacity-100 {
+            transition: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+            animation: none !important;
+        }
+    }
+</style>
