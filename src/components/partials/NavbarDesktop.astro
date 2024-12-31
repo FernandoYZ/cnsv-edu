@@ -76,8 +76,8 @@ const currentPath = Astro.url.pathname;
                                     class:list={[
                                         'relative py-2 text-base font-semibold transition-colors duration-300 group',
                                         {
-                                            'text-red-800': currentPath === item.href,
-                                            'text-gray-300 hover:text-red-800': currentPath !== item.href
+                                            'text-[#800020]': currentPath === item.href,
+                                            'text-gray-300 hover:text-[#800020]': currentPath !== item.href
                                         }
                                     ]}
                                     role="menuitem"
@@ -86,7 +86,7 @@ const currentPath = Astro.url.pathname;
                                     {item.label}
                                     <span 
                                         class:list={[
-                                            'absolute left-0 bottom-0.5 w-full h-[1.6px] transform origin-left transition-transform duration-300 bg-red-800',
+                                            'absolute left-0 bottom-0.5 w-full h-[1.6px] transform origin-left transition-transform duration-300 bg-[#800020]',
                                             {
                                                 'scale-x-100': currentPath === item.href,
                                                 'scale-x-0 group-hover:scale-x-100': currentPath !== item.href
@@ -104,10 +104,10 @@ const currentPath = Astro.url.pathname;
                     <a
                         href="/admision"
                         class:list={[
-                            'group relative inline-flex items-center px-6 py-2.5 text-sm font-bold border-2 border-red-800 rounded-lg transition-colors duration-300 overflow-hidden',
+                            'group relative inline-flex items-center px-6 py-2.5 text-sm font-bold border-2 border-[#800020] rounded-lg transition-colors duration-300 overflow-hidden',
                             {
-                                'text-white bg-red-800': currentPath === '/admision',
-                                'text-red-800 hover:text-white': currentPath !== '/admision'
+                                'text-white bg-[#800020]': currentPath === '/admision',
+                                'text-[#800020] hover:text-white': currentPath !== '/admision'
                             }
                         ]}
                         aria-label="Ir a la página de admisión"
@@ -121,7 +121,7 @@ const currentPath = Astro.url.pathname;
                                 </svg>
                             </span>
                         </span>
-                        <span class="absolute inset-0 w-full h-full bg-red-800 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
+                        <span class="absolute inset-0 w-full h-full bg-[#800020] transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
                     </a>
                 </div>
             </div>
@@ -141,7 +141,7 @@ function handleScroll() {
         
         if (navContainer && navLinks) {
             if (window.scrollY > 20) {
-                navContainer.classList.add('bg-white/95', 'shadow-lg', 'shadow-gray-200/20');
+                navContainer.classList.add('bg-white/95', 'shadow-lg');
                 navLinks.classList.add('scale-95');
                 
                 // Update text colors for scrolled state
@@ -150,7 +150,7 @@ function handleScroll() {
                     link.classList.add('text-gray-900');
                 });
             } else {
-                navContainer.classList.remove('bg-white/95', 'shadow-lg', 'shadow-gray-200/20');
+                navContainer.classList.remove('bg-white/95', 'shadow-lg');
                 navLinks.classList.remove('scale-95');
                 
                 // Restore original text colors
