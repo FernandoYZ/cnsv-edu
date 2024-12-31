@@ -1,10 +1,11 @@
 ---
-import AboutRedirect from '@components/redirect/AboutRedirect.astro';
+import HomeSection from '@components/sections/HomeSection.astro';
 import AdmissionRedirect from '@components/redirect/AdmissionRedirect.astro';
+import AboutRedirect from '@components/redirect/AboutRedirect.astro';
+import StaticSection from '@components/sections/StaticSection.astro';
 import DonationRedirect from '@components/redirect/DonationRedirect.astro';
 import VisitRedirect from '@components/redirect/VisitRedirect.astro';
 import ContactSection from '@components/sections/ContactSection.astro';
-import HomeSection from '@components/sections/HomeSection.astro';
 import LocationSection from '@components/sections/LocationSection.astro';
 
 import Layout from '@layouts/Layout.astro';
@@ -12,8 +13,9 @@ import Layout from '@layouts/Layout.astro';
 
 <Layout title='- Inicio'>
 	<HomeSection />
-	<AboutRedirect />
 	<AdmissionRedirect />
+	<AboutRedirect />
+	<StaticSection />
 	<DonationRedirect />
 	<VisitRedirect />
 	<ContactSection />
