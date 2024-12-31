@@ -1,114 +1,126 @@
 ---
 import data from '@data';
-const { contacto } = data;
-
-// URL del mapa embebido
-const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9510084520846!2d-76.33792501486925!3d-13.073335090803461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910ffb8e0ecba939%3A0x44b6f529d6616ef8!2sColegio%20Seminario%20Menor%20%22Nuestra%20Se%C3%B1ora%20del%20Valle%22!5e0!3m2!1ses-419!2spe!4v1703907549099!5m2!1ses-419!2spe";
+const { Contact, Location } = data;
 ---
 
-<section class="relative py-16 bg-gray-950">
+<article class="relative py-16 bg-gray-950" aria-labelledby="location-title">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <!-- Header -->
-        <div class="relative max-w-2xl mx-auto text-center mb-12">
+        <!-- Encabezado -->
+        <header class="relative max-w-2xl mx-auto text-center mb-12">
             <span class="inline-flex items-center gap-2 rounded-full bg-[#800020]/20 border border-[#800020]/20 px-4 py-1.5 text-sm font-medium text-[#ff9eaa] mb-4">
-                Encuéntranos
+                {Location.label}
             </span>
-            <h2 class="text-3xl font-bold text-white sm:text-4xl mb-4">
-                Nuestra Ubicación
-            </h2>
+            <h1 id="location-title" class="text-3xl font-bold text-white sm:text-4xl mb-4">
+                {Location.titulo}
+            </h1>
             <p class="text-lg text-gray-400">
-                Visítanos y conoce nuestras instalaciones
+                {Location.descripcion}
             </p>
-        </div>
+        </header>
 
-        <!-- Map Container -->
-        <div class="relative mx-auto rounded-2xl overflow-hidden shadow-xl bg-white/5">
-            <!-- Google Maps iframe -->
-            <iframe
-                src={mapUrl}
-                width="100%"
-                height="500"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="grayscale-[0.1] hover:grayscale-0 transition-all duration-300"
-            >
-            </iframe>
+        <!-- Contenedor del Mapa -->
+        <section class="relative mx-auto rounded-2xl overflow-hidden shadow-xl bg-white/5">
+            <div class="relative w-full h-[500px]">
+                <iframe
+                    src={Location.map.url}
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="grayscale-[0.1] hover:grayscale-0 transition-all duration-300"
+                    title="Ubicación del Seminario Menor"
+                    aria-label="Mapa interactivo mostrando la ubicación del Seminario Menor"
+                >
+                </iframe>
+            </div>
 
-            <!-- Location Info Card -->
-            <div class="absolute top-4 right-4 max-w-sm bg-black/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg border border-white/20">
+            <!-- Tarjeta de Información de Ubicación -->
+            <aside class="absolute top-4 right-4 max-w-sm bg-black/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg border border-white/20">
                 <div class="p-6">
                     <div class="flex items-start gap-4">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/20 text-[#ff9eaa] flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/20 text-[#ff9eaa] flex-shrink-0" aria-hidden="true">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-width="1.5" 
+                                class="w-6 h-6"
+                            >
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                             </svg>
                         </span>
                         <div>
-                            <h3 class="text-lg font-semibold text-white mb-1">
-                                {contacto.direccion.titulo}
-                            </h3>
+                            <h2 class="text-lg font-semibold text-white mb-1">
+                                {Contact.info.direccion.titulo}
+                            </h2>
                             <p class="text-gray-300 text-sm">
-                                {contacto.direccion.contenido}
+                                {Contact.info.direccion.contenido}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="flex border-t border-white/10">
+                <!-- Botones de Acción -->
+                <nav class="flex border-t border-white/10">
                     <a 
-                        href="https://www.google.com/maps/place/Colegio+Seminario+Menor+%22Nuestra+Se%C3%B1ora+del+Valle%22/@-13.0733351,-76.337925,17z/data=!4m6!3m5!1s0x910ffb8e0ecba939:0x44b6f529d6616ef8!8m2!3d-13.0734606!4d-76.334422!16s%2Fg%2F1tff_kv0?entry=ttu"
+                        href={Location.locacion.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="flex-1 px-4 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors duration-300 text-center"
+                        aria-label="Abrir ubicación en Google Maps en una nueva pestaña"
                     >
                         Ver en Google Maps
+                        <span class="sr-only">(se abre en una nueva pestaña)</span>
                     </a>
-                </div>
-            </div>
-        </div>
+                </nav>
+            </aside>
+        </section>
 
-        <!-- Additional Info -->
-        <div class="max-w-3xl mx-auto mt-8">
+        <!-- Información Adicional -->
+        <section class="max-w-3xl mx-auto mt-8" aria-label="Información adicional de contacto">
             <div class="grid sm:grid-cols-2 gap-6">
-                <!-- Contact Info -->
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800020]/20 text-[#ff9eaa]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                        </svg>
-                    </span>
-                    <div>
-                        <h4 class="text-white font-medium">Teléfono</h4>
-                        <p class="text-gray-400">Disponible en horario de oficina</p>
-                    </div>
-                </div>
-
-                <!-- Schedule Info -->
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800020]/20 text-[#ff9eaa]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </span>
-                    <div>
-                        <h4 class="text-white font-medium">Horario de Visitas</h4>
-                        <p class="text-gray-400">Lun - Vie: 8:00 AM - 4:00 PM</p>
-                    </div>
-                </div>
+                {Location.infoAdicional.map(info => (
+                    <article class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800020]/20 text-[#ff9eaa]" aria-hidden="true">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-width="1.5" 
+                                class="w-5 h-5"
+                            >
+                                <path 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    d={info.icon} 
+                                />
+                            </svg>
+                        </span>
+                        <div>
+                            <h3 class="text-white font-medium">{info.titulo}</h3>
+                            <p class="text-gray-400">{info.descripcion}</p>
+                        </div>
+                    </article>
+                ))}
             </div>
-        </div>
+        </section>
     </div>
-</section>
+</article>
 
 <style>
     @media (prefers-reduced-motion: reduce) {
-        .transition-all,
-        .transition-colors,
-        .hover\:grayscale-0 {
+        :root {
+            --duration-300: 0ms;
+        }
+
+        [class*='transition-'],
+        [class*='hover\\:'],
+        .grayscale-[0.1] {
             transition: none !important;
             filter: none !important;
         }
