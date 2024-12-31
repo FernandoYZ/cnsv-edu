@@ -1,1 +1,173 @@
-<div>Redirige a la vista admisión</div>
+---
+import admissionJPG from '@assets/images/donation.jpg';
+import admissionWEBP from '@assets/images/donation.webp';
+import admissionAVIF from '@assets/images/donation.avif';
+import PrimaryButton from '@components/buttons/PrimaryButton.astro';
+import SecundaryButton from '@components/buttons/SecundaryButton.astro';
+import data from '@data';
+const AnioActual = new Date().getFullYear();
+const { importancia } = data;
+---
+
+<section class="relative py-24 overflow-hidden">
+    <!-- Enhanced gradient background with subtle pattern -->
+    <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50/10"></div>
+        <div class="absolute inset-0 bg-[url('/subtle-dots.svg')] opacity-[0.08]"></div>
+        <!-- Decorative circles -->
+        <div class="absolute top-0 right-0 -mt-16 -mr-16">
+            <div class="w-64 h-64 rounded-full bg-[#800020]/5 blur-3xl"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 -mb-16 -ml-16">
+            <div class="w-64 h-64 rounded-full bg-[#800020]/5 blur-3xl"></div>
+        </div>
+        <div class="absolute bottom-0 right-0 -mt-16 -mr-16">
+            <div class="absolute w-[500px] h-[500px] -top-32 -right-16 rounded-full bg-[#800020]/10 blur-3xl"></div>
+        </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <!-- Left Column: Content -->
+            <div class="relative">
+                <!-- Enhanced accent bar -->
+                <div class="absolute -left-4 top-0 h-full w-1">
+                    <div class="sticky top-0 w-full h-24 bg-gradient-to-b from-[#800020] via-[#800020]/50 to-transparent rounded-full"></div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Enhanced header section -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#800020] opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-[#800020]"></span>
+                            </span>
+                            <span class="px-4 py-2 rounded-full bg-[#800020]/5 text-sm font-medium text-[#800020] uppercase tracking-wider">
+                                Admisiones Abiertas 2025
+                            </span>
+                        </div>
+
+                        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                            Forma Parte de Nuestra 
+                            <span class="relative whitespace-nowrap text-[#800020]">
+                                <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                                    <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
+                                </svg>
+                                Comunidad
+                            </span>
+                        </h2>
+
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-2xl">
+                            En el Seminario Menor - Nuestra Señora del Valle, formamos líderes con valores cristianos sólidos y excelencia académica. Únete a nuestra comunidad educativa y descubre tu potencial.
+                        </p>
+                    </div>
+
+                    <!-- Enhanced features grid -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="group relative">
+                            <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#800020]/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 blur-lg"></div>
+                            <div class="relative p-5 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <div class="flex gap-4">
+                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#800020]/10 text-[#800020]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-900">Proceso Simple</h3>
+                                        <p class="text-sm text-gray-500 mt-1">Admisión en 3 sencillos pasos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group relative">
+                            <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#800020]/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 blur-lg"></div>
+                            <div class="relative p-5 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <div class="flex gap-4">
+                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#800020]/10 text-[#800020]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-900">Respuesta Rápida</h3>
+                                        <p class="text-sm text-gray-500 mt-1">Resultados en 5 días hábiles</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced CTA buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                        <PrimaryButton href="admision" nombre="Iniciar Proceso" label="proceso" />
+                        <SecundaryButton href="admision" nombre="Ver Requisitos" label="requisitos" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Enhanced Image Section -->
+            <div class="relative lg:mt-0">
+                <div class="relative">
+                    <!-- Decorative elements -->
+                    <div class="absolute -inset-4">
+                        <div class="w-full h-full mx-auto rotate-2 rounded-3xl bg-gradient-to-r from-red-700/95 to-red-700/80 opacity-50"></div>
+                    </div>
+                    <div class="absolute -inset-4">
+                        <div class="w-full h-full mx-auto rotate-6 rounded-3xl bg-gradient-to-r from-red-700/95 to-red-700/80 opacity-25"></div>
+                    </div>
+
+                    <!-- Main image container with enhanced effects -->
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-2xl">
+                        <picture>
+                            <source srcset={admissionAVIF.src} type="image/avif" />
+                            <source srcset={admissionWEBP.src} type="image/webp" />
+                            <img
+                                src={admissionJPG.src}
+                                alt="Estudiantes en el campus"
+                                class="w-full h-[500px] object-cover transform transition-transform duration-700 hover:scale-105"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </picture>
+
+                        <!-- Glass card overlay -->
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="p-6 backdrop-blur-md bg-white/90 rounded-xl shadow-lg border border-white/40 transform translate-y-0 hover:translate-y-2 transition-transform duration-300">
+                                <div class="flex items-center gap-4">
+                                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800020] text-white font-bold text-lg">
+                                        {AnioActual - importancia.aniversario.anio}
+                                    </span>
+                                    <div>
+                                        <h4 class="text-gray-900 font-semibold">Años de Excelencia</h4>
+                                        <p class="text-gray-600 text-sm">Formando líderes desde {importancia.aniversario.anio}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (prefers-reduced-motion: reduce) {
+        .animate-ping,
+        .transition-all,
+        .transition-transform,
+        .transition-opacity,
+        .hover\:scale-105,
+        .group-hover\:scale-110,
+        .group-hover\:translate-x-1,
+        .group-hover\:opacity-100 {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+        }
+    }
+</style>
