@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import heroImage from '@assets/images/hero/home_hero_org.webp';
 import data from '@data';
+import PrimaryButton from '@components/buttons/PrimaryButton.astro';
 
 const { hero, caracteristicas } = data.index;
 const preloadImageUrl = await import('@assets/images/hero/home_hero_org.webp?url').then(m => m.default);
@@ -10,15 +11,16 @@ const preloadImageUrl = await import('@assets/images/hero/home_hero_org.webp?url
 <link rel="preload" href={preloadImageUrl} as="image" />
 
 <section 
-    class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-950 to-gray-500/30"
+    class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-950/20 to-gray-900/5"
     style="content-visibility: auto;"
+    aria-labelledby="hero-title"
 >
-    <!-- Optimized background with improved overlay -->
+    <!-- Fondo -->
     <div class="absolute inset-0">
         <Image
             src={heroImage}
-            alt="Estudiantes en el campus"
-            class="w-full h-full object-cover mix-blend-soft-light opacity-60"
+            alt="Vista panorámica del campus mostrando estudiantes y edificios principales"
+            class="w-full h-full object-cover opacity-75"
             loading="eager"
             fetchpriority="high"
             decoding="async"
@@ -28,129 +30,142 @@ const preloadImageUrl = await import('@assets/images/hero/home_hero_org.webp?url
             sizes="100vw"
         />
         <div 
-            class="absolute inset-0 bg-dot-pattern opacity-20"
+            class="absolute inset-0 bg-dot-pattern opacity-30"
             aria-hidden="true"
         ></div>
     </div>
 
-    <!-- Enhanced main content container -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <!-- Left column: Enhanced text content -->
+    <!-- Contenedor principal -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <!-- Columna izquierda: Contenido textual -->
             <div class="text-left space-y-8">
                 <div class="space-y-6">
-                    <span class="inline-flex py-2 px-4 rounded-full bg-white/10 text-white text-sm font-medium backdrop-blur-sm border border-white/20 shadow-lg">
-                        {hero.etiqueta}
-                    </span>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight animate-title">
+                    <h1 
+                        id="hero-title" 
+                        class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight animate-title"
+                    >
                         {hero.titulo}
                     </h1>
                 </div>
                 
-                <p class="text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl animate-fade-in">
+                <p class="text-lg sm:text-xl text-white/95 leading-relaxed max-w-2xl animate-fade-in font-light">
                     {hero.descripcion}
                 </p>
 
-                <!-- Improved CTA buttons -->
-                <div class="flex flex-col sm:flex-row gap-5 pt-8 animate-fade-in">
-                    <a
-                            href="/admision"
-                            class="group relative inline-flex items-center px-6 py-3 text-base font-bold text-white rounded-lg transition-all duration-300 overflow-hidden w-full sm:w-auto justify-center sm:justify-start bg-gradient-to-r from-red-800 to-red-700 hover:from-red-700 hover:to-red-600 shadow-md hover:shadow-lg transform"
-                            aria-label="Ir a la página de admisión"
-                        >
-                            <span class="relative z-10 flex items-center">
-                                Iniciar Admisión
-                                <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </span>
-                            </span>
-                        <span class="absolute inset-0 w-full h-full bg-red-900 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left shadow-inner"/>
-                    </a>
+                <!-- Botones CTA -->
+                <nav 
+                    class="flex flex-col sm:flex-row gap-5 pt-8 animate-fade-in"
+                    aria-label="Acciones principales"
+                >
+                    <PrimaryButton href="admision" nombre="Iniciar Admisión" label="admisión" />
                     <a 
-                            href="/sobre-nosotros" 
-                            class="group relative inline-flex items-center justify-center sm:justify-start px-6 py-3 text-base font-bold border-2 border-white/85 text-white rounded-lg overflow-hidden transition-colors duration-300 w-full sm:w-auto backdrop-blur-sm hover:border-white"
-                        >
-                            <span class="relative z-10 flex items-center">
-                                Explorar Propuesta
-                                <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </span>
-                            </span>
-                        <span class="absolute inset-0 w-full h-full bg-white/10 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
+                        href="/sobre-nosotros" 
+                        class="group relative inline-flex items-center justify-center sm:justify-start px-6 py-3 text-base font-medium border-2 border-white/70 text-white rounded-lg overflow-hidden transition-colors duration-300 w-full sm:w-auto backdrop-blur-sm hover:border-white/90 hover:bg-white/10"
+                        aria-label="Explorar nuestra propuesta educativa"
+                    >
+                        <span class="relative z-10 flex items-center">
+                            Explorar Propuesta
+                            <svg 
+                                class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <title>Flecha indicadora</title>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
                     </a>
-                </div>
+                </nav>
             </div>
 
-            <!-- Right column: Enhanced stats grid -->
-            <div class="hidden lg:grid grid-cols-2 gap-6 animate-fade-in-up">
+            <!-- Columna derecha: Grid de estadísticas -->
+            <div 
+                class="hidden lg:grid grid-cols-2 gap-6 animate-fade-in-up"
+                role="list"
+                aria-label="Estadísticas destacadas"
+            >
                 {caracteristicas.map(({ titulo, valor }) => (
-                    <div class="group relative bg-white/10 backdrop-blur-md rounded-2xl p-8 transition-all duration-300 border border-white/20 hover:border-white/40 hover:bg-white/15">
+                    <div 
+                        class="group relative bg-gradient-to-br from-black/10 to-white/5 backdrop-blur-md rounded-2xl p-8 transition-all duration-300 border border-white/20 hover:border-[#800020]/40"
+                        role="listitem"
+                    >
                         <div class="relative z-10">
-                            <p class="text-4xl font-bold text-white mb-3 transition-transform duration-300">{valor}</p>
-                            <p class="text-white/90 text-lg">{titulo}</p>
+                            <p 
+                                class="text-4xl font-bold text-white mb-3"
+                                aria-label={`${titulo}: ${valor}`}
+                            >
+                                {valor}
+                            </p>
+                            <p class="text-white/90 text-lg font-light">{titulo}</p>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"></div>
+                        <div 
+                            class="absolute inset-0 bg-gradient-to-br from-[#990033]/20 to-transparent rounded-2xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                            aria-hidden="true"
+                        ></div>
                     </div>
                 ))}
             </div>
         </div>
     </div>
 
-    <!-- Enhanced gradient overlay -->
-    <div class="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-gray-950/80 via-gray-950/50 to-transparent"></div>
+    <!-- Superposición de gradiente -->
+    <div 
+        class="absolute top-0 left-0 w-full h-2/3 bg-gradient-to-b from-neutral-950/90 via-neutral-950/50 to-transparent"
+        aria-hidden="true"
+    ></div>
 </section>
 
-<style>  
+<style>
     .bg-dot-pattern {
-        background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+        background-image: radial-gradient(rgba(153, 0, 51, 0.15) 1px, transparent 1px);
         background-size: 32px 32px;
     }
 
-    .animate-title {
-        animation: slideUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0;
-    }
-
-    .animate-fade-in {
-        animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0;
-        animation-delay: 0.3s;
-    }
-
-    .animate-fade-in-up {
-        animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0;
-        animation-delay: 0.6s;
-    }
-
-    @keyframes slideUp {
-        from { 
-            transform: translateY(40px); 
-            opacity: 0; 
+    /* Animaciones optimizadas */
+    @media (prefers-reduced-motion: no-preference) {
+        .animate-title {
+            opacity: 0;
+            animation: fade-slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-        to { 
-            transform: translateY(0); 
-            opacity: 1; 
-        }
-    }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-        from { 
-            transform: translateY(30px); 
-            opacity: 0; 
+        .animate-fade-in {
+            opacity: 0;
+            animation: fade-in 0.5s ease-out forwards;
+            animation-delay: 0.3s;
         }
-        to { 
-            transform: translateY(0); 
-            opacity: 1; 
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fade-slide-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Animaciones unificadas */
+        @keyframes fade-slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Optimizaciones de rendimiento */
+        .animate-title,
+        .animate-fade-in,
+        .animate-fade-in-up {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
     }
 
@@ -159,13 +174,11 @@ const preloadImageUrl = await import('@assets/images/hero/home_hero_org.webp?url
         .animate-fade-in,
         .animate-fade-in-up,
         .transition-all,
-        .transition-transform,
-        .group-hover\:translate-x-1,
-        .group-hover\:scale-105 {
-            animation: none;
-            transition: none;
-            transform: none;
-            opacity: 1;
+        .transition-transform {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+            opacity: 1 !important;
         }
     }
 </style>
