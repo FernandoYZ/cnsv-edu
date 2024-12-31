@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
     site: 'https://FernandoYZ.github.io/',
-    base: 'cnsv-edu',
+    base: '/cnsv-edu/',
     integrations: [tailwind()],
     output: 'static',
     compressHTML: true,
@@ -27,16 +27,7 @@ export default defineConfig({
                 mangle: true
             },
             rollupOptions: {
-                output: {
-                    manualChunks(id) {
-                        if (id.includes('node_modules')) {
-                            return 'vendor';
-                        }
-                        if (id.includes('ui-library')) {
-                            return 'ui';
-                        }
-                    }
-                }
+                output: {}
             }
         },
         plugins: [
