@@ -1,0 +1,18 @@
+---
+const { href, nombre, label } = Astro.props;
+---
+<a 
+    href={`/${href}`} 
+    class="group relative inline-flex items-center justify-center sm:justify-start px-6 py-3 text-base font-bold border-2 border-gray-700/10 text-black/60 rounded-lg overflow-hidden transition-colors duration-300 w-full sm:w-auto backdrop-blur-sm hover:border-gray-900/10"
+    aria-label={`Ir a la página de ${label}`}
+>
+        <span class="relative z-10 flex items-center">
+            {nombre}
+            <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </span>
+        </span>
+    <span class="absolute inset-0 w-full h-full bg-gray-500/10 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
+</a>
