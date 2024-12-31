@@ -3,13 +3,13 @@ import { Image } from 'astro:assets';
 import data from '@data';
 import footerLogo from '@assets/images/logo_cnsv_footer.png';
 
-const { navegacion, contacto, marca } = data;
+const { navegacion, Contact, marca } = data;
 
 // Helper para crear el mailto
 const crearMailTo = (correo: string) => `mailto:${correo}`;
 
 // Transformar la data de contacto a un array para mantener la estructura del mapa
-const infoContacto = Object.entries(contacto).map(([key, info]) => ({
+const infoContacto = Object.entries(Contact.info).map(([key, info]) => ({
     ...info,
     href: info.esEnlace ? crearMailTo(info.contenido) : undefined
 }));
@@ -58,11 +58,22 @@ const infoContacto = Object.entries(contacto).map(([key, info]) => ({
                             <h2 class="font-bold mb-4 text-md uppercase">Matrículas</h2>
                             <a
                                 href="/admision"
-                                class="inline-block text-sm font-bold py-2.5 px-6 rounded-full border border-white text-white hover:bg-white hover:text-neutral-900 transition duration-300"
+                                class:list={[
+                                    'group relative inline-flex items-center px-6 py-2.5 text-sm font-bold border-2 border-white rounded-lg hover:text-gray-800 transition-colors duration-300 overflow-hidden',
+                                ]}
                                 aria-label="Ir a la página de admisión"
                             >
-                                Admisión
+                                <span class="relative z-10 flex items-center">
+                                    ¡Inscríbete ya!
+                                    <span class="ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1">
+                                        <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </span>
+                                </span>
+                                <span class="absolute inset-0 w-full h-full bg-white transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0 origin-left"/>
                             </a>
+
                         </div>
                     </div>
                 </nav>
@@ -102,7 +113,8 @@ const infoContacto = Object.entries(contacto).map(([key, info]) => ({
                 &copy; 2024 CNSV. Todos los derechos reservados.
                 <span class="mx-1">Realizado por</span>
                 <a 
-                    href="#" 
+                    href="https://www.facebook.com/fernando.yoverazavala/" 
+                    aria-label="Facebook de Fernando Yoveraz"
                     class="font-semibold hover:text-white transition-colors duration-200" 
                     rel="noopener noreferrer"
                 >
