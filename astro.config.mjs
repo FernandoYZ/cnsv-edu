@@ -1,5 +1,4 @@
 // @ts-check
-// @ts-check
 import { defineConfig } from 'astro/config';
 
 import tailwind from '@astrojs/tailwind';
@@ -27,7 +26,16 @@ export default defineConfig({
                 mangle: true
             },
             rollupOptions: {
-                output: {}
+                output: {
+                    manualChunks(id) {
+                        if (id.includes('node_modules')) {
+                            return 'vendor';
+                        }
+                        if (id.includes('ui-library')) {
+                            return 'ui';
+                        }
+                    }
+                }
             }
         },
         plugins: [
