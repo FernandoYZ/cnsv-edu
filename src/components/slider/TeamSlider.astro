@@ -1,1 +1,184 @@
-<div>Aquí irá el slider de equipo</div>
+---
+import { Image } from 'astro:assets';
+import data from '@data';
+
+const { staff } = data;
+---
+
+<section class="relative py-24 overflow-hidden bg-gray-50/50" aria-labelledby="staff-title">
+    <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-dot-pattern opacity-[0.015]"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#800020]/5 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#800020]/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <header class="text-center max-w-2xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 mb-4">
+                <span class="w-12 h-[2px] bg-[#800020]"></span>
+                <span class="text-[#800020] font-medium tracking-wider text-sm uppercase">Nuestro Equipo</span>
+                <span class="w-12 h-[2px] bg-[#800020]"></span>
+            </div>
+            <h2 id="staff-title" class="text-4xl font-bold text-gray-900 mb-4">
+                Liderazgo y
+                <span class="relative whitespace-nowrap text-[#800020]">
+                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                        <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
+                    </svg>
+                    <span class="relative">Guía</span>
+                </span>
+            </h2>
+            <p class="text-gray-600">Conoce a nuestro equipo directivo comprometido con la excelencia educativa.</p>
+        </header>
+
+        <div class="relative px-4 sm:px-8">
+            <!-- Slider Container -->
+            <div class="overflow-hidden" id="staff-slider">
+                <div class="flex gap-6 transition-transform duration-500 ease-in-out" id="staff-track">
+                    {staff.map((member) => (
+                        <article class="w-72 flex-shrink-0 group">
+                            <div class="relative bg-white rounded-2xl overflow-hidden shadow-md">
+                                <!-- Imagen -->
+                                <div class="relative h-80 overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-transparent z-10"></div>
+                                    <Image
+                                        src={member.imagen}
+                                        alt={`Fotografía de ${member.nombre}`}
+                                        class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                                        width={288}
+                                        height={320}
+                                    />
+                                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                                        <h3 class="text-xl font-bold text-white">{member.nombre}</h3>
+                                        <p class="text-[#ff9eaa]">{member.cargo}</p>
+                                    </div>
+                                </div>
+
+                                <!-- Información -->
+                                <div class="p-6">
+                                    <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">{member.descripcion}</p>
+                                    {member.contacto && (
+                                        <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                                            {member.contacto.email && (
+                                                <a 
+                                                    href={`mailto:${member.contacto.email}`}
+                                                    class="text-gray-500 hover:text-[#800020] transition-colors duration-300"
+                                                    aria-label={`Enviar correo a ${member.nombre}`}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                    </svg>
+                                                </a>
+                                            )}
+                                            {member.contacto.telefono && (
+                                                <a 
+                                                    href={`tel:${member.contacto.telefono}`}
+                                                    class="text-gray-500 hover:text-[#800020] transition-colors duration-300"
+                                                    aria-label={`Llamar a ${member.nombre}`}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                                    </svg>
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <div class="absolute top-1/2 -translate-y-1/2 w-full flex justify-between pointer-events-none" style="left: 0; right: 0;">
+                <button 
+                    class="transform -translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-gray-900 hover:text-[#800020] transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020]"
+                    id="prev-staff"
+                    aria-label="Personal anterior"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button 
+                    class="transform translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-gray-900 hover:text-[#800020] transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020]"
+                    id="next-staff"
+                    aria-label="Siguiente personal"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+const initStaffSlider = () => {
+    const track = document.getElementById('staff-track') as HTMLElement;
+    const slides = track?.children as HTMLCollectionOf<HTMLElement>;
+    const prevButton = document.getElementById('prev-staff');
+    const nextButton = document.getElementById('next-staff');
+    
+    if (!track || !slides.length || !prevButton || !nextButton) return;
+
+    let currentIndex = 0;
+    const slideWidth = slides[0].offsetWidth + 24; // Ancho + gap
+    const visibleSlides = Math.floor(track.parentElement!.offsetWidth / slideWidth);
+    const maxIndex = slides.length - visibleSlides;
+
+    const updateSlidePosition = () => {
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    };
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = Math.max(currentIndex - 1, 0);
+        updateSlidePosition();
+        updateButtonStates();
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = Math.min(currentIndex + 1, maxIndex);
+        updateSlidePosition();
+        updateButtonStates();
+    });
+
+    const updateButtonStates = () => {
+        prevButton.classList.toggle('opacity-50', currentIndex === 0);
+        prevButton.disabled = currentIndex === 0;
+        nextButton.classList.toggle('opacity-50', currentIndex === maxIndex);
+        nextButton.disabled = currentIndex === maxIndex;
+    };
+
+    updateButtonStates();
+
+    // Responsive handling
+    window.addEventListener('resize', () => {
+        const newVisibleSlides = Math.floor(track.parentElement!.offsetWidth / slideWidth);
+        currentIndex = Math.min(currentIndex, slides.length - newVisibleSlides);
+        updateSlidePosition();
+        updateButtonStates();
+    });
+};
+
+document.addEventListener('astro:page-load', initStaffSlider);
+</script>
+
+<style>
+.bg-dot-pattern {
+    background-image: radial-gradient(#800020 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .transition-all,
+    .transition-transform,
+    .transition-colors,
+    .group-hover\:scale-110 {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+</style>
