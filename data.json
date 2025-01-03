@@ -184,6 +184,376 @@
             }
         ]
     },
+    "historia": {
+        "header": {
+            "label": "Nuestra Historia",
+            "titulo1": "Una historia de ",
+            "titulo2": " y Excelencia”",
+            "span": "“Formación",
+            "descripcion": "Descubre el camino que hemos recorrido en nuestra misión de formar líderes con valores cristianos y excelencia académica.",
+            "icono": "M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"
+        },
+        "eventos": [
+            {
+                "año": 1950,
+                "titulo": "Fundación del Seminario",
+                "descripcion": "El Seminario Menor fue fundado por un grupo de sacerdotes visionarios, con el objetivo de formar jóvenes en valores cristianos y excelencia académica.",
+                "imagen": "/src/assets/images/historia/fundacion.jpg",
+                "imagenAlt": "Ceremonia de fundación del Seminario Menor",
+                "icono": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+                "logros": [
+                "Inicio con 50 estudiantes pioneros",
+                "Primera promoción de sacerdotes",
+                "Construcción del primer edificio académico"
+                ]
+            },
+            {
+                "año": 1965,
+                "titulo": "Expansión y Modernización",
+                "descripcion": "Se realizó una importante expansión de las instalaciones, incluyendo nuevas aulas, laboratorios y una biblioteca moderna.",
+                "imagen": "/src/assets/images/historia/expansion.jpg",
+                "imagenAlt": "Construcción de nuevas instalaciones en 1965",
+                "icono": "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
+                "logros": [
+                "Inauguración de la biblioteca central",
+                "Primer laboratorio de ciencias",
+                "Apertura del auditorio principal"
+                ]
+            },
+            {
+                "año": 1980,
+                "titulo": "Innovación Educativa",
+                "descripcion": "Implementación de nuevos programas educativos y metodologías de enseñanza innovadoras.",
+                "imagen": "/src/assets/images/historia/innovacion.jpg",
+                "imagenAlt": "Estudiantes en el nuevo laboratorio de computación",
+                "icono": "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+                "logros": [
+                "Primer programa de intercambio internacional",
+                "Implementación de tecnología educativa",
+                "Creación del departamento de investigación"
+                ]
+            },
+            {
+                "año": 2000,
+                "titulo": "Cincuentenario y Nueva Era",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
+                "imagen": "/src/assets/images/historia/cincuentenario.jpg",
+                "imagenAlt": "Celebración del cincuentenario del Seminario",
+                "icono": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "logros": [
+                "Renovación completa de instalaciones",
+                "Lanzamiento del programa de becas",
+                "Reconocimiento nacional a la excelencia educativa"
+                ]
+            },
+            {
+                "año": 2015,
+                "titulo": "Excelencia Digital",
+                "descripcion": "Integración completa de tecnologías digitales y modernización de todos los sistemas educativos.",
+                "imagen": "/src/assets/images/historia/digital.jpg",
+                "imagenAlt": "Estudiantes utilizando las nuevas tecnologías educativas",
+                "icono": "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+                "logros": [
+                "Implementación de aulas virtuales",
+                "Certificación internacional en educación digital",
+                "Programa 1:1 de dispositivos para estudiantes"
+                ]
+            },
+            {
+                "año": 2024,
+                "titulo": "Presente y Futuro",
+                "descripcion": "Continuamos nuestra misión de formar líderes con valores cristianos, adaptándonos a los desafíos del siglo XXI.",
+                "imagen": "/src/assets/images/historia/presente.jpg",
+                "imagenAlt": "Campus actual del Seminario Menor",
+                "icono": "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5",
+                "logros": [
+                "Centro de innovación pedagógica",
+                "Programas de sostenibilidad ambiental",
+                "Alianzas internacionales estratégicas"
+                ]
+            }
+        ]
+    },
+    "proposito": {
+        "header": {
+            "label": "Nuestro Propósito",
+            "titulo1": "Formando el",
+            "titulo2": "con Valores",
+            "span": "Futuro",
+            "descripcion": "Descubre los pilares fundamentales que guían nuestra labor educativa y formativa."
+        },
+        "mision": "Somos una institución educativa católica que forma integralmente en valores, fe y excelencia, promoviendo la libertad personal, la vocación sacerdotal y la preparación para las demandas de la sociedad.",
+        "vision": "Para 2026, ser una institución educativa de excelencia académica, formadora de líderes, vocaciones sacerdotales y profesionales competentes, al servicio de la Iglesia y la sociedad, con docentes calificados, infraestructura moderna y familias comprometidas.",
+        "valores": "Fomentamos la fe, la libertad, la excelencia, el servicio y el liderazgo, guiados por una visión cristiana y humanista para el desarrollo integral de nuestra comunidad.",
+        "valoresList": [
+            {
+                "titulo": "Espiritualidad"
+            },
+            {
+                "titulo": "Servicio a la Iglesia"
+            },
+            {
+                "titulo": "Compromiso social"
+            },
+            {
+                "titulo": "Liderazgo"
+            }
+        ],
+        "cita": {
+            "texto": "El Perú no puede quedarse sin Sacerdotes",
+            "autor": "San Josemaría Escrivá de Balaguer",
+            "cargo": "Fundador del Opus Dei"
+        }
+    },
+    "identidad": {
+        "header": {
+            "label": "Identidad Religiosa",
+            "titulo": "Formación en la",
+            "span": "Fe Católica",
+            "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
+            "icono": "M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z",
+            "imagenFondo": "/src/assets/images/hero/about_organization.jpg",
+            "imagenAltFondo": "Fondo arquitectónico del seminario"
+        },
+        "misionPuntos": [
+            "punto1",
+            "punto2",
+            "punto3",
+            "punto4"
+        ],
+        "misionCatolica" : "Perrito",
+        "valoresCatolicos": [
+            {
+                "icono": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            },
+            {
+                "icono": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            },
+            {
+                "icono": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            }
+        ],
+        "santosPatronos": [
+            {
+                "imagen": "/src/assets/images/historia/cincuentenario.jpg",
+                "nombre": "Ohño",
+                "titulo": "perro",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
+                "atributos": [
+                    "Atributo 1",
+                    "Atributo 2",
+                    "Atributo 3"
+                ]
+            },
+            {
+                "imagen": "/src/assets/images/historia/cincuentenario.jpg",
+                "nombre": "Ohño",
+                "titulo": "perro",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
+                "atributos": [
+                    "Atributo 1",
+                    "Atributo 2",
+                    "Atributo 3"
+                ]
+            },
+            {
+                "imagen": "/src/assets/images/historia/cincuentenario.jpg",
+                "nombre": "Ohño",
+                "titulo": "perro",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
+                "atributos": [
+                    "Atributo 1",
+                    "Atributo 2",
+                    "Atributo 3"
+                ]
+            }
+        ],
+        "practicas": [
+            {
+                "icono":"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            },
+            {
+                "icono":"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            },
+            {
+                "icono":"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            },
+            {
+                "icono":"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "titulo": "Alumnos Graduados",
+                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral."
+            }
+        ],
+        "cita": {
+            "texto": "pene1",
+            "autor": "pene1",
+            "cargo": "pene1"
+        }
+    },
+    "staff": [
+        {
+            "nombre": "P. Juan Pablo Ramírez",
+            "cargo": "Rector",
+            "imagen": "/src/assets/images/staff/rector.jpg",
+            "descripcion": "Doctor en Teología y Educación, con más de 20 años de experiencia en formación sacerdotal. Lidera nuestra institución con un enfoque en la excelencia académica y valores católicos.",
+            "contacto": {
+                "email": "rector@seminario.edu",
+                "telefono": "+51944123456"
+            }
+        },
+        {
+        "nombre": "Dra. María Sánchez",
+        "cargo": "Directora Académica",
+        "imagen": "/src/assets/images/staff/directora.jpg",
+        "descripcion": "Especialista en pedagogía y gestión educativa. Coordina los programas académicos asegurando los más altos estándares educativos en consonancia con la doctrina católica.",
+        "contacto": {
+            "email": "director.academico@seminario.edu",
+            "telefono": "+51944123457"
+        }
+        },
+        {
+        "nombre": "P. Carlos Mendoza",
+        "cargo": "Director Espiritual",
+        "imagen": "/src/assets/images/staff/espiritual.jpg",
+        "descripcion": "Guía espiritual de nuestra comunidad educativa, responsable de la formación en valores y el acompañamiento pastoral de estudiantes y familias.",
+        "contacto": {
+            "email": "espiritual@seminario.edu",
+            "telefono": "+51944123458"
+        }
+        },
+        {
+        "nombre": "Lic. Roberto Torres",
+        "cargo": "Coordinador de Pastoral",
+        "imagen": "/src/assets/images/staff/pastoral.jpg",
+        "descripcion": "Coordina las actividades pastorales y de servicio social, promoviendo la vivencia de la fe y el compromiso con la comunidad.",
+        "contacto": {
+            "email": "pastoral@seminario.edu",
+            "telefono": "+51944123459"
+        }
+        },
+        {
+        "nombre": "Mg. Ana Patricia Luna",
+        "cargo": "Coordinadora de Convivencia",
+        "imagen": "/src/assets/images/staff/convivencia.jpg",
+        "descripcion": "Responsable del bienestar estudiantil y la promoción de una convivencia armoniosa basada en valores cristianos.",
+        "contacto": {
+            "email": "convivencia@seminario.edu",
+            "telefono": "+51944123460"
+        }
+        },
+        {
+        "nombre": "P. Miguel Ángel Díaz",
+        "cargo": "Capellán",
+        "imagen": "/src/assets/images/staff/capellan.jpg",
+        "descripcion": "Encargado de la vida sacramental y la orientación espiritual, celebrando los sacramentos y ofreciendo acompañamiento espiritual.",
+        "contacto": {
+            "email": "capellan@seminario.edu",
+            "telefono": "+51944123461"
+        }
+        },
+        {
+        "nombre": "Dra. Carmen Velasco",
+        "cargo": "Coordinadora de Investigación",
+        "imagen": "/src/assets/images/staff/investigacion.jpg",
+        "descripcion": "Dirige los proyectos de investigación y desarrollo académico, fomentando la excelencia en la producción intelectual.",
+        "contacto": {
+            "email": "investigacion@seminario.edu",
+            "telefono": "+51944123462"
+        }
+        },
+        {
+        "nombre": "Mg. Daniel Paredes",
+        "cargo": "Director Administrativo",
+        "imagen": "/src/assets/images/staff/administrativo.jpg",
+        "descripcion": "Gestiona los recursos y la infraestructura del seminario, asegurando un ambiente óptimo para el desarrollo educativo.",
+        "contacto": {
+            "email": "administracion@seminario.edu",
+            "telefono": "+51944123463"
+        }
+        }
+    ],
+    "faq": {
+        "categorias": [
+            {
+                "id": "admision",
+                "titulo": "Admisión",
+                "descripcion": "Proceso de admisión y requisitos",
+                "icono": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            },
+            {
+                "id": "internado",
+                "titulo": "Vida en el Internado",
+                "descripcion": "Rutina diaria y normas de convivencia",
+                "icono": "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            },
+            {
+                "id": "academico",
+                "titulo": "Académico",
+                "descripcion": "Programas y metodología educativa",
+                "icono": "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            },
+            {
+                "id": "pastoral",
+                "titulo": "Pastoral y Espiritualidad",
+                "descripcion": "Actividades religiosas y formación espiritual",
+                "icono": "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            }
+            ],
+            "preguntas": [
+            {
+                "categoria": "admision",
+                "pregunta": "¿Cuáles son los requisitos para postular?",
+                "respuesta": "Los requisitos incluyen partida de bautismo, certificado de estudios, carta de recomendación del párroco, y aprobar el proceso de evaluación integral."
+            },
+            {
+                "categoria": "admision",
+                "pregunta": "¿Cuándo inicia el proceso de admisión?",
+                "respuesta": "El proceso de admisión inicia en septiembre para el año académico siguiente. Las fechas específicas se publican en nuestra web."
+            },
+            {
+                "categoria": "internado",
+                "pregunta": "¿Cómo es un día típico en el internado?",
+                "respuesta": "El día inicia a las 5:30 AM con oración matutina, seguido de desayuno, clases, actividades pastorales, estudio dirigido y recreación. El día concluye con oración nocturna a las 9:00 PM."
+            },
+            {
+                "categoria": "internado",
+                "pregunta": "¿Qué deben traer los estudiantes internos?",
+                "respuesta": "Los estudiantes deben traer uniformes, ropa de cama, artículos de aseo personal, útiles escolares y dispositivos autorizados según el reglamento."
+            },
+            {
+                "categoria": "academico",
+                "pregunta": "¿Qué metodología de enseñanza utilizan?",
+                "respuesta": "Empleamos una metodología integral que combina la excelencia académica con la formación humana y espiritual, incluyendo aprendizaje activo y acompañamiento personalizado."
+            },
+            {
+                "categoria": "academico",
+                "pregunta": "¿Tienen programas extracurriculares?",
+                "respuesta": "Sí, ofrecemos actividades deportivas, culturales, pastorales y de servicio comunitario como parte de la formación integral."
+            },
+            {
+                "categoria": "pastoral",
+                "pregunta": "¿Qué actividades espirituales realizan?",
+                "respuesta": "Tenemos misa diaria, retiros espirituales, dirección espiritual personalizada, grupos de oración y actividades de servicio social."
+            },
+            {
+                "categoria": "pastoral",
+                "pregunta": "¿Es obligatoria la participación en actividades religiosas?",
+                "respuesta": "Sí, la participación en las actividades religiosas es parte fundamental de nuestra formación integral y del carisma de nuestra institución."
+            }
+        ]
+    },
     "importancia": {
         "aniversario": {
             "anio": 1964,
@@ -192,34 +562,34 @@
     },
     "navegacion": {
         "escritorio": [
-            { "href": "/", "label": "Inicio" },
-            { "href": "/sobre-nosotros", "label": "¿Quiénes somos?" },
-            { "href": "/visitanos", "label": "Visítanos" },
-            { "href": "/donacion", "label": "Donaciones" }
+            { "href": "/cnsv-edu/", "label": "Inicio" },
+            { "href": "/cnsv-edu/sobre-nosotros", "label": "¿Quiénes somos?" },
+            { "href": "/cnsv-edu/visitanos", "label": "Visítanos" },
+            { "href": "/cnsv-edu/donacion", "label": "Donaciones" }
         ],
         "movil": [
             { 
-                "href": "/", 
+                "href": "/cnsv-edu/", 
                 "label": "Inicio",
                 "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/><polyline points='9 22 9 12 15 12 15 22'/></svg>" 
             },
             { 
-                "href": "/sobre-nosotros", 
+                "href": "/cnsv-edu/sobre-nosotros", 
                 "label": "Nosotros",
                 "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M22 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/></svg>"
             },
             { 
-                "href": "/visitanos",
+                "href": "/cnsv-edu/visitanos",
                 "label": "Visítanos",
                 "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='10' r='3'/><path d='M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z'/></svg>"
             },
             { 
-                "href": "/donacion", 
+                "href": "/cnsv-edu/donacion", 
                 "label": "Donar",
                 "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/></svg>"
             },
             { 
-                "href": "/admision", 
+                "href": "/cnsv-edu/admision", 
                 "label": "Inscríbete",
                 "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='12' x2='12' y1='5' y2='19'/><line x1='5' x2='19' y1='12' y2='12'/></svg>"
             }
