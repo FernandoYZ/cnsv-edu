@@ -5,51 +5,62 @@ import data from '@data';
 const { identidad } = data;
 ---
 
-<section class="relative py-24 overflow-hidden" aria-labelledby="identidad-title">
-    <!-- Fondo -->
+<section class="relative py-8 sm:py-12 lg:py-24 overflow-hidden" aria-labelledby="identidad-title">
+    <!-- Fondo mejorado -->
     <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-[#800020]/95"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-[#800020]/40"></div>
         <Image
             src={identidad.header.imagenFondo}
             alt={identidad.header.imagenAltFondo}
-            class="w-full h-full object-cover opacity-20"
+            class="w-full h-full object-cover opacity-20 motion-safe:animate-subtle-zoom"
             width={1920}
             height={1080}
         />
+        <div class="absolute inset-0 opacity-[0.03]" 
+             style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 32px 32px;">
+        </div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Columna Izquierda -->
-            <div class="lg:col-span-5 space-y-8">
-                <header class="space-y-4">
-                    <div class="flex items-center gap-2">
-                        <span class="w-12 h-[2px] bg-[#800020]"></span>
-                        <span class="text-[#ff9eaa] font-medium tracking-wider text-sm uppercase">Nuestra Identidad</span>
+    <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <!-- Columna Izquierda - Optimizada para móvil -->
+            <div class="lg:col-span-5 lg:sticky lg:top-8 space-y-6 sm:space-y-8">
+                <header class="space-y-4 sm:space-y-6">
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <div class="flex-shrink-0 w-12 h-[2px] bg-gradient-to-r from-[#800020] to-[#800020]/50"></div>
+                        <span class="px-3 py-1 rounded-full bg-[#800020]/20 text-[#ff9eaa] font-medium tracking-wider text-sm border border-[#800020]/30">
+                            {identidad.header.label}
+                        </span>
                     </div>
-                    <h2 id="identidad-title" class="text-4xl lg:text-5xl font-bold text-white leading-tight">
-                        Formando en la
-                        <span class="block text-[#ff9eaa] mt-2">Fe Católica</span>
+                    <h2 id="identidad-title" class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight break-words">
+                        {identidad.header.titulo}
+                        <span class="relative block text-[#ff9eaa] mt-2">
+                            {identidad.header.span}
+                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.3em] w-full fill-[#ff9eaa]/30" preserveAspectRatio="none">
+                                <path d={identidad.header.icono} />
+                            </svg>
+                        </span>
                     </h2>
-                    <p class="text-xl text-gray-300 leading-relaxed">
+                    <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-prose break-words">
                         {identidad.header.descripcion}
                     </p>
                 </header>
 
-                <!-- Valores Católicos -->
-                <div class="space-y-6 pt-8">
+                <!-- Valores Católicos - Optimizado para móvil -->
+                <div class="space-y-4">
                     {identidad.valoresCatolicos.map(valor => (
-                        <div class="group relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#800020]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl blur-xl"></div>
-                            <article class="relative flex items-start gap-4 p-4">
-                                <span class="flex-none w-12 h-12 rounded-lg bg-[#800020]/20 flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#ff9eaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="group">
+                            <article class="relative flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-colors duration-300">
+                                <span class="flex-none w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#800020]/20 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 text-[#ff9eaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={valor.icono} />
                                     </svg>
                                 </span>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-white mb-2">{valor.titulo}</h3>
-                                    <p class="text-gray-300">{valor.descripcion}</p>
+                                <div class="min-w-0 flex-1">
+                                    <h3 class="text-base sm:text-lg font-semibold text-white">
+                                        {valor.titulo}
+                                    </h3>
+                                    <p class="mt-1 text-sm sm:text-base text-gray-300 break-words">{valor.descripcion}</p>
                                 </div>
                             </article>
                         </div>
@@ -57,48 +68,47 @@ const { identidad } = data;
                 </div>
             </div>
 
-            <!-- Columna Derecha: Slider de Santos -->
-            <div class="lg:col-span-7 lg:pl-16">
-                <div class="relative">
+            <!-- Columna Derecha: Slider de Santos - Optimizado para móvil -->
+            <div class="lg:col-span-7 space-y-8">
+                <div class="relative rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10">
                     <!-- Slider Container -->
-                    <div class="overflow-hidden" id="santos-slider">
-                        <div class="flex transition-transform duration-500 ease-in-out" id="santos-track">
+                    <div class="overflow-hidden touch-pan-x" id="santos-slider">
+                        <div class="flex transition-transform duration-500 ease-out" id="santos-track">
                             {identidad.santosPatronos.map((santo) => (
-                                <article class="w-full flex-shrink-0 group">
-                                    <div class="relative p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl group-hover:bg-white/10 transition-all duration-300">
-                                        <div class="flex flex-col sm:flex-row gap-8">
-                                            <!-- Imagen del Santo -->
-                                            <div class="relative w-full sm:w-48 h-48">
-                                                <div class="absolute inset-0 bg-gradient-to-br from-[#800020]/20 to-transparent rounded-xl"></div>
-                                                <Image
-                                                    src={santo.imagen}
-                                                    alt={`Imagen de ${santo.nombre}`}
-                                                    class="w-full h-full object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
-                                                    width={192}
-                                                    height={192}
-                                                />
-                                            </div>
+                                <article class="w-full flex-shrink-0 p-4 sm:p-6">
+                                    <div class="flex flex-col gap-4">
+                                        <!-- Imagen del Santo -->
+                                        <div class="relative aspect-square sm:aspect-[4/3] max-w-[200px] mx-auto sm:max-w-none">
+                                            <Image
+                                                src={santo.imagen}
+                                                alt={`Imagen de ${santo.nombre}`}
+                                                class="w-full h-full object-cover rounded-lg"
+                                                width={192}
+                                                height={192}
+                                            />
+                                        </div>
 
-                                            <!-- Información del Santo -->
-                                            <div class="flex-1 space-y-4">
-                                                <header>
-                                                    <h3 class="text-2xl font-bold text-white">{santo.nombre}</h3>
-                                                    <p class="text-[#ff9eaa] font-medium">{santo.titulo}</p>
-                                                </header>
-                                                <p class="text-gray-300 leading-relaxed">
-                                                    {santo.descripcion}
-                                                </p>
-                                                {santo.atributos && (
-                                                    <ul class="grid grid-cols-2 gap-2 pt-4">
-                                                        {santo.atributos.map(atributo => (
-                                                            <li class="flex items-center gap-2 text-sm text-gray-300">
-                                                                <span class="w-1.5 h-1.5 rounded-full bg-[#800020]"></span>
-                                                                {atributo}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                )}
+                                        <!-- Información del Santo -->
+                                        <div class="flex-1 space-y-3">
+                                            <div class="text-center">
+                                                <h3 class="text-xl sm:text-2xl font-bold text-white">
+                                                    {santo.nombre}
+                                                </h3>
+                                                <p class="text-[#ff9eaa] font-medium text-sm sm:text-base">{santo.titulo}</p>
                                             </div>
+                                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed break-words">
+                                                {santo.descripcion}
+                                            </p>
+                                            {santo.atributos && (
+                                                <ul class="grid grid-cols-1 gap-2 pt-2">
+                                                    {santo.atributos.map(atributo => (
+                                                        <li class="flex items-start gap-2">
+                                                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#800020] flex-shrink-0"></span>
+                                                            <span class="text-sm text-gray-300 break-words">{atributo}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
                                         </div>
                                     </div>
                                 </article>
@@ -106,116 +116,327 @@ const { identidad } = data;
                         </div>
                     </div>
 
-                    <!-- Controles del Slider -->
-                    <div class="absolute top-1/2 -translate-y-1/2 w-full flex justify-between pointer-events-none">
+                    <!-- Controles del Slider - Optimizados para móvil -->
+                    <div class="absolute top-1/2 -translate-y-1/2 w-full flex justify-between pointer-events-none px-2 sm:px-4">
                         <button 
-                            class="transform -translate-x-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020]"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020] focus:ring-offset-2"
                             id="prev-slide"
                             aria-label="Anterior santo"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
                         <button 
-                            class="transform translate-x-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020]"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020] focus:ring-offset-2"
                             id="next-slide"
                             aria-label="Siguiente santo"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                             </svg>
                         </button>
                     </div>
+
+                    <!-- Indicadores responsivos -->
+                    <div class="absolute bottom-2 sm:bottom-4 left-0 right-0 flex justify-center gap-1.5 sm:gap-2">
+                        {identidad.santosPatronos.map((_, index) => (
+                            <button 
+                                class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30"
+                                data-slide-index={index}
+                                aria-label={`Ir al santo ${index + 1}`}
+                            >
+                                <span class="sr-only">Santo {index + 1}</span>
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                <!-- Prácticas Religiosas -->
-                <div class="grid grid-cols-2 gap-4 mt-12">
+                <!-- Prácticas Religiosas - Optimizadas para móvil -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {identidad.practicas.map(practica => (
-                        <article class="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="w-8 h-8 rounded-lg bg-[#800020]/20 flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#ff9eaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <article class="p-4 sm:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                            <div class="flex items-start gap-3">
+                                <span class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#800020]/20 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-[#ff9eaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={practica.icono} />
                                     </svg>
                                 </span>
-                                <h4 class="text-white font-medium">{practica.titulo}</h4>
+                                <div class="min-w-0 flex-1">
+                                    <h4 class="text-base sm:text-lg font-medium text-white">{practica.titulo}</h4>
+                                    <p class="mt-1 text-sm text-gray-300 break-words">{practica.descripcion}</p>
+                                </div>
                             </div>
-                            <p class="text-sm text-gray-300">{practica.descripcion}</p>
                         </article>
                     ))}
                 </div>
             </div>
         </div>
     </div>
+    <div class="absolute top-0 -z-10 left-0 w-full h-full bg-black" aria-hidden="true"></div>
 </section>
 
 <script>
-const initSlider = () => {
-    const track = document.getElementById('santos-track') as HTMLElement;
-    const slides = track?.children as HTMLCollectionOf<HTMLElement>;
-    const prevButton = document.getElementById('prev-slide');
-    const nextButton = document.getElementById('next-slide');
+    const initSlider = () => {
+        const track = document.getElementById('santos-track') as HTMLElement;
+        const slides = track?.children as HTMLCollectionOf<HTMLElement>;
+        const prevButton = document.getElementById('prev-slide');
+        const nextButton = document.getElementById('next-slide');
+        const indicators = document.querySelectorAll('[data-slide-index]');
+        
+        if (!track || !slides.length || !prevButton || !nextButton) return;
     
-    if (!track || !slides.length || !prevButton || !nextButton) return;
-
-    let currentIndex = 0;
-    const slideWidth = slides[0].offsetWidth;
-
-    const moveToSlide = (index: number) => {
-        const targetIndex = (index + slides.length) % slides.length;
-        currentIndex = targetIndex;
-        track.style.transform = `translateX(-${targetIndex * slideWidth}px)`;
+        let currentIndex = 0;
+        let startX: number;
+        let isDragging = false;
+        let dragStartPosition = 0;
+        
+        const updateSlideWidth = () => {
+            const slideWidth = track.parentElement?.offsetWidth || 0;
+            Array.from(slides).forEach(slide => {
+                slide.style.width = `${slideWidth}px`;
+            });
+            return slideWidth;
+        };
+    
+        let slideWidth = updateSlideWidth();
+    
+        // Actualizar indicadores
+        const updateIndicators = (index: number) => {
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('bg-white', i === index);
+                indicator.classList.toggle('bg-white/30', i !== index);
+            });
+        };
+    
+        const moveToSlide = (index: number, animate = true) => {
+            const targetIndex = (index + slides.length) % slides.length;
+            currentIndex = targetIndex;
+            
+            if (!animate) {
+                track.style.transition = 'none';
+            } else {
+                track.style.transition = 'transform 500ms ease-out';
+            }
+            
+            track.style.transform = `translateX(-${targetIndex * slideWidth}px)`;
+            updateIndicators(targetIndex);
+        };
+    
+        // Event Listeners para navegación táctil
+        const handleDragStart = (e: TouchEvent | MouseEvent) => {
+            isDragging = true;
+            track.style.transition = 'none';
+            startX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+            dragStartPosition = -currentIndex * slideWidth;
+        };
+    
+        const handleDragMove = (e: TouchEvent | MouseEvent) => {
+            if (!isDragging) return;
+            
+            const currentX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+            const diff = currentX - startX;
+            const newPosition = dragStartPosition + diff;
+            
+            track.style.transform = `translateX(${newPosition}px)`;
+        };
+    
+        const handleDragEnd = (e: TouchEvent | MouseEvent) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const currentX = 'touches' in e ? e.changedTouches[0].clientX : e.clientX;
+            const diff = currentX - startX;
+            const threshold = slideWidth / 3;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    moveToSlide(currentIndex - 1);
+                } else {
+                    moveToSlide(currentIndex + 1);
+                }
+            } else {
+                moveToSlide(currentIndex);
+            }
+        };
+    
+        // Event Listeners
+        prevButton.addEventListener('click', () => moveToSlide(currentIndex - 1));
+        nextButton.addEventListener('click', () => moveToSlide(currentIndex + 1));
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => moveToSlide(index));
+        });
+    
+        // Touch events
+        track.addEventListener('touchstart', handleDragStart);
+        track.addEventListener('touchmove', handleDragMove);
+        track.addEventListener('touchend', handleDragEnd);
+    
+        // Mouse events
+        track.addEventListener('mousedown', handleDragStart);
+        track.addEventListener('mousemove', handleDragMove);
+        track.addEventListener('mouseup', handleDragEnd);
+        track.addEventListener('mouseleave', handleDragEnd);
+    
+        // Resize handler
+        const handleResize = () => {
+            slideWidth = updateSlideWidth();
+            moveToSlide(currentIndex, false);
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        // Autoslide
+        let autoSlideInterval: number;
+        
+        const startAutoSlide = () => {
+            autoSlideInterval = setInterval(() => {
+                moveToSlide(currentIndex + 1);
+            }, 5000) as unknown as number;
+        };
+    
+        const stopAutoSlide = () => {
+            clearInterval(autoSlideInterval);
+        };
+    
+        track.addEventListener('mouseenter', stopAutoSlide);
+        track.addEventListener('mouseleave', startAutoSlide);
+        track.addEventListener('touchstart', stopAutoSlide);
+        track.addEventListener('touchend', startAutoSlide);
+    
+        // Iniciar autoslide
+        startAutoSlide();
+    
+        // Cleanup function
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearInterval(autoSlideInterval);
+        };
     };
-
-    // Clonar el primer y último slide para el efecto infinito
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides[slides.length - 1].cloneNode(true);
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, slides[0]);
-
-    // Ajustar posición inicial
-    track.style.transform = `translateX(-${slideWidth}px)`;
-
-    prevButton.addEventListener('click', () => moveToSlide(currentIndex - 1));
-    nextButton.addEventListener('click', () => moveToSlide(currentIndex + 1));
-
-    // Manejar transición suave al final/inicio
-    track.addEventListener('transitionend', () => {
-        if (currentIndex === slides.length) {
-            track.style.transition = 'none';
-            currentIndex = 0;
-            track.style.transform = `translateX(-${slideWidth}px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 500ms ease-in-out';
-            }, 10);
-        }
-        if (currentIndex === -1) {
-            track.style.transition = 'none';
-            currentIndex = slides.length - 1;
-            track.style.transform = `translateX(-${(slides.length) * slideWidth}px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 500ms ease-in-out';
-            }, 10);
-        }
-    });
-};
-
-document.addEventListener('astro:page-load', initSlider);
+    
+    document.addEventListener('astro:page-load', initSlider);
 </script>
 
 <style>
+/* Estilos base */
+.break-words {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Ajustes específicos para móvil */
+@media (max-width: 640px) {
+    #santos-slider {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    
+    .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 1.25rem;
+    }
+}
+
+/* Optimizaciones para touch */
+.touch-pan-x {
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Soporte para reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
+    .motion-safe\:animate-subtle-zoom,
     .transition-all,
     .transition-transform,
-    .transition-colors,
     .transform,
-    .group-hover\:scale-105,
-    .group-hover\:opacity-100,
-    .group-hover\:bg-white\/10 {
+    .group-hover\:scale-110,
+    .group-hover\:opacity-100 {
         transition: none !important;
         transform: none !important;
         animation: none !important;
     }
+}
+
+/* Optimizaciones de slider */
+#santos-track {
+    will-change: transform;
+}
+
+/* Mejoras de accesibilidad */
+.focus-visible:focus {
+    outline: 2px solid #800020;
+    outline-offset: 2px;
+}
+
+/* Animaciones */
+@keyframes subtle-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.animate-subtle-zoom {
+    animation: subtle-zoom 20s ease-in-out infinite alternate;
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) {
+    .group:hover .group-hover\:scale-110,
+    .hover\:bg-white\/10,
+    .hover\:bg-white\/20 {
+        transform: none;
+        background-color: transparent;
+    }
+    
+    .touch-feedback:active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Correcciones específicas para dispositivos pequeños */
+@media (max-width: 380px) {
+    .text-2xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+    
+    .p-4 {
+        padding: 0.75rem;
+    }
+    
+    .gap-4 {
+        gap: 0.75rem;
+    }
+    
+    .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 1rem;
+    }
+}
+
+/* Mejoras de rendimiento */
+.hardware-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimizaciones de contraste y legibilidad */
+.text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajustes de scroll suave */
+.smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 </style>
