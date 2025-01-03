@@ -195,81 +195,101 @@
         },
         "eventos": [
             {
-                "año": 1950,
-                "titulo": "Fundación del Seminario",
-                "descripcion": "El Seminario Menor fue fundado por un grupo de sacerdotes visionarios, con el objetivo de formar jóvenes en valores cristianos y excelencia académica.",
-                "imagen": "/src/assets/images/historia/fundacion.jpg",
-                "imagenAlt": "Ceremonia de fundación del Seminario Menor",
-                "icono": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+                "año": 1957,
+                "fecha": "1957",
+                "titulo": "Creación de la Prelatura de Yauyos",
+                "descripcion": "Se crea la Prelatura de Yauyos, encomendada al fundador del Opus Dei, San Josemaría Escrivá. Era un extenso territorio que carecía de sacerdotes.",
+                "imagen": "/src/assets/images/historia/prelatura.webp",
+                "imagenAlt": "Imagen de la Prelatura de Yauyos",
+                "icono": "M19 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2m8-10a4 4 0 100-8 4 4 0 000 8z M15 5l-2 5l4 4l-6 6l-4-4l-4 4",
                 "logros": [
-                "Inicio con 50 estudiantes pioneros",
-                "Primera promoción de sacerdotes",
-                "Construcción del primer edificio académico"
+                    "Inicio de la presencia de la Iglesia en la región",
+                    "Establecimiento de la base para el futuro desarrollo pastoral",
+                    "Designación del primer territorio bajo la guía del Opus Dei"
+                ]
+            },
+            {
+                "año": 1962,
+                "fecha": "Febrero de 1962",
+                "titulo": "Incorporación de la provincia de Cañete",
+                "descripcion": "Se incorpora la provincia de Cañete a la Prelatura de Yauyos. Se recibe la donación del antiguo Colegio San Patricio para establecer el seminario.",
+                "imagen": "/src/assets/images/historia/canete.jpg",
+                "imagenAlt": "Imagen de la provincia de Cañete",
+                "icono": "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+                "logros": [
+                    "Obtención de las primeras instalaciones para el seminario",
+                    "Expansión territorial de la Prelatura",
+                    "Fortalecimiento de la presencia educativa católica en la región"
+                ]
+            },
+            {
+                "año": 1963,
+                "fecha": "10 de diciembre de 1963",
+                "titulo": "Autorización oficial del Colegio",
+                "descripcion": "Mediante Resolución Directoral Nº 18073 se autoriza el funcionamiento del Colegio Particular gratuito 'Nuestra Señora del Valle', con secciones de 3º, 4º y 5º de Primaria.",
+                "imagen": "/src/assets/images/historia/autorizacion.jpg",
+                "imagenAlt": "Documento de autorización del colegio",
+                "icono": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                "logros": [
+                    "Reconocimiento oficial por el Ministerio de Educación",
+                    "Establecimiento de la educación primaria gratuita",
+                    "Inicio del proyecto educativo católico formal"
+                ]
+            },
+            {
+                "año": 1964,
+                "fecha": "9 de marzo de 1964",
+                "titulo": "Erección canónica del Seminario Menor",
+                "descripcion": "Monseñor Ignacio María de Orbegozo erige canónicamente el Seminario Menor de la Prelatura de Yauyos. El 14 de abril inicia clases con 40 alumnos.",
+                "imagen": "/src/assets/images/historia/ereccion.jpg",
+                "imagenAlt": "Ceremonia de erección del Seminario Menor",
+                "icono": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4 M12 11l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z",
+                "logros": [
+                    "Inicio oficial de la formación sacerdotal en la región",
+                    "Establecimiento del primer grupo de 40 seminaristas",
+                    "Implementación del plan formativo integral"
                 ]
             },
             {
                 "año": 1965,
-                "titulo": "Expansión y Modernización",
-                "descripcion": "Se realizó una importante expansión de las instalaciones, incluyendo nuevas aulas, laboratorios y una biblioteca moderna.",
-                "imagen": "/src/assets/images/historia/expansion.jpg",
-                "imagenAlt": "Construcción de nuevas instalaciones en 1965",
-                "icono": "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064",
+                "fecha": "Noviembre de 1965",
+                "titulo": "Instalación de la imagen de la Madre del Amor Hermoso",
+                "descripcion": "Se coloca en la Ermita la imagen de la Madre del Amor Hermoso, regalo de San Josemaría Escrivá de Balaguer a la Prelatura.",
+                "imagen": "/src/assets/images/historia/virgen.jpg",
+                "imagenAlt": "Imagen de la Madre del Amor Hermoso",
+                "icono": "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z",
                 "logros": [
-                "Inauguración de la biblioteca central",
-                "Primer laboratorio de ciencias",
-                "Apertura del auditorio principal"
+                    "Establecimiento de un centro de devoción mariana",
+                    "Fortalecimiento de la identidad espiritual del seminario",
+                    "Consolidación del vínculo con San Josemaría Escrivá"
                 ]
             },
             {
-                "año": 1980,
-                "titulo": "Innovación Educativa",
-                "descripcion": "Implementación de nuevos programas educativos y metodologías de enseñanza innovadoras.",
-                "imagen": "/src/assets/images/historia/innovacion.jpg",
-                "imagenAlt": "Estudiantes en el nuevo laboratorio de computación",
-                "icono": "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+                "año": 1966,
+                "fecha": "26 de enero de 1966",
+                "titulo": "Autorización de Educación Secundaria",
+                "descripcion": "Se autoriza el funcionamiento del Primer Ciclo de Educación Secundaria Común para varones mediante Resolución Directoral Nº 185.",
+                "imagen": "/src/assets/images/historia/secundaria.jpg",
+                "imagenAlt": "Primeros alumnos de secundaria",
+                "icono": "M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25",
                 "logros": [
-                "Primer programa de intercambio internacional",
-                "Implementación de tecnología educativa",
-                "Creación del departamento de investigación"
+                    "Ampliación de la oferta educativa al nivel secundario",
+                    "Fortalecimiento de la formación académica integral",
+                    "Consolidación del proyecto educativo institucional"
                 ]
             },
             {
-                "año": 2000,
-                "titulo": "Cincuentenario y Nueva Era",
-                "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
-                "imagen": "/src/assets/images/historia/cincuentenario.jpg",
-                "imagenAlt": "Celebración del cincuentenario del Seminario",
-                "icono": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                "año": 1971,
+                "fecha": "19 de marzo de 1971",
+                "titulo": "Creación del Seminario Mayor San José",
+                "descripcion": "Mons. Luis Sánchez-Moreno Lira erige canónicamente el Seminario Mayor 'San José', recibiendo a los primeros egresados del Colegio Nuestra Señora del Valle.",
+                "imagen": "/src/assets/images/historia/seminario-mayor.jpg",
+                "imagenAlt": "Seminario Mayor San José",
+                "icono": "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
                 "logros": [
-                "Renovación completa de instalaciones",
-                "Lanzamiento del programa de becas",
-                "Reconocimiento nacional a la excelencia educativa"
-                ]
-            },
-            {
-                "año": 2015,
-                "titulo": "Excelencia Digital",
-                "descripcion": "Integración completa de tecnologías digitales y modernización de todos los sistemas educativos.",
-                "imagen": "/src/assets/images/historia/digital.jpg",
-                "imagenAlt": "Estudiantes utilizando las nuevas tecnologías educativas",
-                "icono": "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-                "logros": [
-                "Implementación de aulas virtuales",
-                "Certificación internacional en educación digital",
-                "Programa 1:1 de dispositivos para estudiantes"
-                ]
-            },
-            {
-                "año": 2024,
-                "titulo": "Presente y Futuro",
-                "descripcion": "Continuamos nuestra misión de formar líderes con valores cristianos, adaptándonos a los desafíos del siglo XXI.",
-                "imagen": "/src/assets/images/historia/presente.jpg",
-                "imagenAlt": "Campus actual del Seminario Menor",
-                "icono": "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5",
-                "logros": [
-                "Centro de innovación pedagógica",
-                "Programas de sostenibilidad ambiental",
-                "Alianzas internacionales estratégicas"
+                    "Establecimiento de la formación sacerdotal completa",
+                    "Graduación de la primera generación del Seminario Menor",
+                    "Consolidación del proyecto formativo sacerdotal en la región"
                 ]
             }
         ]
@@ -305,9 +325,39 @@
             "cargo": "Fundador del Opus Dei"
         }
     },
+    "cursos": {
+        "niveles": {
+            "primaria": {
+                "titulo": "Primaria",
+                "modalidad": "Externo",
+                "grados": ["5to", "6to"],
+                "descripcion": "Formación inicial con modalidad externa, permitiendo el retorno a casa después de las actividades académicas.",
+                "horario": "7:30 AM - 3:00 PM",
+                "caracteristicas": [
+                    "Formación académica integral",
+                    "Acompañamiento espiritual",
+                    "Actividades extracurriculares",
+                    "Retorno diario a casa"
+                ]
+            },
+            "secundaria": {
+                "titulo": "Secundaria",
+                "modalidad": "Internado",
+                "grados": ["1ro", "2do", "3ro", "4to", "5to"],
+                "descripcion": "Formación intensiva en modalidad internado, con salida dominical posterior a la Misa.",
+                "horario": "Régimen de internado semanal",
+                "caracteristicas": [
+                    "Formación vocacional",
+                    "Vida comunitaria",
+                    "Dirección espiritual personalizada",
+                    "Salida dominical post-Misa"
+                ]
+            }
+        }
+    },
     "identidad": {
         "header": {
-            "label": "Identidad Religiosa",
+            "label": "Nuestra Identidad",
             "titulo": "Formación en la",
             "span": "Fe Católica",
             "descripcion": "Celebración de 50 años de excelencia educativa y renovación de nuestro compromiso con la formación integral.",
@@ -485,6 +535,9 @@
         }
     ],
     "faq": {
+        "header": {
+            "imagen": "/src/assets/images/hero/about_hero.jpg"
+        },
         "categorias": [
             {
                 "id": "admision",
