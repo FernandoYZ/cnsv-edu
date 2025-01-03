@@ -5,64 +5,96 @@ import data from '@data';
 const { staff } = data;
 ---
 
-<section class="relative py-24 overflow-hidden bg-gray-50/50" aria-labelledby="staff-title">
+<section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-gray-50/50 to-white/30" aria-labelledby="staff-title">
+    <!-- Elementos decorativos -->
     <div class="absolute inset-0">
         <div class="absolute inset-0 bg-dot-pattern opacity-[0.015]"></div>
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#800020]/5 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#800020]/5 rounded-full blur-3xl"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#800020]/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#800020]/10 blur-3xl"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <header class="text-center max-w-2xl mx-auto mb-16">
-            <div class="inline-flex items-center gap-2 mb-4">
-                <span class="w-12 h-[2px] bg-[#800020]"></span>
-                <span class="text-[#800020] font-medium tracking-wider text-sm uppercase">Nuestro Equipo</span>
-                <span class="w-12 h-[2px] bg-[#800020]"></span>
-            </div>
-            <h2 id="staff-title" class="text-4xl font-bold text-gray-900 mb-4">
-                Liderazgo y
-                <span class="relative whitespace-nowrap text-[#800020]">
-                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
-                        <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
-                    </svg>
-                    <span class="relative">Guía</span>
-                </span>
-            </h2>
-            <p class="text-gray-600">Conoce a nuestro equipo directivo comprometido con la excelencia educativa.</p>
-        </header>
+    <div class="relative max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
+            <header class="text-center max-w-2xl mx-auto">
+                <div class="inline-flex items-center justify-center gap-3 mb-6">
+                    <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+                    <span class="px-4 py-2 rounded-full bg-[#800020]/5 text-sm font-medium text-[#800020] tracking-wider">
+                        Nuestro Equipo
+                    </span>
+                    <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+                </div>
+                <h2 id="staff-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    Liderazgo y
+                    <span class="relative whitespace-nowrap text-[#800020]">
+                        <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                            <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
+                        </svg>
+                        <span class="relative">Guía</span>
+                    </span>
+                </h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-prose mx-auto">
+                    Conoce a nuestro equipo directivo comprometido con la excelencia educativa.
+                </p>
+            </header>
+        </div>
 
-        <div class="relative px-4 sm:px-8">
-            <!-- Slider Container -->
+        <!-- Contenedor del Slider -->
+        <div class="relative px-4 sm:px-6 lg:px-8">
+            <!-- Navegación -->
+            <div class="hidden lg:block">
+                <button 
+                    class="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-900 hover:text-[#800020] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#800020] disabled:opacity-50 disabled:cursor-not-allowed z-10"
+                    id="prev-staff"
+                    aria-label="Personal anterior"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button 
+                    class="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-900 hover:text-[#800020] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#800020] disabled:opacity-50 disabled:cursor-not-allowed z-10"
+                    id="next-staff"
+                    aria-label="Siguiente personal"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
             <div class="overflow-hidden" id="staff-slider">
-                <div class="flex gap-6 transition-transform duration-500 ease-in-out" id="staff-track">
+                <div class="flex transition-transform duration-500 ease-in-out" id="staff-track">
                     {staff.map((member) => (
-                        <article class="w-72 flex-shrink-0 group">
-                            <div class="relative bg-white rounded-2xl overflow-hidden shadow-md">
+                        <article class="w-full lg:w-1/4 flex-shrink-0 px-3">
+                            <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-gray-100/50 border border-gray-100">
                                 <!-- Imagen -->
-                                <div class="relative h-80 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-transparent z-10"></div>
+                                <div class="relative h-[320px] sm:h-[360px] overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent z-10"></div>
                                     <Image
                                         src={member.imagen}
                                         alt={`Fotografía de ${member.nombre}`}
-                                        class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
-                                        width={288}
-                                        height={320}
+                                        class="w-full h-full object-cover"
+                                        width={320}
+                                        height={360}
                                     />
                                     <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
-                                        <h3 class="text-xl font-bold text-white">{member.nombre}</h3>
-                                        <p class="text-[#ff9eaa]">{member.cargo}</p>
+                                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-1">{member.nombre}</h3>
+                                        <p class="text-[#ff9eaa] text-sm sm:text-base">{member.cargo}</p>
                                     </div>
                                 </div>
 
                                 <!-- Información -->
                                 <div class="p-6">
-                                    <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">{member.descripcion}</p>
+                                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed line-clamp-3">
+                                        {member.descripcion}
+                                    </p>
                                     {member.contacto && (
-                                        <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                                        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-gray-100">
                                             {member.contacto.email && (
                                                 <a 
                                                     href={`mailto:${member.contacto.email}`}
-                                                    class="text-gray-500 hover:text-[#800020] transition-colors duration-300"
+                                                    class="p-2 -m-2 text-gray-500 hover:text-[#800020] focus:text-[#800020] transition-colors duration-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#800020]/50"
                                                     aria-label={`Enviar correo a ${member.nombre}`}
                                                 >
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,7 +105,7 @@ const { staff } = data;
                                             {member.contacto.telefono && (
                                                 <a 
                                                     href={`tel:${member.contacto.telefono}`}
-                                                    class="text-gray-500 hover:text-[#800020] transition-colors duration-300"
+                                                    class="p-2 -m-2 text-gray-500 hover:text-[#800020] focus:text-[#800020] transition-colors duration-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#800020]/50"
                                                     aria-label={`Llamar a ${member.nombre}`}
                                                 >
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,23 +122,23 @@ const { staff } = data;
                 </div>
             </div>
 
-            <!-- Controles -->
-            <div class="absolute top-1/2 -translate-y-1/2 w-full flex justify-between pointer-events-none" style="left: 0; right: 0;">
+            <!-- Navegación móvil -->
+            <div class="flex justify-center gap-2 mt-6 lg:hidden">
                 <button 
-                    class="transform -translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-gray-900 hover:text-[#800020] transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020]"
-                    id="prev-staff"
+                    class="w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-900 hover:text-[#800020] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#800020] disabled:opacity-50 disabled:cursor-not-allowed"
+                    id="prev-staff-mobile"
                     aria-label="Personal anterior"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
                 <button 
-                    class="transform translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-gray-900 hover:text-[#800020] transition-all duration-300 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#800020]"
-                    id="next-staff"
+                    class="w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-900 hover:text-[#800020] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#800020] disabled:opacity-50 disabled:cursor-not-allowed"
+                    id="next-staff-mobile"
                     aria-label="Siguiente personal"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
@@ -119,66 +151,149 @@ const { staff } = data;
 const initStaffSlider = () => {
     const track = document.getElementById('staff-track') as HTMLElement;
     const slides = track?.children as HTMLCollectionOf<HTMLElement>;
-    const prevButton = document.getElementById('prev-staff');
-    const nextButton = document.getElementById('next-staff');
+    const prevButton = document.getElementById('prev-staff') as HTMLButtonElement;
+    const nextButton = document.getElementById('next-staff') as HTMLButtonElement;
+    const prevButtonMobile = document.getElementById('prev-staff-mobile') as HTMLButtonElement;
+    const nextButtonMobile = document.getElementById('next-staff-mobile') as HTMLButtonElement;
     
-    if (!track || !slides.length || !prevButton || !nextButton) return;
+    if (!track || !slides.length) return;
 
     let currentIndex = 0;
-    const slideWidth = slides[0].offsetWidth + 24; // Ancho + gap
-    const visibleSlides = Math.floor(track.parentElement!.offsetWidth / slideWidth);
-    const maxIndex = slides.length - visibleSlides;
+    const isMobile = window.innerWidth < 1024;
+    const slidesPerView = isMobile ? 1 : 4;
 
     const updateSlidePosition = () => {
+        const slideWidth = track.parentElement!.offsetWidth / slidesPerView;
         track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     };
 
-    prevButton.addEventListener('click', () => {
-        currentIndex = Math.max(currentIndex - 1, 0);
-        updateSlidePosition();
-        updateButtonStates();
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = Math.min(currentIndex + 1, maxIndex);
-        updateSlidePosition();
-        updateButtonStates();
-    });
-
     const updateButtonStates = () => {
-        prevButton.classList.toggle('opacity-50', currentIndex === 0);
-        prevButton.disabled = currentIndex === 0;
-        nextButton.classList.toggle('opacity-50', currentIndex === maxIndex);
-        nextButton.disabled = currentIndex === maxIndex;
+        const maxIndex = slides.length - slidesPerView;
+        [prevButton, prevButtonMobile].forEach(btn => {
+            if (btn) {
+                btn.disabled = currentIndex === 0;
+                btn.classList.toggle('opacity-50', currentIndex === 0);
+            }
+        });
+        
+        [nextButton, nextButtonMobile].forEach(btn => {
+            if (btn) {
+                btn.disabled = currentIndex >= maxIndex;
+                btn.classList.toggle('opacity-50', currentIndex >= maxIndex);
+            }
+        });
     };
 
-    updateButtonStates();
-
-    // Responsive handling
-    window.addEventListener('resize', () => {
-        const newVisibleSlides = Math.floor(track.parentElement!.offsetWidth / slideWidth);
-        currentIndex = Math.min(currentIndex, slides.length - newVisibleSlides);
+    const moveSlide = (direction: 'prev' | 'next') => {
+        const maxIndex = slides.length - slidesPerView;
+        if (direction === 'prev') {
+            currentIndex = Math.max(currentIndex - 1, 0);
+        } else {
+            currentIndex = Math.min(currentIndex + 1, maxIndex);
+        }
         updateSlidePosition();
         updateButtonStates();
+    };
+
+    // Event Listeners
+    [prevButton, prevButtonMobile].forEach(btn => {
+        btn?.addEventListener('click', () => moveSlide('prev'));
     });
+
+    [nextButton, nextButtonMobile].forEach(btn => {
+        btn?.addEventListener('click', () => moveSlide('next'));
+    });
+
+    // Responsive handling
+    let resizeTimeout: number;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const wasDesktop = slidesPerView === 4;
+            const isNowMobile = window.innerWidth < 1024;
+            
+            if (wasDesktop !== !isNowMobile) {
+                currentIndex = 0;
+                updateSlidePosition();
+                updateButtonStates();
+            }
+        }, 100) as unknown as number;
+    });
+
+    // Initial setup
+    updateSlidePosition();
+    updateButtonStates();
+
+    // Cleanup
+    return () => {
+        window.removeEventListener('resize', updateSlidePosition);
+        clearTimeout(resizeTimeout);
+    };
 };
 
 document.addEventListener('astro:page-load', initStaffSlider);
 </script>
 
 <style>
+/* Animaciones */
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.05; }
+    50% { opacity: 0.1; }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-700 {
+    animation-delay: 700ms;
+}
+
+/* Patrón de fondo */
 .bg-dot-pattern {
     background-image: radial-gradient(#800020 0.5px, transparent 0.5px);
     background-size: 24px 24px;
 }
 
+/* Mejoras en el slider */
+#staff-slider {
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+/* Optimizaciones móviles */
+@media (max-width: 1024px) {
+    #staff-track {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #staff-track > * {
+        scroll-snap-align: center;
+    }
+}
+
+/* Soporte para movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-    .transition-all,
+    .animate-pulse-slow,
     .transition-transform,
-    .transition-colors,
-    .group-hover\:scale-110 {
+    .transition-colors {
+        animation: none !important;
         transition: none !important;
-        transform: none !important;
+    }
+}
+
+/* Optimizaciones de rendimiento */
+#staff-track {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Mejoras de accesibilidad */
+@media (hover: hover) {
+    .focus-visible:focus {
+        outline: 2px solid #800020;
+        outline-offset: 2px;
     }
 }
 </style>
