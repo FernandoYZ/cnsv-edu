@@ -1,105 +1,102 @@
 ---
-import { Image } from 'astro:assets';
+import data from '@data';
 
-const niveles = {
-  primaria: {
-    titulo: "Primaria",
-    modalidad: "Externo",
-    grados: ["5to", "6to"],
-    descripcion: "Formación inicial con modalidad externa, permitiendo el retorno a casa después de las actividades académicas.",
-    horario: "7:30 AM - 3:00 PM",
-    caracteristicas: [
-      "Formación académica integral",
-      "Acompañamiento espiritual",
-      "Actividades extracurriculares",
-      "Retorno diario a casa"
-    ]
-  },
-  secundaria: {
-    titulo: "Secundaria",
-    modalidad: "Internado",
-    grados: ["1ro", "2do", "3ro", "4to", "5to"],
-    descripcion: "Formación intensiva en modalidad internado, con salida dominical posterior a la Misa.",
-    horario: "Régimen de internado semanal",
-    caracteristicas: [
-      "Formación vocacional",
-      "Vida comunitaria",
-      "Dirección espiritual personalizada",
-      "Salida dominical post-Misa"
-    ]
-  }
-};
+const { cursos } = data;
 ---
 
-<section class="py-24 bg-gray-950 relative overflow-hidden">
-    <!-- Elementos decorativos -->
-    <div class="absolute inset-0 bg-[radial-gradient(#800020_0.5px,transparent_0.5px)] opacity-[0.1] [background-size:16px_16px]"></div>
-    <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#800020]/20 to-transparent blur-3xl"></div>
+<section class="py-12 sm:py-16 lg:py-24 bg-gradient-to-tr from-black via-black/95 to-[#800020]/30 relative overflow-hidden">
+    <!-- Elementos decorativos mejorados -->
+    <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-[radial-gradient(#800020_0.5px,transparent_0.5px)] opacity-[0.1] [background-size:16px_16px]"></div>
+        <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#800020]/20 to-transparent blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-tr from-[#800020]/10 to-transparent blur-2xl"></div>
+    </div>
 
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        <!-- Encabezado -->
-        <header class="text-center mb-20">
-            <h2 class="text-4xl font-bold text-white mb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <!-- Encabezado mejorado -->
+        <header class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+            <div class="inline-flex items-center justify-center space-x-3 mb-6">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+                <span class="px-4 py-2 rounded-full bg-[#800020]/20 text-sm font-medium text-[#ff9eaa] tracking-wider border border-[#800020]/30">
+                    Oferta Educativa
+                </span>
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
                 Niveles 
-                <span class="text-[#ff9eaa]">Académicos</span>
+                <span class="relative whitespace-nowrap text-[#ff9eaa]">
+                    Académicos
+                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#ff9eaa]/30" preserveAspectRatio="none">
+                        <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
+                    </svg>
+                </span>
             </h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">
+            <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
                 Formación integral que combina excelencia académica y valores católicos en modalidades adaptadas a cada etapa.
             </p>
         </header>
 
-        <!-- Contenedor de niveles -->
-        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
-            {Object.entries(niveles).map(([key, nivel]) => (
-                <article class="group relative">
-                    <!-- Fondo con efecto -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl"></div>
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#800020]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+        <!-- Contenedor de niveles mejorado -->
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+            {Object.entries(cursos.niveles).map(([key, nivel], index) => (
+                <article class="group relative rounded-3xl transition-transform duration-300 hover:transform hover:scale-[1.02] focus-within:scale-[1.02]">
+                    <!-- Fondos mejorados -->
+                    <div class="absolute inset-0 rounded-3xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neutral-800/70 to-neutral-900/60 rounded-3xl"></div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#800020]/30 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                        <div class="absolute inset-0 border border-white/10 rounded-3xl"></div>
+                    </div>
 
-                    <!-- Contenido -->
-                    <div class="relative p-8 h-full">
-                        <!-- Etiqueta de modalidad -->
-                        <div class="absolute top-6 right-6">
-                            <span class="inline-flex items-center px-4 py-2 rounded-full bg-[#800020]/20 border border-[#800020]/30">
+                    <!-- Contenido mejorado -->
+                    <div class="relative p-6 sm:p-8 h-full flex flex-col">
+                        <!-- Etiqueta de modalidad mejorada -->
+                        <div class="absolute top-4 sm:top-6 right-4 sm:right-6">
+                            <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-[#800020]/20 border border-[#800020]/30 backdrop-blur-sm">
                                 <span class="relative flex h-2 w-2 mr-2">
                                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff9eaa] opacity-75"></span>
                                     <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ff9eaa]"></span>
                                 </span>
-                                <span class="text-sm font-medium text-[#ff9eaa]">{nivel.modalidad}</span>
+                                <span class="text-xs sm:text-sm font-medium text-[#ff9eaa]">{nivel.modalidad}</span>
                             </span>
                         </div>
 
-                        <!-- Título y descripción -->
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-bold text-white mb-4">{nivel.titulo}</h3>
-                            <p class="text-gray-400">{nivel.descripcion}</p>
+                        <!-- Título y descripción mejorados -->
+                        <div class="mb-6">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#ff9eaa] transition-colors duration-300">
+                                {nivel.titulo}
+                            </h3>
+                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">
+                                {nivel.descripcion}
+                            </p>
                         </div>
 
-                        <!-- Grados -->
-                        <div class="flex gap-3 mb-8">
+                        <!-- Grados mejorados -->
+                        <div class="flex flex-wrap gap-2 sm:gap-3 mb-6">
                             {nivel.grados.map((grado) => (
-                                <span class="px-4 py-2 bg-white/5 rounded-lg text-white font-medium">
+                                <span class="px-3 py-1.5 bg-white/5 rounded-lg text-sm text-white font-medium border border-white/10 backdrop-blur-sm">
                                     {grado}
                                 </span>
                             ))}
                         </div>
 
-                        <!-- Horario -->
-                        <div class="flex items-center gap-3 mb-6 text-[#ff9eaa]">
+                        <!-- Horario mejorado -->
+                        <div class="flex items-center gap-2 sm:gap-3 mb-6 text-[#ff9eaa] bg-[#800020]/10 px-4 py-2 rounded-lg border border-[#800020]/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                             </svg>
                             <span class="text-sm">{nivel.horario}</span>
                         </div>
 
-                        <!-- Características -->
-                        <ul class="space-y-3">
+                        <!-- Características mejoradas -->
+                        <ul class="space-y-3 mt-auto">
                             {nivel.caracteristicas.map((caracteristica) => (
-                                <li class="flex items-center gap-3 text-gray-300">
-                                    <svg class="h-5 w-5 text-[#800020]" viewBox="0 0 20 20" fill="currentColor">
+                                <li class="flex items-start gap-3 text-gray-300 group/item">
+                                    <svg class="h-5 w-5 text-[#800020] flex-shrink-0 mt-0.5 group-hover/item:text-[#ff9eaa] transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                     </svg>
-                                    <span class="text-sm">{caracteristica}</span>
+                                    <span class="text-sm sm:text-base leading-relaxed group-hover/item:text-white transition-colors duration-300">
+                                        {caracteristica}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -108,16 +105,75 @@ const niveles = {
             ))}
         </div>
     </div>
+    <div class="absolute top-0 -z-10 left-0 w-full h-full bg-black" aria-hidden="true"></div>
 </section>
 
 <style>
+/* Animaciones personalizadas */
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Mejoras de accesibilidad */
+@media (hover: hover) and (pointer: fine) {
+    .group:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Optimizaciones para dispositivos táctiles */
+@media (hover: none) {
+    .group:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Soporte para preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
     .animate-ping,
+    .animate-pulse-slow,
+    .transition-transform,
     .transition-opacity,
-    .group-hover\:opacity-100 {
+    .transition-colors,
+    .group-hover\:transform,
+    .group-hover\:scale-\[1\.02\],
+    .group:hover {
         animation: none !important;
         transition: none !important;
-        opacity: 1 !important;
+        transform: none !important;
     }
+}
+
+/* Optimizaciones para dispositivos pequeños */
+@media (max-width: 380px) {
+    .text-3xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    
+    .p-6 {
+        padding: 1rem;
+    }
+    
+    .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Mejoras de rendimiento */
+.backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+/* Mejoras de accesibilidad para focus */
+:focus-visible {
+    outline: 2px solid #800020;
+    outline-offset: 2px;
 }
 </style>
