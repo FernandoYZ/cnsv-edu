@@ -1,58 +1,22 @@
 ---
 import { Image } from 'astro:assets';
 import ImagenFondo from '@assets/images/hero/about_hero.webp';
+import ImagenVirgen from '@assets/images/historia/madre-amor-hermoso.webp';
+import ImagenSanto from '@assets/images/historia/josemaria-escriva.webp';
 import data from '@data';
+
+const imagenes_santos = {
+    'madre-amor-hermoso.webp': ImagenVirgen,
+    'josemaria-escriva.webp': ImagenSanto
+} as const;
+
 const { identidad } = data;
 
-// Definimos la interfaz para nuestro mapa de imágenes
-interface ImagenMap {
-    [key: string]: ImageMetadata; // ImageMetadata es el tipo que Astro usa para las imágenes
-}
-
-// Importamos las imágenes usando import.meta.glob
-const imagenesSantos = import.meta.glob<ImageMetadata>('@assets/images/historia/*.webp', {
-    eager: true,
-    import: 'default'
-});
-
-// Inicializamos el mapa con el tipo correcto
-const mapImagenes: ImagenMap = {};
-
-// Poblamos el mapa con las imágenes
-for (const [path, imagen] of Object.entries(imagenesSantos)) {
-    const nombreArchivo = path.split('/').pop();
-    if (nombreArchivo) {
-        mapImagenes[nombreArchivo] = imagen;
-    }
-}
-
-// Definimos la interfaz para un santo
-interface Santo {
-    nombre: string;
-    titulo: string;
-    descripcion: string;
-    imagen: string;
-    atributos?: string[];
-}
-
-// Definimos la interfaz para un santo con la imagen procesada
-interface SantoConImagen extends Omit<Santo, 'imagen'> {
-    imagen: ImageMetadata;
-}
-
-// Procesamos los santos con los tipos correctos
-const santosConImagenes = identidad.santosPatronos.map((santo: Santo) => {
-    const imagen = mapImagenes[santo.imagen];
-    
-    if (!imagen) {
-        console.warn(`No se encontró la imagen ${santo.imagen} para ${santo.nombre}`);
-    }
-    
-    return {
-        ...santo,
-        imagen: imagen || undefined // Usamos undefined como fallback
-    } as SantoConImagen;
-});
+// Procesamos los santos con sus imágenes correspondientes
+const santosConImagenes = identidad.santosPatronos.map(santo => ({
+    ...santo,
+    imagen: imagenes_santos[santo.imagen as keyof typeof imagenes_santos]
+}));
 ---
 
 <section class="relative py-8 sm:py-12 lg:py-24 overflow-hidden" aria-labelledby="identidad-title">
@@ -125,23 +89,19 @@ const santosConImagenes = identidad.santosPatronos.map((santo: Santo) => {
                     <!-- Slider Container -->
                     <div class="overflow-hidden touch-pan-x" id="santos-slider">
                         <div class="flex hardware-accelerated" id="santos-track">
-                            {identidad.santosPatronos.map((santo, index) => (
+                            {santosConImagenes.map((santo) => (
                                 <article 
                                     class="w-full flex-shrink-0 p-4 sm:p-6 slide-item"
-                                    data-index={index}
                                 >
                                     <div class="flex flex-col gap-4 max-w-2xl mx-auto">
                                         <!-- Contenedor de imagen con tamaño fijo -->
                                         <div class="relative w-48 h-48 mx-auto">
-                                            {santo.imagen && (
-                                                <Image
-                                                    src={santo.imagen}
-                                                    alt={`Imagen de ${santo.nombre}`}
-                                                    class="w-full h-full object-cover rounded-lg"
-                                                    width={192}
-                                                    height={192}
-                                                />
-                                            )}
+                                            <Image 
+                                                src={santo.imagen}
+                                                alt={`Imagen de ${santo.nombre}`}
+                                                width={192}
+                                                height={192}
+                                            />
                                         </div>
 
                                         <div class="flex-1 space-y-3">
