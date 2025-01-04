@@ -383,7 +383,7 @@
         ],
         "santosPatronos": [
             {
-                "imagen": "/src/assets/images/historia/madre-amor-hermoso.webp",
+                "imagen": "madre-amor-hermoso.webp",
                 "nombre": "Virgen Madre del Amor Hermoso",
                 "titulo": "Madre de Dios",
                 "descripcion": "Modelo de virtud, obediencia y entrega total a la voluntad divina para todos los cristianos.",
@@ -394,7 +394,7 @@
                 ]
             },
             {
-                "imagen": "/src/assets/images/historia/josemaria-escriva.webp",
+                "imagen": "josemaria-escriva.webp",
                 "nombre": "San Josemaría Escrivá de Balaguer",
                 "titulo": "Fundador del Opus Dei",
                 "descripcion": "Promotor de la santificación del trabajo ordinario y la búsqueda de la santidad en la vida cotidiana.",
