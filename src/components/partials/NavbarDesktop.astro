@@ -160,7 +160,16 @@ function handleScroll() {
     }, 100);
 }
 
-// Initialize scroll handler
-handleScroll();
-window.addEventListener('scroll', handleScroll, { passive: true });
+function initNav() {
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+}
+
+initNav();
+
+document.addEventListener('astro:after-swap', initNav);
+
+document.addEventListener('astro:before-swap', () => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
