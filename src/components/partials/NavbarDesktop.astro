@@ -172,4 +172,8 @@ document.addEventListener('astro:after-swap', initNav);
 document.addEventListener('astro:before-swap', () => {
     window.removeEventListener('scroll', handleScroll);
 });
+
+document.addEventListener('astro:page-load', () => {
+    setTimeout(handleScroll, 0);
+});
 </script>
