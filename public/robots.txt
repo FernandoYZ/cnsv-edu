@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Permitir a todos los buscadores rastrear las imágenes
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+
+# Agrega tu Sitemap
+Sitemap: https://cnsv-edu.vercel.app/sitemap.xml

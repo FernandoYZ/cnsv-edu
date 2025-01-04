@@ -2,23 +2,35 @@
 import Footer from '@components/partials/Footer.astro'
 import Header from '@components/partials/Header.astro'
 import { ClientRouter } from 'astro:transitions';
+import data from '@data';
+const { app } = data;
 const {title} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-		<meta name="keywords" content="educación primaria, educación secundaria, seminario menor, educación religiosa, valores, formación integral, colegio con residencia, colegio internado">
-		<meta property="og:url" content="https://cnsv.edu.pe">
-		<meta property="og:type" content="website">
-		<meta property="og:title" content="Colegio Nuestra Señora del Valle Seminario Menor">
-		<meta property="og:description" content="Brindamos formación académica y valores en un ambiente integral y humano, promoviendo el desarrollo integral de nuestros estudiantes.">
-		<meta name="description" content="En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia.">
-    	<ClientRouter />
-		<title>CNSV - Colegio Nuestra Señora del Valle {title}</title>
-	</head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+        
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="keywords" content="educación primaria, educación secundaria, seminario menor, educación religiosa, valores, formación integral, colegio con residencia, colegio internado">
+        <meta name="description" content="En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia.">
+        
+        <meta property="og:type" content="website">
+        <meta property="og:url" content={app.url}>
+        <meta property="og:title" content="Colegio Nuestra Señora del Valle Seminario Menor">
+        <meta property="og:description" content="Brindamos formación académica y valores en un ambiente integral y humano, promoviendo el desarrollo integral de nuestros estudiantes.">
+        <meta property="og:image" content={app.imagen}>
+        
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Colegio Nuestra Señora del Valle Seminario Menor">
+        <meta name="twitter:description" content="Brindamos formación académica y valores en un ambiente integral y humano.">
+        <meta name="twitter:image" content={app.imagen}>
+        
+        <ClientRouter />
+        <title>CNSV - Colegio Nuestra Señora del Valle {title}</title>
+    </head>
 	<body class="font-montserrat">
 		<Header />
 		<main>

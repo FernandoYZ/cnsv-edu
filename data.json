@@ -1,4 +1,8 @@
 {
+    "app": {
+        "url": "https://cnsv-edu.vercel.app/",
+        "imagen": "https://cnsv-edu.vercel.app/cnsv-social.jpg" 
+    },
     "admission": {
         "label": "Admisiones abiertas",
         "titulo": "Forma Parte de Nuestra",
