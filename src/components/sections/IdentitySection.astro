@@ -2,8 +2,57 @@
 import { Image } from 'astro:assets';
 import ImagenFondo from '@assets/images/hero/about_hero.webp';
 import data from '@data';
-
 const { identidad } = data;
+
+// Definimos la interfaz para nuestro mapa de imágenes
+interface ImagenMap {
+    [key: string]: ImageMetadata; // ImageMetadata es el tipo que Astro usa para las imágenes
+}
+
+// Importamos las imágenes usando import.meta.glob
+const imagenesSantos = import.meta.glob<ImageMetadata>('@assets/images/historia/*.webp', {
+    eager: true,
+    import: 'default'
+});
+
+// Inicializamos el mapa con el tipo correcto
+const mapImagenes: ImagenMap = {};
+
+// Poblamos el mapa con las imágenes
+for (const [path, imagen] of Object.entries(imagenesSantos)) {
+    const nombreArchivo = path.split('/').pop();
+    if (nombreArchivo) {
+        mapImagenes[nombreArchivo] = imagen;
+    }
+}
+
+// Definimos la interfaz para un santo
+interface Santo {
+    nombre: string;
+    titulo: string;
+    descripcion: string;
+    imagen: string;
+    atributos?: string[];
+}
+
+// Definimos la interfaz para un santo con la imagen procesada
+interface SantoConImagen extends Omit<Santo, 'imagen'> {
+    imagen: ImageMetadata;
+}
+
+// Procesamos los santos con los tipos correctos
+const santosConImagenes = identidad.santosPatronos.map((santo: Santo) => {
+    const imagen = mapImagenes[santo.imagen];
+    
+    if (!imagen) {
+        console.warn(`No se encontró la imagen ${santo.imagen} para ${santo.nombre}`);
+    }
+    
+    return {
+        ...santo,
+        imagen: imagen || undefined // Usamos undefined como fallback
+    } as SantoConImagen;
+});
 ---
 
 <section class="relative py-8 sm:py-12 lg:py-24 overflow-hidden" aria-labelledby="identidad-title">
@@ -74,24 +123,30 @@ const { identidad } = data;
             <div class="lg:col-span-7 space-y-8">
                 <div class="relative rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10">
                     <!-- Slider Container -->
-                    <div class="overflow-hidden touch-pan-x max-w-full" id="santos-slider">
+                    <div class="overflow-hidden touch-pan-x" id="santos-slider">
                         <div class="flex hardware-accelerated" id="santos-track">
-                            {identidad.santosPatronos.map((santo) => (
-                                <article class="w-full flex-shrink-0 flex-grow-0 p-4 sm:p-6">
+                            {identidad.santosPatronos.map((santo, index) => (
+                                <article 
+                                    class="w-full flex-shrink-0 p-4 sm:p-6 slide-item"
+                                    data-index={index}
+                                >
                                     <div class="flex flex-col gap-4 max-w-2xl mx-auto">
+                                        <!-- Contenedor de imagen con tamaño fijo -->
                                         <div class="relative w-48 h-48 mx-auto">
-                                            <Image
-                                                src={santo.imagen}
-                                                alt={`Imagen de ${santo.nombre}`}
-                                                class="w-full h-full object-cover rounded-lg"
-                                                width={192}
-                                                height={192}
-                                            />
+                                            {santo.imagen && (
+                                                <Image
+                                                    src={santo.imagen}
+                                                    alt={`Imagen de ${santo.nombre}`}
+                                                    class="w-full h-full object-cover rounded-lg"
+                                                    width={192}
+                                                    height={192}
+                                                />
+                                            )}
                                         </div>
-            
+
                                         <div class="flex-1 space-y-3">
                                             <div class="text-center">
-                                                <h3 class="text-xl sm:text-2xl font-bold text-white text-shadow">
+                                                <h3 class="text-xl sm:text-2xl font-bold text-white">
                                                     {santo.nombre}
                                                 </h3>
                                                 <p class="text-[#66b3ff] font-medium text-sm sm:text-base">
@@ -105,11 +160,8 @@ const { identidad } = data;
                                                 <ul class="grid grid-cols-1 gap-2 pt-2">
                                                     {santo.atributos.map(atributo => (
                                                         <li class="flex items-start gap-2">
-                                                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0052cc] flex-shrink-0">
-                                                            </span>
-                                                            <span class="text-sm text-gray-300 break-words">
-                                                                {atributo}
-                                                            </span>
+                                                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0052cc] flex-shrink-0"></span>
+                                                            <span class="text-sm text-gray-300 break-words">{atributo}</span>
                                                         </li>
                                                     ))}
                                                 </ul>
@@ -124,7 +176,7 @@ const { identidad } = data;
                     <!-- Controles del Slider -->
                     <div class="absolute top-1/2 -translate-y-1/2 w-full flex justify-between pointer-events-none px-2 sm:px-4">
                         <button 
-                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0052cc] focus:ring-offset-2 touch-feedback"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0052cc] focus:ring-offset-2"
                             id="prev-slide"
                             aria-label="Anterior santo"
                         >
@@ -133,7 +185,7 @@ const { identidad } = data;
                             </svg>
                         </button>
                         <button 
-                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0052cc] focus:ring-offset-2 touch-feedback"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-[#0052cc] focus:ring-offset-2"
                             id="next-slide"
                             aria-label="Siguiente santo"
                         >
@@ -147,7 +199,7 @@ const { identidad } = data;
                     <div class="absolute bottom-2 sm:bottom-4 left-0 right-0 flex justify-center gap-1.5 sm:gap-2">
                         {identidad.santosPatronos.map((_, index) => (
                             <button 
-                                class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30 transition-colors duration-200"
+                                class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30 transition-colors duration-200 indicator-btn"
                                 data-slide-index={index}
                                 aria-label={`Ir al santo ${index + 1}`}
                             >
@@ -324,8 +376,8 @@ const { identidad } = data;
 </script>
 
 <style>
-
-    /* Base styles */
+    /* Contenedor principal del slider
+       Este es el elemento que mantiene todo el slider contenido y gestiona el overflow */
     #santos-slider {
         position: relative;
         width: 100%;
@@ -335,115 +387,97 @@ const { identidad } = data;
         overscroll-behavior-x: contain;
         contain: content;
     }
-
+    
+    /* Track del slider
+       Este es el elemento que se mueve horizontalmente y contiene todos los slides */
     #santos-track {
-        position: relative;
         display: flex;
         width: 100%;
         height: 100%;
-        align-items: stretch;
+        transition: transform 500ms ease-out;
         will-change: transform;
-        transform: translateX(0);
-        transition: transform 0.5s ease-out;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
-
-    #santos-track article {
-        position: relative;
+    
+    /* Elementos individuales del slider
+       Cada slide debe tener un ancho fijo y no debe encogerse */
+    .slide-item {
+        flex: 0 0 auto;
         width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        flex: 0 0 100%;
-        contain: content;
-        overflow: hidden;
         opacity: 1;
-        visibility: visible;
+        transition: opacity 300ms ease-in-out;
+        display: flex;
+        flex-direction: column;
     }
-
-    /* Optimizaciones de rendimiento */
+    
+    /* Contenido dentro de cada slide
+       Asegura que el contenido se mantenga centrado y con el espaciado correcto */
+    .slide-item > div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 1rem;
+    }
+    
+    /* Optimizaciones para el rendimiento
+       Mejora el rendimiento de las animaciones */
     .hardware-accelerated {
         transform: translateZ(0);
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         perspective: 1000px;
-        contain: paint;
     }
-
-    /* Mejoras de accesibilidad */
-    @media (prefers-reduced-motion: reduce) {
-        .motion-safe\:animate-subtle-zoom,
-        .transition-all,
-        .transition-transform,
-        .transform,
-        .group-hover\:scale-110,
-        .group-hover\:opacity-100 {
-            transition: none !important;
-            transform: none !important;
-            animation: none !important;
-        }
-        
-        #santos-track {
-            transition: none !important;
-        }
+    
+    /* Controles del slider
+       Estiliza los botones de navegación y asegura que sean clickeables */
+    #prev-slide,
+    #next-slide {
+        opacity: 0.8;
+        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
     }
-
-    /* Optimizaciones para touch */
+    
+    #prev-slide:hover,
+    #next-slide:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    
+    #prev-slide:active,
+    #next-slide:active {
+        transform: scale(0.95);
+    }
+    
+    /* Indicadores
+       Estiliza los puntos de navegación en la parte inferior */
+    .indicator-btn {
+        transition: all 200ms ease-in-out;
+        cursor: pointer;
+    }
+    
+    .indicator-btn:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Optimizaciones para dispositivos táctiles */
     .touch-pan-x {
-        touch-action: pan-x;
+        touch-action: pan-x pinch-zoom;
         -webkit-overflow-scrolling: touch;
     }
-
-    .touch-feedback:active {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Responsive optimizations */
-    @media (max-width: 640px) {
-        #santos-slider {
-            margin-left: -1rem;
-            margin-right: -1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            contain: content;
-        }
-
-        .text-2xl {
-            font-size: clamp(1.25rem, 4vw, 1.5rem);
-            line-height: 1.3;
-        }
-
-        .space-y-6 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: 1.25rem;
-        }
-    }
-
-    /* Small device optimizations */
-    @media (max-width: 380px) {
-        .space-y-6 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: clamp(0.75rem, 3vw, 1rem);
-        }
-        
-        .p-4 {
-            padding: clamp(0.75rem, 3vw, 1rem);
-        }
-    }
-
-    /* Visual enhancements */
-    .text-shadow {
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Animations */
+    
+    /* Animaciones del fondo y elementos */
     @keyframes subtle-zoom {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.05); }
         from { transform: scale(1); }
         to { transform: scale(1.05); }
     }
-
+    
     .animate-subtle-zoom {
         animation: subtle-zoom 20s ease-in-out infinite alternate;
     }
-
-    /* Utils */
+    
+    /* Utilidades de texto */
     .break-words {
         word-wrap: break-word;
         overflow-wrap: break-word;
@@ -451,21 +485,75 @@ const { identidad } = data;
         -ms-hyphens: auto;
         hyphens: auto;
     }
-
-    /* Focus styles */
-    .focus-visible:focus {
-        outline: 2px solid #0052cc;
-        outline-offset: 2px;
-    }
-
-    /* Print optimizations */
-    @media print {
-        .animate-subtle-zoom {
-            animation: none;
+    
+    /* Optimizaciones responsive */
+    @media (max-width: 640px) {
+        #santos-slider {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
-        
-        .bg-gradient-to-br {
-            background: none;
+    
+        .slide-item > div {
+            gap: 0.75rem;
+        }
+    }
+    
+    /* Optimizaciones para dispositivos pequeños */
+    @media (max-width: 380px) {
+        .slide-item {
+            padding: 0.75rem;
+        }
+    }
+    
+    /* Soporte para preferencias de reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+        .motion-safe\:animate-subtle-zoom,
+        .animate-subtle-zoom,
+        #santos-track,
+        .slide-item,
+        #prev-slide,
+        #next-slide,
+        .indicator-btn {
+            transition: none !important;
+            animation: none !important;
+            transform: none !important;
+        }
+    }
+    
+    /* Mejoras de accesibilidad */
+    @media (hover: hover) {
+        #prev-slide:focus-visible,
+        #next-slide:focus-visible,
+        .indicator-btn:focus-visible {
+            outline: 2px solid #0052cc;
+            outline-offset: 2px;
+        }
+    }
+    
+    /* Optimizaciones de impresión */
+    @media print {
+        #santos-slider {
+            overflow: visible;
+        }
+    
+        #santos-track {
+            transform: none !important;
+            display: block;
+        }
+    
+        .slide-item {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            width: 100% !important;
+            margin-bottom: 2rem;
+        }
+    
+        #prev-slide,
+        #next-slide,
+        .indicator-btn {
+            display: none;
         }
     }
 </style>
