@@ -5,8 +5,6 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://FernandoYZ.github.io/',
-    base: '/cnsv-edu/',
     integrations: [tailwind()],
     output: 'static',
     compressHTML: true,
