@@ -3,6 +3,7 @@ import Footer from '@components/partials/Footer.astro'
 import Header from '@components/partials/Header.astro'
 import SpeedInsights from "@vercel/speed-insights/astro"
 import { inject } from '@vercel/analytics'
+import Analytics from '@vercel/analytics/astro'
 import { ClientRouter } from 'astro:transitions'
 import data from '@data'
 const { app } = data
@@ -42,6 +43,7 @@ const {title} = Astro.props;
 		</main>
 		<Footer />
         <SpeedInsights />
+        <Analytics/>
 	</body>
 </html>
 
@@ -129,12 +131,3 @@ const {title} = Astro.props;
     }
 
 </style>
-
-<script>
-    import { inject } from '@vercel/analytics';
-    try {
-        inject();
-    } catch (e) {
-        console.error('Error initializing analytics:', e);
-    }
-</script>
