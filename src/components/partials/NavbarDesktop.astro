@@ -128,18 +128,39 @@ const currentPath = Astro.url.pathname;
 let timeoutId: number | undefined;
 
 function updateNavigationState() {
+    // Obtenemos la ruta actual
     const currentPath = window.location.pathname;
+    
+    // Seleccionamos todos los links de navegación
     const navLinks = document.querySelectorAll('#nav-links a');
     
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
+        // Obtenemos la línea debajo del link (el span)
+        const underline = link.querySelector('span');
+        
         if (href === currentPath) {
+            // Si estamos en la página actual
             link.setAttribute('aria-current', 'page');
             link.classList.remove('text-gray-300', 'text-gray-900');
             link.classList.add('text-[#800020]');
+            
+            // Importante: Actualizamos la línea para que sea visible
+            if (underline) {
+                underline.classList.remove('scale-x-0');
+                underline.classList.add('scale-x-100');
+            }
         } else {
+            // Si no es la página actual
             link.removeAttribute('aria-current');
             link.classList.remove('text-[#800020]');
+            
+            // Ocultamos la línea
+            if (underline) {
+                underline.classList.remove('scale-x-100');
+                underline.classList.add('scale-x-0');
+            }
+            
             // Estado inicial basado en el scroll
             if (window.scrollY > 20) {
                 link.classList.remove('text-gray-300');
@@ -162,7 +183,6 @@ function handleScroll() {
         if (navContainer && navLinks) {
             if (window.scrollY > 20) {
                 navContainer.classList.add('bg-white/95', 'shadow-lg');
-                navLinks.classList.add('scale-95');
                 
                 // Update text colors for scrolled state
                 document.querySelectorAll('#nav-links a:not([aria-current="page"])').forEach(link => {
@@ -171,7 +191,6 @@ function handleScroll() {
                 });
             } else {
                 navContainer.classList.remove('bg-white/95', 'shadow-lg');
-                navLinks.classList.remove('scale-95');
                 
                 // Restore original text colors
                 document.querySelectorAll('#nav-links a:not([aria-current="page"])').forEach(link => {
