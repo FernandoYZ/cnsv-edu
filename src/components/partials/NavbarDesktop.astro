@@ -127,6 +127,31 @@ const currentPath = Astro.url.pathname;
 <script>
 let timeoutId: number | undefined;
 
+function updateNavigationState() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('#nav-links a');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+            link.setAttribute('aria-current', 'page');
+            link.classList.remove('text-gray-300', 'text-gray-900');
+            link.classList.add('text-[#800020]');
+        } else {
+            link.removeAttribute('aria-current');
+            link.classList.remove('text-[#800020]');
+            // Estado inicial basado en el scroll
+            if (window.scrollY > 20) {
+                link.classList.remove('text-gray-300');
+                link.classList.add('text-gray-900');
+            } else {
+                link.classList.remove('text-gray-900');
+                link.classList.add('text-gray-300');
+            }
+        }
+    });
+}
+
 function handleScroll() {
     if (timeoutId) return;
     
@@ -161,19 +186,29 @@ function handleScroll() {
 }
 
 function initNav() {
+    updateNavigationState(); // Actualiza el estado inicial
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
+// Initialize on mount
 initNav();
 
-document.addEventListener('astro:after-swap', initNav);
+// Re-initialize on view transitions
+document.addEventListener('astro:after-swap', () => {
+    initNav();
+});
 
+// Cleanup on page transitions
 document.addEventListener('astro:before-swap', () => {
     window.removeEventListener('scroll', handleScroll);
 });
 
+// Asegurarse de que el estado se actualice después de cada carga de página
 document.addEventListener('astro:page-load', () => {
-    setTimeout(handleScroll, 0);
+    setTimeout(() => {
+        updateNavigationState();
+        handleScroll();
+    }, 0);
 });
 </script>
