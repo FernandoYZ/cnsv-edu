@@ -104,11 +104,73 @@ class NavbarController {
         this.lastScrollY = window.scrollY;
         this.nav = document.getElementById('mobile-nav');
         this.init();
+        // Importante: Actualizamos el estado inicial de la navegación
+        this.updateNavigationState();
     }
     
     private updateNav = (show: boolean) => {
         if (!this.nav) return;
         this.nav.style.transform = show ? 'translateY(0)' : 'translateY(100%)';
+    };
+
+    private updateNavigationState = () => {
+        const currentPath = window.location.pathname;
+        const navItems = document.querySelectorAll('#mobile-nav a');
+        
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            const isActive = href === currentPath;
+            
+            // Actualizar estados activos
+            if (isActive) {
+                item.setAttribute('aria-current', 'page');
+                
+                // Manejar el indicador
+                const indicator = item.querySelector('div[aria-hidden="true"]');
+                if (!indicator) {
+                    // Crear el indicador si no existe
+                    const newIndicator = document.createElement('div');
+                    newIndicator.className = 'absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-[#800020] rounded-b-full shadow-sm';
+                    newIndicator.setAttribute('aria-hidden', 'true');
+                    newIndicator.style.viewTransitionName = 'nav-indicator';
+                    item.insertBefore(newIndicator, item.firstChild);
+                }
+                
+                // Actualizar colores
+                const iconContainer = item.querySelector('div[class*="transition-colors"]');
+                if (iconContainer) {
+                    iconContainer.classList.remove('text-gray-400', 'group-hover:text-gray-600');
+                    iconContainer.classList.add('text-[#800020]');
+                }
+                
+                const label = item.querySelector('span');
+                if (label) {
+                    label.classList.remove('text-gray-500', 'group-hover:text-gray-700');
+                    label.classList.add('text-[#800020]');
+                }
+            } else {
+                item.removeAttribute('aria-current');
+                
+                // Remover el indicador si existe
+                const indicator = item.querySelector('div[aria-hidden="true"]');
+                if (indicator) {
+                    indicator.remove();
+                }
+                
+                // Restaurar colores por defecto
+                const iconContainer = item.querySelector('div[class*="transition-colors"]');
+                if (iconContainer) {
+                    iconContainer.classList.remove('text-[#800020]');
+                    iconContainer.classList.add('text-gray-400', 'group-hover:text-gray-600');
+                }
+                
+                const label = item.querySelector('span');
+                if (label) {
+                    label.classList.remove('text-[#800020]');
+                    label.classList.add('text-gray-500', 'group-hover:text-gray-700');
+                }
+            }
+        });
     };
     
     private handleScroll = () => {
@@ -142,19 +204,27 @@ class NavbarController {
     };
     
     public init() {
-        // Añadir event listeners
+        // Añadir event listeners existentes
         window.addEventListener('scroll', this.handleScroll, { passive: true });
         window.addEventListener('touchstart', this.handleTouchStart, { passive: true });
         window.addEventListener('touchmove', this.handleTouchMove, { passive: true });
+        
+        // Añadir listeners para las transiciones de página
+        document.addEventListener('astro:after-swap', this.updateNavigationState);
+        document.addEventListener('astro:page-load', this.updateNavigationState);
     }
     
     public destroy() {
-        // Limpiar event listeners
+        // Limpiar event listeners existentes
         window.removeEventListener('scroll', this.handleScroll);
         window.removeEventListener('touchstart', this.handleTouchStart);
         window.removeEventListener('touchmove', this.handleTouchMove);
         
-        // Cancelar cualquier animación pendiente
+        // Limpiar listeners de transiciones
+        document.removeEventListener('astro:after-swap', this.updateNavigationState);
+        document.removeEventListener('astro:page-load', this.updateNavigationState);
+        
+        // Cancelar animaciones pendientes
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
             this.animationFrame = null;
