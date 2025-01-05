@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
                                 {/* Línea indicadora */}
                                 {isActive && (
                                     <div 
-                                        class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-[#800020] rounded-b-full shadow-sm"
+                                        class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-[#800020] rounded-b-full shadow-sm transition-all duration-300 ease-out origin-center"
                                         style="view-transition-name: nav-indicator;"
                                         aria-hidden="true"
                                     />
@@ -121,22 +121,26 @@ class NavbarController {
             const href = item.getAttribute('href');
             const isActive = href === currentPath;
             
-            // Actualizar estados activos
+            // Obtenemos el indicador que ahora siempre existe
+            const indicator = item.querySelector('[data-nav-indicator]');
+            
             if (isActive) {
                 item.setAttribute('aria-current', 'page');
                 
-                // Manejar el indicador
-                const indicator = item.querySelector('div[aria-hidden="true"]');
-                if (!indicator) {
-                    // Crear el indicador si no existe
-                    const newIndicator = document.createElement('div');
-                    newIndicator.className = 'absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-[#800020] rounded-b-full shadow-sm';
-                    newIndicator.setAttribute('aria-hidden', 'true');
-                    newIndicator.style.viewTransitionName = 'nav-indicator';
-                    item.insertBefore(newIndicator, item.firstChild);
+                // Animamos el indicador con transformaciones y opacidad
+                if (indicator) {
+                    indicator.classList.remove('opacity-0', 'scale-x-0');
+                    indicator.classList.add('opacity-100', 'scale-x-100');
                 }
                 
-                // Actualizar colores
+                // Actualizamos los elementos internos con sus transformaciones
+                const contentWrapper = item.querySelector('div.transition-transform');
+                if (contentWrapper) {
+                    contentWrapper.classList.add('-translate-y-1');
+                    contentWrapper.classList.remove('group-hover:-translate-y-0.5');
+                }
+                
+                // Actualizamos colores
                 const iconContainer = item.querySelector('div[class*="transition-colors"]');
                 if (iconContainer) {
                     iconContainer.classList.remove('text-gray-400', 'group-hover:text-gray-600');
@@ -151,13 +155,20 @@ class NavbarController {
             } else {
                 item.removeAttribute('aria-current');
                 
-                // Remover el indicador si existe
-                const indicator = item.querySelector('div[aria-hidden="true"]');
+                // Ocultamos el indicador con animación
                 if (indicator) {
-                    indicator.remove();
+                    indicator.classList.add('opacity-0', 'scale-x-0');
+                    indicator.classList.remove('opacity-100', 'scale-x-100');
                 }
                 
-                // Restaurar colores por defecto
+                // Restauramos la posición inicial
+                const contentWrapper = item.querySelector('div.transition-transform');
+                if (contentWrapper) {
+                    contentWrapper.classList.remove('-translate-y-1');
+                    contentWrapper.classList.add('group-hover:-translate-y-0.5');
+                }
+                
+                // Restauramos colores por defecto
                 const iconContainer = item.querySelector('div[class*="transition-colors"]');
                 if (iconContainer) {
                     iconContainer.classList.remove('text-[#800020]');
