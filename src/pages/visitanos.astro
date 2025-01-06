@@ -1,8 +1,21 @@
 ---
-import VisitSection from '@components/sections/VisitSection.astro';
-import Layout from '@layouts/Layout.astro';
+import data from '@data';
+
+import VisitSection from '@components/sections/VisitSection.astro'
+import CampusSection from '@components/sections/CampusSection.astro'
+import GallerySection from '@components/sections/GallerySection.astro'
+import TestimonialSlider from '@components/slider/TestimonialSlider.astro';
+
+import Layout from '@layouts/Layout.astro'
+const { header, visitanos: testimonios } = data.testimonios;
 ---
 
 <Layout title='- Visítanos'>
 	<VisitSection />
+	<CampusSection />
+	<GallerySection />
+	<TestimonialSlider 
+		header={header}
+		testimonios={testimonios}
+	/>
 </Layout>
