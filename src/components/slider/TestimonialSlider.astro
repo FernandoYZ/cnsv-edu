@@ -1,0 +1,404 @@
+---
+import { Image } from 'astro:assets';
+import data from '@data';
+const { testimonios } = data;
+---
+
+<section class="relative py-16 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden" aria-labelledby="testimonios-title">
+    <!-- Elementos decorativos modernos -->
+    <div class="absolute inset-0 pointer-events-none select-none">
+        <!-- Patrón de fondo moderno -->
+        <div class="absolute inset-0 opacity-[0.03]"></div>
+        
+        <!-- Gradientes modernos -->
+        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-[#800020]/5 to-transparent blur-[100px] opacity-60"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-[#800020]/5 to-transparent blur-[100px] opacity-60"></div>
+    </div>
+
+    <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Encabezado Moderno -->
+        <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+            <div class="inline-flex items-center justify-center space-x-3 mb-6">
+                <div class="h-px w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent opacity-70"></div>
+                <span class="px-4 py-2 rounded-full bg-white/80 shadow-sm backdrop-blur-sm text-sm font-medium text-[#800020] tracking-wide border border-[#800020]/10">
+                    {testimonios.header.label}
+                </span>
+                <div class="h-px w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent opacity-70"></div>
+            </div>
+            
+            <h2 id="testimonios-title" class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                {testimonios.header.titulo}
+                <span class="relative whitespace-nowrap text-[#800020]">
+                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-[90%] h-[0.6em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                        <path d={testimonios.header.icono} />
+                    </svg>
+                    <span class="relative">{testimonios.header.span}</span>
+                </span>
+            </h2>
+            
+            <p class="text-base md:text-lg text-gray-600 max-w-prose mx-auto">
+                {testimonios.header.descripcion}
+            </p>
+        </header>
+
+        <!-- Slider de Testimonios Moderno -->
+        <div class="relative max-w-5xl mx-auto">
+            <!-- Contenedor del Slider -->
+            <div class="overflow-hidden" id="testimonios-slider">
+                <div class="flex transition-transform duration-700 ease-out" id="testimonios-track">
+                    {testimonios.visitanos.map((testimonio) => (
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 sm:p-10 mx-auto max-w-2xl border border-gray-100">
+                                <!-- Comillas decorativas modernas -->
+                                <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-[#800020] to-[#600018] rounded-2xl rotate-12 flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" class="text-white/90 fill-current">
+                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Contenido del Testimonio -->
+                                <div class="mb-8">
+                                    <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+                                        "{testimonio.texto}"
+                                    </p>
+                                </div>
+
+                                <!-- Información del Autor -->
+                                <div class="flex items-center gap-5">
+                                    <div class="relative w-16 h-16 transform transition-transform duration-300 group-hover:scale-105">
+                                        <!-- Marco decorativo -->
+                                        <div class="absolute inset-0 bg-gradient-to-br from-[#800020] to-[#600018] rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
+                                        <!-- Contenedor de imagen -->
+                                        <div class="absolute inset-0 rounded-xl overflow-hidden transform">
+                                            <Image
+                                                src={testimonio.imagen}
+                                                alt={`Foto de ${testimonio.autor}`}
+                                                class="w-full h-full object-cover"
+                                                width={64}
+                                                height={64}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                                            {testimonio.autor}
+                                        </h3>
+                                        <p class="text-[#800020] text-sm font-medium">
+                                            {testimonio.rol}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <!-- Controles del Slider Modernos -->
+                <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none px-4">
+                    <button 
+                        class="testimonial-control-btn group"
+                        id="prev-testimonial"
+                        aria-label="Testimonio anterior"
+                    >
+                        <svg class="w-6 h-6 transform transition-transform group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button 
+                        class="testimonial-control-btn group"
+                        id="next-testimonial"
+                        aria-label="Siguiente testimonio"
+                    >
+                        <svg class="w-6 h-6 transform transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Indicadores Modernos -->
+                <div class="flex justify-center items-center gap-3 mt-8">
+                    {testimonios.visitanos.map((_, index) => (
+                        <button
+                            class="testimonial-indicator"
+                            data-index={index}
+                            aria-label={`Ir al testimonio ${index + 1}`}
+                        >
+                            <span class="sr-only">Testimonio {index + 1}</span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Botones de control modernos */
+.testimonial-control-btn {
+    @apply w-12 h-12 rounded-2xl bg-white/80 backdrop-blur border border-gray-200 
+           flex items-center justify-center text-gray-700 
+           shadow-lg hover:shadow-xl
+           transform transition-all duration-300 
+           hover:scale-105 active:scale-95
+           pointer-events-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-[#800020];
+}
+
+/* Indicadores modernos */
+.testimonial-indicator {
+    @apply w-3 h-3 rounded-full bg-gray-300
+           transition-all duration-300 ease-out
+           hover:scale-125 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#800020]
+           data-[active=true]:w-6 data-[active=true]:bg-[#800020];
+}
+
+/* Animaciones optimizadas */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.testimonial-enter {
+    animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) {
+    .testimonial-control-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Soporte para preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .transition-all,
+    .transition-transform,
+    .testimonial-enter,
+    .testimonial-control-btn,
+    .testimonial-indicator {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* Optimizaciones para dispositivos pequeños */
+@media (max-width: 640px) {
+    .testimonial-control-btn {
+        @apply w-10 h-10;
+    }
+
+    #testimonios-track {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #testimonios-track > * {
+        scroll-snap-align: center;
+    }
+}
+</style>
+
+<script>
+interface SliderState {
+    currentIndex: number;
+    autoplayInterval: number | null;
+    isDragging: boolean;
+    startX: number;
+}
+
+const initTestimonialSlider = () => {
+    // Referencias al DOM
+    const track = document.getElementById('testimonios-track') as HTMLElement | null;
+    const prevButton = document.getElementById('prev-testimonial') as HTMLButtonElement | null;
+    const nextButton = document.getElementById('next-testimonial') as HTMLButtonElement | null;
+    const indicators = document.querySelectorAll<HTMLButtonElement>('[data-index]');
+
+    // Validar elementos requeridos
+    if (!track) {
+        console.warn('Testimonial slider track not found');
+        return;
+    }
+
+    // Obtener los slides
+    const slides = Array.from(track.children) as HTMLElement[];
+    if (!slides.length) {
+        console.warn('No testimonial slides found');
+        return;
+    }
+
+    // Estado del slider
+    const state: SliderState = {
+        currentIndex: 0,
+        autoplayInterval: null,
+        isDragging: false,
+        startX: 0
+    };
+
+    // Funciones del slider
+    const updateSlidePosition = () => {
+        track.style.transform = `translateX(-${state.currentIndex * 100}%)`;
+    };
+
+    const updateIndicators = () => {
+        indicators.forEach((dot, index) => {
+            const indicatorDot = dot.querySelector('.indicator-dot') as HTMLElement;
+            if (indicatorDot) {
+                if (index === state.currentIndex) {
+                    indicatorDot.style.transform = 'scaleX(1)';
+                    dot.setAttribute('data-active', 'true');
+                    dot.setAttribute('aria-current', 'true');
+                } else {
+                    indicatorDot.style.transform = 'scaleX(0)';
+                    dot.setAttribute('data-active', 'false');
+                    dot.setAttribute('aria-current', 'false');
+                }
+            }
+        });
+    };
+
+    const moveSlide = (direction: 'prev' | 'next') => {
+        if (direction === 'prev') {
+            state.currentIndex = state.currentIndex > 0 ? state.currentIndex - 1 : slides.length - 1;
+        } else {
+            state.currentIndex = state.currentIndex < slides.length - 1 ? state.currentIndex + 1 : 0;
+        }
+        updateSlidePosition();
+        updateIndicators();
+    };
+
+    // Control de autoplay
+    const startAutoplay = () => {
+        if (state.autoplayInterval) return;
+        state.autoplayInterval = window.setInterval(() => moveSlide('next'), 5000);
+    };
+
+    const stopAutoplay = () => {
+        if (state.autoplayInterval) {
+            clearInterval(state.autoplayInterval);
+            state.autoplayInterval = null;
+        }
+    };
+
+    // Manejadores de eventos táctiles
+    const handleTouchStart = (e: TouchEvent) => {
+        state.isDragging = true;
+        state.startX = e.touches[0].clientX;
+        stopAutoplay();
+        
+        // Prevenir el arrastre de imágenes
+        e.preventDefault();
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        if (!state.isDragging) return;
+
+        const currentX = e.touches[0].clientX;
+        const diff = currentX - state.startX;
+        
+        if (Math.abs(diff) > 50) {
+            moveSlide(diff > 0 ? 'prev' : 'next');
+            state.isDragging = false;
+            startAutoplay();
+        }
+    };
+
+    const handleTouchEnd = () => {
+        state.isDragging = false;
+        startAutoplay();
+    };
+
+    // Event Listeners
+    const addEventListeners = () => {
+        // Botones de navegación
+        prevButton?.addEventListener('click', () => {
+            moveSlide('prev');
+            stopAutoplay();
+            startAutoplay();
+        });
+
+        nextButton?.addEventListener('click', () => {
+            moveSlide('next');
+            stopAutoplay();
+            startAutoplay();
+        });
+
+        // Indicadores
+        indicators.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                state.currentIndex = index;
+                updateSlidePosition();
+                updateIndicators();
+                stopAutoplay();
+                startAutoplay();
+            });
+        });
+
+        // Eventos táctiles
+        track.addEventListener('touchstart', handleTouchStart, { passive: false });
+        track.addEventListener('touchmove', handleTouchMove, { passive: true });
+        track.addEventListener('touchend', handleTouchEnd);
+
+        // Eventos de mouse para autoplay
+        track.addEventListener('mouseenter', stopAutoplay);
+        track.addEventListener('mouseleave', startAutoplay);
+
+        // Eventos de visibilidad para pausar/reanudar autoplay
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+
+        // Eventos de foco para accesibilidad
+        track.addEventListener('focusin', stopAutoplay);
+        track.addEventListener('focusout', startAutoplay);
+    };
+
+    // Inicialización
+    const initialize = () => {
+        updateIndicators();
+        addEventListeners();
+        startAutoplay();
+
+        // Establecer aria-labels y roles para accesibilidad
+        track.setAttribute('role', 'region');
+        track.setAttribute('aria-roledescription', 'carrusel');
+        track.setAttribute('aria-label', 'Testimonios de visitantes');
+
+        slides.forEach((slide, index) => {
+            slide.setAttribute('role', 'group');
+            slide.setAttribute('aria-roledescription', 'diapositiva');
+            slide.setAttribute('aria-label', `Testimonio ${index + 1} de ${slides.length}`);
+        });
+    };
+
+    // Cleanup function
+    const cleanup = () => {
+        stopAutoplay();
+        track.removeEventListener('touchstart', handleTouchStart);
+        track.removeEventListener('touchmove', handleTouchMove);
+        track.removeEventListener('touchend', handleTouchEnd);
+        track.removeEventListener('mouseenter', stopAutoplay);
+        track.removeEventListener('mouseleave', startAutoplay);
+        track.removeEventListener('focusin', stopAutoplay);
+        track.removeEventListener('focusout', startAutoplay);
+    };
+
+    // Iniciar el slider
+    initialize();
+
+    // Retornar cleanup function
+    return cleanup;
+};
+
+// Inicializar cuando el documento esté listo
+document.addEventListener('astro:page-load', initTestimonialSlider);
+</script>
