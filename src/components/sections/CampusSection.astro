@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import ImagenCancha1 from '@assets/images/visit/cancha-1.jpg';
+import ImagenCancha2 from '@assets/images/visit/cancha-2.jpg';
+import ImagenCancha3 from '@assets/images/visit/cancha-3.jpg';
+import ImagenFachada from '@assets/images/hero/home_hero_org.webp';
+import ImagenJuego1 from '@assets/images/visit/juego-1.jpg';
+import ImagenOratorioSanJose from '@assets/images/visit/oratorio-san-jose.jpg';
+import ImagenOratorioSantaMaria from '@assets/images/visit/oratorio-santa-maria.jpg';
+import data from '@data';
+const { campus } = data;
+
+const imagenes_areas = {
+    'cancha-1.jpg': ImagenCancha1,
+    'cancha-2.jpg': ImagenCancha2,
+    'cancha-3.jpg': ImagenCancha3,
+    'oratorio-san-jose.jpg': ImagenOratorioSanJose,
+    'oratorio-santa-maria.jpg': ImagenOratorioSantaMaria,
+    'home_hero_org.webp': ImagenFachada,
+    'juego-1.jpg': ImagenJuego1
+} as const;
+
+// Tipos para mejorar el tipado
+type AreaCampus = {
+    titulo: string;
+    descripcion: string;
+    icono: string;
+    subareas: {
+        nombre: string;
+        descripcion: string;
+        imagen: string;
+    }[];
+};
+
+type AreaCampusKey = 'academicas' | 'deportivas' | 'verdes' | 'religiosas' | 'comunes';
+
+// Función para validar y obtener la imagen correspondiente
+function getImageForKey(imageKey: string) {
+    if (imageKey in imagenes_areas) {
+        return imagenes_areas[imageKey as keyof typeof imagenes_areas];
+    }
+    // Fallback a una imagen por defecto si la imagen no existe
+    return ImagenFachada;
+}
+
+// Procesar las áreas del campus con sus imágenes
+const campusConImagenes = Object.entries(campus.areasCampus as Record<AreaCampusKey, AreaCampus>).map(
+    ([key, area]) => ({
+        key,
+        area: {
+            ...area,
+            subareas: area.subareas.map(subarea => ({
+                ...subarea,
+                imagen: getImageForKey(subarea.imagen)
+            })),
+        },
+    })
+);
+---
+
+<section class="relative py-24 overflow-hidden bg-white" aria-labelledby="campus-title">
+    <!-- Elementos decorativos de fondo -->
+    <div class="absolute inset-0">
+        <div class="absolute inset-0" 
+             style="background-image: radial-gradient(#800020 0.5px, transparent 0.5px);
+                    background-size: 24px 24px;
+                    opacity: 0.05;">
+        </div>
+        <div class="absolute top-0 left-0 -ml-4 -mt-[31.5rem] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-[#800020]/10 to-transparent blur-3xl"></div>
+        <div class="absolute top-0 right-0 -mr-96 mt-96 w-1/2 h-1/2 rounded-full bg-[#800020]/10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-96 -mb-96 w-[800px] h-[800px] rounded-full bg-[#800020]/10 blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <!-- Encabezado -->
+        <header class="max-w-2xl mx-auto text-center mb-20">
+            <div class="inline-flex items-center justify-center space-x-3 mb-6">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+                <span class="px-4 py-2 rounded-full bg-[#800020]/5 text-sm font-medium text-[#800020] tracking-wider">
+                    {campus.header.label}
+                </span>
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+            </div>
+            <h2 id="campus-title" class="text-4xl font-bold text-gray-900 mb-6">
+                {campus.header.titulo}
+                <span class="relative whitespace-nowrap text-[#800020]">
+                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                        <path d={campus.header.icono} />
+                    </svg>
+                    <span class="relative">{campus.header.span}</span>
+                </span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-prose mx-auto">
+                {campus.header.descripcion}
+            </p>
+        </header>
+
+        <!-- Grid de áreas -->
+        <div class="grid gap-12">
+            {campusConImagenes.map(({ key, area }, index) => (
+                <article class="group relative">
+                    <div class={`relative grid lg:grid-cols-2 gap-8 items-center`}>
+                        <!-- Contenido -->
+                        <div class={`space-y-6 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                            <header class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/10 text-[#800020]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={area.icono} />
+                                        </svg>
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-gray-900">{area.titulo}</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed">{area.descripcion}</p>
+                            </header>
+
+                            <!-- Subáreas -->
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                {area.subareas.map(subarea => (
+                                    <div class="group/item relative p-4 rounded-xl bg-white shadow-sm border border-gray-100 hover:border-[#800020]/30 transition-colors duration-300">
+                                        <div class="flex flex-col gap-2">
+                                            <h4 class="font-semibold text-gray-900">{subarea.nombre}</h4>
+                                            <p class="text-sm text-gray-600">{subarea.descripcion}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <!-- Galería -->
+                        <div class={`relative ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                            <div class="grid grid-cols-2 gap-4">
+                                {area.subareas.map((subarea, subareaIndex) => (
+                                    <div class={subareaIndex === 0 ? "col-span-2" : ""}>
+                                        <div class="group/image relative rounded-xl overflow-hidden bg-gray-100 aspect-video">
+                                            <Image
+                                                src={subarea.imagen}
+                                                alt={`Imagen de ${subarea.nombre}`}
+                                                class="w-full h-full object-cover transform transition-transform"
+                                                width={600}
+                                                height={400}
+                                                />
+                                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>
+                                            <div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover/image:translate-y-0 transition-transform duration-300">
+                                                <h5 class="font-medium text-sm">{subarea.nombre}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>
