@@ -1,0 +1,434 @@
+---
+import { Image } from 'astro:assets';
+import data from '@data';
+const { gallery } = data;
+
+// Importamos todas las imágenes que vamos a necesitar
+const images = {
+    frontis: (await import('@assets/images/gallery/frontis.webp')).default,
+    feria_gastronomica_menor: (await import('@assets/images/gallery/feria_gastronomica_menor.webp')).default,
+    feria_gastronomica_mayor: (await import('@assets/images/gallery/feria_gastronomica_mayor.webp')).default,
+    danza_caneros_san_jacinto: (await import('@assets/images/gallery/danza_caneros_san_jacinto.webp')).default,
+    danza_quiulladanza: (await import('@assets/images/gallery/danza_quiulladanza.webp')).default,
+    danza_contradanza: (await import('@assets/images/gallery/danza_contradanza.webp')).default,
+    paseo_estudiantil_padres: (await import('@assets/images/gallery/paseo_estudiantil_padres.webp')).default,
+    paseo_callao: (await import('@assets/images/gallery/paseo_callao.webp')).default,
+    paseo_parque_leyendas: (await import('@assets/images/gallery/paseo_parque_leyendas.webp')).default,
+    dia_juventud: (await import('@assets/images/gallery/dia_juventud.webp')).default,
+};
+
+// Función para obtener la clave de la imagen a partir del nombre del archivo
+function getImageKey(filename: string): string {
+    return filename.replace('.webp', '');
+}
+
+// Preparar datos de galería con imágenes
+const gallery_data = gallery.galeria.map(item => ({
+    ...item,
+    image: images[getImageKey(item.src) as keyof typeof images] || images.frontis
+}));
+
+// Preparar datos destacados con imágenes
+const destacados_data = gallery.destacados.map(item => ({
+    ...item,
+    image: item.tipo === 'imagen' ? images[getImageKey(item.src) as keyof typeof images] || images.frontis : null
+}));
+---
+
+<section class="relative py-16 md:py-24 bg-gradient-to-t from-white via-gray-50 to-white overflow-hidden scroll-smooth" aria-labelledby="gallery-title">
+    <!-- Elementos decorativos con mejor visibilidad en móvil -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0" 
+             style="background-image: radial-gradient(circle at 1px 1px, #800020 1px, transparent 0);
+                    background-size: 24px 24px;
+                    opacity: 0.07;">
+        </div>
+        
+        <div class="absolute bottom-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-[#800020]/30 rounded-full filter blur-3xl opacity-15"></div>
+        <div class="absolute top-0 left-0 -ml-48 md:-ml-96 -mt-48 md:-mt-96 w-[400px] md:w-[800px] h-[400px] md:h-[800px] rounded-full bg-[#800020]/10 blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Encabezado mejorado -->
+        <header class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+            <div class="inline-flex items-center justify-center space-x-3 mb-4 md:mb-6">
+                <div class="h-[1px] w-8 md:w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+                <span class="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-[#800020]/5 text-sm font-medium text-[#800020] transform hover:scale-105 transition-transform">
+                    {gallery.header.label}
+                </span>
+                <div class="h-[1px] w-8 md:w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent"></div>
+            </div>
+            
+            <h2 id="gallery-title" class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
+                {gallery.header.titulo}
+                <span class="relative whitespace-nowrap text-[#800020]">
+                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.3em] md:h-[0.4em] w-full fill-[#ff9eaa]/30" preserveAspectRatio="none">
+                        <path d={gallery.header.icono}/>
+                    </svg>
+                    <span class="relative">{gallery.header.span}</span>
+                </span>
+            </h2>
+            
+            <p class="text-base md:text-lg text-gray-600 max-w-prose mx-auto px-4">
+                {gallery.header.descripcion}
+            </p>
+        </header>
+
+        <!-- Carrusel Principal Mejorado -->
+        <div class="relative mb-12 md:mb-16 rounded-2xl shadow-xl bg-white">
+            <div class="overflow-hidden rounded-2xl" id="main-carousel">
+                <div class="flex transition-transform duration-700 ease-out" id="carousel-track">
+                    {destacados_data.map((item) => (
+                        <div class="w-full flex-shrink-0">
+                            {item.tipo === 'imagen' && item.image ? (
+                                <div class="relative aspect-[4/3] md:aspect-[16/9]">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.alt || ""}
+                                        class="w-full h-full object-cover brightness-95"
+                                        width={1280}
+                                        height={720}
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white">
+                                        <h3 class="text-xl md:text-2xl font-bold mb-2 drop-shadow-lg">
+                                            {item.titulo}
+                                        </h3>
+                                        <p class="text-sm md:text-base text-white/90 max-w-xl drop-shadow">
+                                            {item.descripcion}
+                                        </p>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div class="relative aspect-[4/3] md:aspect-[16/9]">
+                                    <video
+                                        class="w-full h-full object-cover"
+                                        poster={item.poster}
+                                        controls
+                                        preload="none"
+                                        aria-label={item.titulo}
+                                    >
+                                        <source src={item.src} type="video/mp4" />
+                                        Tu navegador no soporta el elemento de video.
+                                    </video>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                <!-- Controles del carrusel mejorados -->
+                <div class="absolute top-1/2 -translate-y-1/2 left-2 md:left-4 right-2 md:right-4 flex justify-between pointer-events-none">
+                    <button 
+                        class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/30 text-white flex items-center justify-center pointer-events-auto hover:bg-black/50 active:bg-black/60 transition-all duration-300 backdrop-blur-sm group"
+                        id="prev-slide"
+                        aria-label="Anterior"
+                    >
+                        <svg 
+                            class="w-6 h-6 transition-transform group-hover:-translate-x-0.5" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke-width={1.5} 
+                            stroke="currentColor"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <button 
+                        class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/30 text-white flex items-center justify-center pointer-events-auto hover:bg-black/50 active:bg-black/60 transition-all duration-300 backdrop-blur-sm group"
+                        id="next-slide"
+                        aria-label="Siguiente"
+                    >
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="currentColor" 
+                        class="w-6 h-6 transition-transform group-hover:translate-x-0.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Indicadores de diapositivas -->
+                <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2" id="slide-indicators">
+                    {destacados_data.map((_, index) => (
+                        <button
+                            class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/75 transition-all duration-300 data-[active=true]:bg-white data-[active=true]:w-4"
+                            data-index={index}
+                            aria-label={`Ir a diapositiva ${index + 1}`}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros de Galería Mejorados -->
+        <div class="mb-8 md:mb-12">
+            <div class="flex flex-nowrap justify-start md:justify-center gap-3 md:gap-4 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide">
+                {gallery.categorias.map((categoria) => (
+                    <button
+                        class="category-filter whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 
+                               hover:bg-[#800020] hover:text-white hover:shadow-lg hover:scale-105
+                               data-[active=true]:bg-[#800020] data-[active=true]:text-white data-[active=true]:shadow-lg
+                               bg-white text-gray-600 shadow-sm
+                               focus:outline-none focus:ring-2 focus:ring-[#800020]/50"
+                        data-category={categoria.id}
+                        data-active={categoria.id === 'todas' ? 'true' : 'false'}
+                        aria-label={`Filtrar por ${categoria.titulo}`}
+                    >
+                        {categoria.titulo}
+                    </button>
+                ))}
+            </div>
+        </div>
+
+        <!-- Galería en Mosaico Mejorada -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-4 md:gap-6">
+            {gallery_data.map((item) => (
+                item.image && (
+                    <div class="gallery-item group" data-category={item.categoria}>
+                        <div class="relative rounded-xl overflow-hidden bg-gray-900 aspect-[4/3] cursor-pointer">
+                            <Image
+                                src={item.image}
+                                alt={item.alt}
+                                class="w-full h-full object-cover transform transition duration-700 ease-out group-hover:scale-110"
+                                width={400}
+                                height={300}
+                                loading="lazy"
+                            />
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <div class="absolute inset-x-0 bottom-0 p-4 translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+                                <span class="inline-block px-3 py-1 rounded-full bg-[#800020]/30 text-white text-xs backdrop-blur-sm mb-2">
+                                    {gallery.categorias.find(cat => cat.id === item.categoria)?.titulo || item.categoria}
+                                </span>
+                                
+                                <p class="text-white text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                    {item.alt}
+                                </p>
+                            </div>                            
+                        </div>
+                    </div>
+                )
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+/* Scroll suave para el filtro en móvil */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Animaciones mejoradas */
+.animate-fade-scale {
+    animation: fadeScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) {
+    .gallery-item:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Soporte para preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .transition-all,
+    .transition-transform,
+    .transition-opacity,
+    .animate-fade-scale {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* Mejoras de accesibilidad para focus */
+.category-filter:focus-visible,
+.gallery-item button:focus-visible {
+    outline: 2px solid #800020;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(128, 0, 32, 0.3);
+}
+
+/* Optimizaciones para dispositivos pequeños */
+@media (max-width: 640px) {
+    .gallery-item {
+        aspect-ratio: 1;
+    }
+}
+</style>
+
+<script>
+interface CarouselState {
+    currentIndex: number;
+    autoplayInterval: number | null;
+}
+
+const initGallery = () => {
+    // Estado del carrusel
+    const carouselState: CarouselState = {
+        currentIndex: 0,
+        autoplayInterval: null
+    };
+
+    // Elementos del DOM
+    const track = document.getElementById('carousel-track') as HTMLDivElement | null;
+    const slides = track?.children as HTMLCollectionOf<HTMLElement>;
+    const prevButton = document.getElementById('prev-slide') as HTMLButtonElement | null;
+    const nextButton = document.getElementById('next-slide') as HTMLButtonElement | null;
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
+    const galleryItems = document.querySelectorAll<HTMLElement>('.gallery-item');
+    
+    if (!track || !slides?.length) return;
+    
+    // Funciones del carrusel
+    const updateSlidePosition = () => {
+        if (track) {
+            track.style.transform = `translateX(-${carouselState.currentIndex * 100}%)`;
+        }
+    };
+    
+    const moveSlide = (direction: 'prev' | 'next') => {
+        if (direction === 'prev') {
+            carouselState.currentIndex = carouselState.currentIndex > 0 ? carouselState.currentIndex - 1 : slides.length - 1;
+        } else {
+            carouselState.currentIndex = carouselState.currentIndex < slides.length - 1 ? carouselState.currentIndex + 1 : 0;
+        }
+        updateSlidePosition();
+    };
+
+    // Control de autoplay
+    const startAutoplay = () => {
+        if (carouselState.autoplayInterval) return;
+        carouselState.autoplayInterval = window.setInterval(() => moveSlide('next'), 5000);
+    };
+    
+    const stopAutoplay = () => {
+        if (carouselState.autoplayInterval) {
+            clearInterval(carouselState.autoplayInterval);
+            carouselState.autoplayInterval = null;
+        }
+    };
+
+    // Control táctil
+    let touchState = {
+        startX: 0,
+        isDragging: false
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+        touchState.isDragging = true;
+        touchState.startX = e.touches[0].clientX;
+        stopAutoplay();
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        if (!touchState.isDragging) return;
+        
+        const currentX = e.touches[0].clientX;
+        const diff = currentX - touchState.startX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                moveSlide('prev');
+            } else {
+                moveSlide('next');
+            }
+            touchState.isDragging = false;
+            startAutoplay();
+        }
+    };
+
+    const handleTouchEnd = () => {
+        touchState.isDragging = false;
+        startAutoplay();
+    };
+
+    // Filtrado de galería
+    const filterGallery = (category: string) => {
+        requestAnimationFrame(() => {
+            galleryItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                const shouldShow = category === 'todas' || category === itemCategory;
+
+                if (shouldShow) {
+                    item.classList.remove('hidden');
+                    // Aseguramos que la animación se ejecute después de mostrar el elemento
+                    requestAnimationFrame(() => {
+                        item.classList.add('animate-fade-scale');
+                    });
+                } else {
+                    item.classList.add('hidden');
+                    item.classList.remove('animate-fade-scale');
+                }
+            });
+        });
+    };
+
+    // Event Listeners
+    prevButton?.addEventListener('click', () => {
+        moveSlide('prev');
+        stopAutoplay();
+        startAutoplay();
+    });
+    
+    nextButton?.addEventListener('click', () => {
+        moveSlide('next');
+        stopAutoplay();
+        startAutoplay();
+    });
+
+    track.addEventListener('touchstart', handleTouchStart, { passive: true });
+    track.addEventListener('touchmove', handleTouchMove, { passive: true });
+    track.addEventListener('touchend', handleTouchEnd);
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Actualizar estado activo de los botones
+            filterButtons.forEach(btn => btn.setAttribute('data-active', 'false'));
+            button.setAttribute('data-active', 'true');
+            
+            // Aplicar filtro
+            const category = button.getAttribute('data-category') || 'todas';
+            filterGallery(category);
+        });
+    });
+
+    // Inicializar componentes
+    startAutoplay();
+
+    // Limpiar al desmontar
+    return () => {
+        stopAutoplay();
+        track.removeEventListener('touchstart', handleTouchStart);
+        track.removeEventListener('touchmove', handleTouchMove);
+        track.removeEventListener('touchend', handleTouchEnd);
+    };
+};
+
+// Inicializar la galería cuando la página se carga
+document.addEventListener('astro:page-load', initGallery);
+</script>
+
