@@ -1,63 +1,100 @@
 ---
 import { Image } from 'astro:assets';
-import data from '@data';
-const { testimonios } = data;
+import defaultUserImage from '@assets/images/testimonios/user.webp';
+
+// Interfaces
+interface Testimonio {
+    texto: string;
+    autor: string;
+    rol: string;
+    imagen: string;
+}
+
+interface Header {
+    label: string;
+    titulo: string;
+    span: string;
+    descripcion: string;
+    icono: string;
+}
+
+interface Props {
+    header: Header;
+    testimonios: Testimonio[];
+}
+
+// Función para cargar imagen de forma segura
+const loadImage = async (imagePath: string) => {
+    try {
+        const image = await import(`@assets/images/testimonios/${imagePath}`);
+        return image.default;
+    } catch (error) {
+        console.warn(`No se pudo cargar la imagen: ${imagePath}, usando imagen por defecto`);
+        return defaultUserImage;
+    }
+};
+
+const { header, testimonios } = Astro.props;
+
+// Procesar las imágenes
+const testimoniosConImagenes = await Promise.all(
+    testimonios.map(async (testimonio) => ({
+        ...testimonio,
+        imagen: await loadImage(testimonio.imagen)
+    }))
+);
 ---
 
 <section class="relative py-16 md:py-24 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden" aria-labelledby="testimonios-title">
     <!-- Elementos decorativos modernos -->
     <div class="absolute inset-0 pointer-events-none select-none">
-        <!-- Patrón de fondo moderno -->
         <div class="absolute inset-0 opacity-[0.03]"></div>
-        
-        <!-- Gradientes modernos -->
         <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-[#800020]/5 to-transparent blur-[100px] opacity-60"></div>
         <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-[#800020]/5 to-transparent blur-[100px] opacity-60"></div>
     </div>
 
     <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Encabezado Moderno -->
-        <header class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+        <header class="text-center max-w-2xl mx-auto mb-4 md:mb-8">
             <div class="inline-flex items-center justify-center space-x-3 mb-6">
                 <div class="h-px w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent opacity-70"></div>
                 <span class="px-4 py-2 rounded-full bg-white/80 shadow-sm backdrop-blur-sm text-sm font-medium text-[#800020] tracking-wide border border-[#800020]/10">
-                    {testimonios.header.label}
+                    {header.label}
                 </span>
                 <div class="h-px w-12 bg-gradient-to-r from-transparent via-[#800020] to-transparent opacity-70"></div>
             </div>
             
             <h2 id="testimonios-title" class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                {testimonios.header.titulo}
+                {header.titulo}
                 <span class="relative whitespace-nowrap text-[#800020]">
                     <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-[90%] h-[0.6em] w-full fill-[#800020]/20" preserveAspectRatio="none">
-                        <path d={testimonios.header.icono} />
+                        <path d={header.icono} />
                     </svg>
-                    <span class="relative">{testimonios.header.span}</span>
+                    <span class="relative">{header.span}</span>
                 </span>
             </h2>
             
             <p class="text-base md:text-lg text-gray-600 max-w-prose mx-auto">
-                {testimonios.header.descripcion}
+                {header.descripcion}
             </p>
         </header>
 
-        <!-- Slider de Testimonios Moderno -->
+        <!-- Slider de Testimonios -->
         <div class="relative max-w-5xl mx-auto">
-            <!-- Contenedor del Slider -->
             <div class="overflow-hidden" id="testimonios-slider">
-                <div class="flex transition-transform duration-700 ease-out" id="testimonios-track">
-                    {testimonios.visitanos.map((testimonio) => (
+                <div class="flex transition-transform duration-700 ease-out my-8" id="testimonios-track">
+                    {testimoniosConImagenes.map((testimonio) => (
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 sm:p-10 mx-auto max-w-2xl border border-gray-100">
-                                <!-- Comillas decorativas modernas -->
-                                <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-[#800020] to-[#600018] rounded-2xl rotate-12 flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" class="text-white/90 fill-current">
-                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                <!-- Comillas decorativas mejoradas -->
+                                <div class="absolute -right-3 -top-3 z-50 w-16 h-16 lg:w-[70px] lg:h-[70px] bg-gradient-to-br from-[#800020] to-[#600018] rounded-2xl flex items-center justify-center shadow-lg transform -rotate-12 transition-all duration-300 group-hover:rotate-0 group-hover:scale-110">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" class="text-white/90 fill-current">
+                                        <path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.956.76-3.022.66-1.065 1.515-1.867 2.558-2.403L9.373 5c-.8.396-1.56.898-2.26 1.505-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69-.346 2.04-.217 3.1c.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003zm9.124 0c0-.88-.23-1.618-.69-2.217-.326-.42-.77-.692-1.327-.817-.56-.124-1.074-.13-1.54-.022-.16-.94.09-1.95.75-3.02.66-1.06 1.514-1.86 2.557-2.4L18.49 5c-.8.396-1.555.898-2.26 1.505-.708.607-1.34 1.305-1.894 2.094-.556.79-.97 1.68-1.24 2.69-.273 1-.345 2.04-.217 3.1.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003z"/>
                                     </svg>
                                 </div>
 
                                 <!-- Contenido del Testimonio -->
-                                <div class="mb-8">
+                                <div class="mb-8 mt-6">
                                     <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
                                         "{testimonio.texto}"
                                     </p>
@@ -93,8 +130,9 @@ const { testimonios } = data;
                     ))}
                 </div>
 
-                <!-- Controles del Slider Modernos -->
-                <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none px-4">
+                <!-- Controles del Slider -->
+                <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-0 right-0 justify-between pointer-events-none px-4">
+
                     <button 
                         class="testimonial-control-btn group"
                         id="prev-testimonial"
@@ -115,18 +153,8 @@ const { testimonios } = data;
                     </button>
                 </div>
 
-                <!-- Indicadores Modernos -->
-                <div class="flex justify-center items-center gap-3 mt-8">
-                    {testimonios.visitanos.map((_, index) => (
-                        <button
-                            class="testimonial-indicator"
-                            data-index={index}
-                            aria-label={`Ir al testimonio ${index + 1}`}
-                        >
-                            <span class="sr-only">Testimonio {index + 1}</span>
-                        </button>
-                    ))}
-                </div>
+                <!-- Indicadores -->
+                
             </div>
         </div>
     </div>
