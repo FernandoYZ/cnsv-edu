@@ -1,7 +1,14 @@
 ---
+import DonationTabs from '@components/DonationTabs.astro';
+import DonationSection from '@components/sections/DonationSection.astro';
+import PaymenthSection from '@components/sections/PaymenthSection.astro';
+import TransparencySection from '@components/sections/TransparencySection.astro';
 import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title='- Donación'>
-	<main></main>
+	<DonationSection />
+	<DonationTabs />
+	<PaymenthSection />
+	<TransparencySection />
 </Layout>
