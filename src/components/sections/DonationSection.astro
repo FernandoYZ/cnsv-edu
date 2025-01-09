@@ -1,0 +1,209 @@
+---
+import PrimaryButton from '@components/buttons/PrimaryButton.astro';
+import HeroImagen from '@assets/images/gallery/danza_caneros_san_jacinto.jpg';
+import { Image } from 'astro:assets';
+import data from '@data';
+const { donacion } = data;
+---
+
+<section class="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-gradient-to-b from-white via-gray-50/50 to-white" aria-labelledby="donacion-title">
+    <!-- Fondo con gradientes sutiles -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white"></div>
+        <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-[#800020]/5 via-transparent to-transparent"></div>
+        <!-- Formas orgánicas decorativas usando SVG -->
+        <svg class="absolute top-0 right-0 h-64 w-64 text-[#800020]/5" viewBox="0 0 200 200" fill="currentColor">
+            <path d="M47.1,-57.7C59.9,-47.9,68.5,-31.8,72.1,-14.2C75.7,3.4,74.3,22.5,65.7,37.5C57.1,52.5,41.3,63.5,23.6,69.1C5.9,74.7,-13.7,75,-30.6,68.2C-47.5,61.4,-61.7,47.5,-70.1,30.1C-78.5,12.7,-81.1,-8.2,-74.6,-25.5C-68.1,-42.8,-52.5,-56.4,-36.1,-64.6C-19.7,-72.8,-2.5,-75.6,13.1,-71.9C28.7,-68.2,34.3,-67.5,47.1,-57.7Z" transform="translate(100 100)" />
+        </svg>
+        <svg class="absolute bottom-0 left-0 h-96 w-96 text-[#800020]/5" viewBox="0 0 200 200" fill="currentColor">
+            <path d="M37.9,-48.2C51.1,-34.8,65.3,-24,70.2,-9.2C75.1,5.7,70.8,24.5,60.2,37.8C49.7,51,32.9,58.6,14.9,62.9C-3.1,67.1,-22.2,68,-38.8,60.9C-55.3,53.8,-69.3,38.8,-74.1,21.1C-78.9,3.3,-74.6,-17.1,-64.3,-32.8C-54,-48.5,-37.7,-59.5,-22.1,-71.1C-6.4,-82.7,8.5,-94.9,19.5,-89.8C30.4,-84.7,24.7,-61.6,37.9,-48.2Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+            <!-- Contenido Principal -->
+            <div class="relative z-10 space-y-6 animate-fade-up">
+                <!-- Label con animación sutil -->
+                <div class="inline-flex items-center gap-2 animate-fade-in">
+                    <span class="flex h-2 w-2">
+                        <span class="animate-ping absolute h-2 w-2 rounded-full bg-[#800020] opacity-75"></span>
+                        <span class="relative rounded-full h-2 w-2 bg-[#800020]"></span>
+                    </span>
+                    <span class="px-3 py-1.5 text-sm font-medium text-[#800020] bg-[#800020]/5 backdrop-blur-sm rounded-full">
+                        {donacion.header.label}
+                    </span>
+                </div>
+
+                <!-- Título optimizado -->
+                <div class="space-y-4">
+                    <h1 id="donacion-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+                        {donacion.header.titulo1}
+                        <span class="relative whitespace-nowrap text-[#800020]">
+                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-[90%] h-[0.6em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                                <path d={donacion.header.icono} />
+                            </svg>
+                            <span class="relative">{donacion.header.span}</span>
+                        </span>
+                        {donacion.header.titulo2}
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed">
+                        {donacion.header.descripcion}
+                    </p>
+                </div>
+
+                <!-- Cards de Impacto Optimizados -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-8">
+                    {donacion.impacto.map((impacto) => (
+                        <div class="group relative bg-white rounded-lg p-4 border border-gray-100 hover:border-[#800020]/20 transition-all duration-300 hover:shadow-md">
+                            <div class="flex flex-col items-center text-center space-y-2">
+                                <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800020]/5 text-[#800020] group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={impacto.icono} />
+                                    </svg>
+                                </div>
+                                <p class="text-2xl font-bold bg-gradient-to-r from-[#800020] to-[#600018] bg-clip-text text-transparent">
+                                    {impacto.cantidad}
+                                </p>
+                                <div>
+                                    <h3 class="text-sm font-medium text-gray-900 group-hover:text-[#800020] transition-colors">
+                                        {impacto.titulo}
+                                    </h3>
+                                    <p class="text-xs text-gray-500 mt-1">{impacto.meta}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <!-- CTA Section -->
+                <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center mt-8">
+                    <PrimaryButton href="donar" nombre="Haz tu Donación" label="donación" />
+                    <p class="text-sm text-gray-500 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        Donaciones deducibles de impuestos
+                    </p>
+                </div>
+            </div>
+
+            <!-- Imagen Principal Optimizada -->
+            <div class="relative lg:sticky lg:top-8 animate-fade-left">
+                <div class="absolute -inset-4" aria-hidden="true">
+                    <div class="w-full h-full rotate-3 rounded-3xl bg-gradient-to-br from-red-700/50 to-red-700/30 opacity-50"></div>
+                </div>
+                <div class="absolute -inset-4" aria-hidden="true">
+                    <div class="w-full h-full -rotate-3 rounded-3xl bg-gradient-to-br from-red-700/50 to-red-700/30 opacity-25"></div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden bg-white shadow-xl">
+                    <div class="aspect-[4/3]">
+                        <Image
+                            src={HeroImagen}
+                            alt="Danza de Cañeros San Jacinto"
+                            class="w-full h-full object-cover"
+                            width={800}
+                            height={600}
+                            loading="eager"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
+                    </div>
+
+                    <!-- Progress Card -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <div class="p-4 backdrop-blur-md bg-white/95 rounded-xl shadow-lg border border-white/40">
+                            <div class="flex items-center gap-4">
+                                <div class="relative shrink-0">
+                                    <svg class="w-16 h-16 transform -rotate-90">
+                                        <circle
+                                            cx="32"
+                                            cy="32"
+                                            r="28"
+                                            stroke="currentColor"
+                                            stroke-width="6"
+                                            fill="none"
+                                            class="text-gray-200"
+                                        />
+                                        <circle
+                                            cx="32"
+                                            cy="32"
+                                            r="28"
+                                            stroke="currentColor"
+                                            stroke-width="6"
+                                            fill="none"
+                                            stroke-dasharray="175.93"
+                                            stroke-dashoffset="26.39"
+                                            class="text-[#800020] animate-progress"
+                                        />
+                                    </svg>
+                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-bold text-[#800020]">
+                                        85%
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Meta Alcanzada</h3>
+                                    <p class="text-sm text-gray-600">Ayúdanos a alcanzar nuestra meta anual</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-left {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+}
+
+@keyframes progress {
+    from { stroke-dashoffset: 175.93; }
+    to { stroke-dashoffset: 26.39; }
+}
+
+.animate-fade-up {
+    opacity: 0;
+    animation: fade-up 0.8s ease-out forwards;
+}
+
+.animate-fade-left {
+    opacity: 0;
+    animation: fade-left 0.8s ease-out 0.2s forwards;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+}
+
+.animate-progress {
+    animation: progress 2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-up,
+    .animate-fade-left,
+    .animate-float,
+    .animate-float-delayed,
+    .animate-progress {
+        animation: none;
+    }
+}
+</style>
