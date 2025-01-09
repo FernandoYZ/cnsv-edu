@@ -616,12 +616,12 @@
                 "description": "Ambientes modernos diseñados para inspirar"
             },
             {
-                "src": "donation.webp",
+                "src": "dia_juventud.webp",
                 "title": "Vida Estudiantil",
                 "description": "Experiencias que transforman vidas"
             },
             {
-                "src": "donation.webp",
+                "src": "frontis.webp",
                 "title": "Formación Integral",
                 "description": "Desarrollo académico y espiritual"
             }
@@ -972,6 +972,39 @@
                 "autor": "Laura Sánchez",
                 "rol": "Estudiante de 6to año",
                 "imagen": "/path/to/student2.jpg"
+            }
+        ]
+    },
+    "donacion": {
+        "header": {
+            "label": "Tu apoyo Importa",
+            "titulo1": "Tu Apoyo",
+            "span": "Transforma", 
+            "icono": "M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z",
+            "titulo2": "Vidas",
+            "descripcion": "Tu generosidad permite más jóvenes tengan acceso a una educación integral basada en valores cristianos y excelencia académica."
+        },
+        "impacto": [
+            {
+                "titulo": "Infraestructura",
+                "descripcion": "Mejoramiento y modernización de instalaciones educativas",
+                "icono": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+                "cantidad": "45%",
+                "meta": "de los fondos"
+            },
+            {
+                "titulo": "Becas Estudiantiles",
+                "descripcion": "Apoyo a estudiantes talentosos con recursos limitados",
+                "icono": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
+                "cantidad": "30%",
+                "meta": "de las donaciones"
+            },
+            {
+                "titulo": "Actividades Pastorales",
+                "descripcion": "Fortalecimiento de programas de formación espiritual",
+                "icono": "M12 4.354a4 4 0 110 5.292V4.354zM15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
+                "cantidad": "25%",
+                "meta": "del apoyo recibido"
             }
         ]
     },
