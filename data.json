@@ -776,7 +776,7 @@
             {
                 "tipo": "video",
                 "src": "video1.mp4",
-                "poster": "poster1.jpg",
+                "poster": "cnsv-social.jpg",
                 "titulo": "Vida Estudiantil",
                 "descripcion": "Un día en la vida de nuestros estudiantes"
             }
@@ -1005,6 +1005,84 @@
                 "icono": "M12 4.354a4 4 0 110 5.292V4.354zM15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
                 "cantidad": "25%",
                 "meta": "del apoyo recibido"
+            }
+        ]
+    },
+    "payment": {
+        "header": {
+            "label": "Métodos de Pago",
+            "titulo": "Realiza tu",
+            "span": "Donación",
+            "icono": "M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z",
+            "descripcion": "Elige el método de pago que prefieras para realizar tu aporte"
+        },
+        "datosBancarios": {
+            "titulo": "Transferencia Bancaria",
+            "cuentas": [
+                {
+                    "banco": "Banco de Crédito del Perú",
+                    "tipo": "Cuenta Corriente",
+                    "moneda": "Soles",
+                    "numero": "255-75924005-0-49",
+                    "cci": "002-225-175924005049-82",
+                    "titular": "Paul Miguel Florencio Supa",
+                    "ruc": "20155998637"
+                }
+            ]
+        },
+        "datosYape": {
+            "titulo": "Yape",
+            "nombre": "Paul Miguel Florencio Supa",
+            "numero": "940 768 184",
+            "qrAlt": "Código QR para pago con Yape"
+        }
+    },
+    "transparency": {
+        "header": {
+            "label": "Tranparencia",
+            "titulo": "El impacto de",
+            "span": "Tu Apoyo",
+            "icono": "M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z",
+            "descripcion": "Comprometidos con la transparencia y el uso responsable de cada donación recibida."
+        },
+        "logros": [
+            {
+                "numero": "50+",
+                "titulo": "Estudiantes Becados",
+                "descripcion": "Jóvenes que recibieron apoyo integral para su educación",
+                "icon": "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+            },
+            {
+                "numero": "4",
+                "titulo": "Laboratorios Equipados",
+                "descripcion": "Nuevos espacios para aprendizaje científico y tecnológico",
+                "icon": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+            },
+            {
+                "numero": "100%",
+                "titulo": "Transparencia",
+                "descripcion": "Gestión responsable y reportes financieros trimestrales",
+                "icon": "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+            }
+        ],
+        "informes": [
+            {
+                "titulo": "Reporte Financiero 2024-I",
+                "fecha": "Enero - Junio 2024",
+                "tamano": "2.5 MB",
+                "enlace": "/reportes/financiero-2024-1.pdf"
+            },
+            {
+                "titulo": "Memoria Anual 2023",
+                "fecha": "Año Académico 2023",
+                "tamano": "4.8 MB",
+                "enlace": "/reportes/memoria-2023.pdf"
+            },
+            {
+                "titulo": "Informe de Impacto",
+                "fecha": "2023 - 2024",
+                "tamano": "3.2 MB",
+                "enlace": "/reportes/impacto-2023-2024.pdf"
             }
         ]
     },
