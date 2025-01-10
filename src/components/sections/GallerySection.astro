@@ -15,6 +15,9 @@ const images = {
     paseo_callao: (await import('@assets/images/gallery/paseo_callao.webp')).default,
     paseo_parque_leyendas: (await import('@assets/images/gallery/paseo_parque_leyendas.webp')).default,
     dia_juventud: (await import('@assets/images/gallery/dia_juventud.webp')).default,
+    olimpiadas_100_metros: (await import('@assets/images/gallery/olimpiadas_100_metros.webp')).default,
+    olimpiadas_atletismo: (await import('@assets/images/gallery/olimpiadas_atletismo.webp')).default,
+    olimpiadas_salto_largo: (await import('@assets/images/gallery/olimpiadas_salto_largo.webp')).default,
 };
 
 // Función para obtener la clave de la imagen a partir del nombre del archivo
@@ -167,7 +170,7 @@ const destacados_data = gallery.destacados.map(item => ({
 
         <!-- Filtros de Galería Mejorados -->
         <div class="mb-8 md:mb-12">
-            <div class="flex flex-nowrap justify-start md:justify-center gap-3 md:gap-4 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide">
+            <div class="flex flex-nowrap justify-start md:justify-center gap-3 md:gap-4 overflow-x-auto md:py-4 py-4 px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide">
                 {gallery.categorias.map((categoria) => (
                     <button
                         class="category-filter whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 
