@@ -36,8 +36,8 @@ const sideImages = [
         </div>
         
         <!-- Elementos decorativos -->
-        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-[#800020]/5 to-transparent rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[#800020]/5 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl"></div>
     </aside>
 
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -45,18 +45,18 @@ const sideImages = [
             <!-- Columna de Contenido -->
             <section class="lg:col-span-5 space-y-8">
                 <header class="space-y-6">
-                    <span class="inline-flex items-center gap-2 rounded-full bg-[#800020]/5 px-4 py-1.5 text-sm font-medium text-[#800020]">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
                         <span class="relative flex h-2 w-2" aria-hidden="true">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#800020] opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#800020]"></span>
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
                         {Visit.label}
                     </span>
 
                     <h1 id="campus-title" class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                         {Visit.titulo}
-                        <span class="relative whitespace-nowrap text-[#800020]">
-                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                        <span class="relative whitespace-nowrap text-primary">
+                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-primary/20" preserveAspectRatio="none">
                                 <path d={Visit.icon}></path>
                             </svg>
                             <span class="relative">{Visit.span}</span>
@@ -72,7 +72,7 @@ const sideImages = [
                 <dl class="grid grid-cols-3 gap-6">
                     {Visit.stats.map(stat => (
                         <div class="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <dt class="text-2xl font-bold text-[#800020]">{stat.value}</dt>
+                            <dt class="text-2xl font-bold text-primary">{stat.value}</dt>
                             <dd class="text-sm text-gray-600 mt-1">{stat.label}</dd>
                         </div>
                     ))}
@@ -82,7 +82,7 @@ const sideImages = [
                 <ul class="space-y-6" role="list">
                     {Visit.features.map(feature => (
                         <li class="flex items-start gap-4">
-                            <span class="flex-none inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/10 text-[#800020]" aria-hidden="true">
+                            <span class="flex-none inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <Fragment set:html={feature.icon} />
                                 </svg>
@@ -108,7 +108,7 @@ const sideImages = [
                     <!-- Imagen Principal -->
                     <article class="col-span-8">
                         <div class="group relative">
-                            <div class="absolute -inset-2 bg-gradient-to-r from-[#800020]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" aria-hidden="true"></div>
+                            <div class="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" aria-hidden="true"></div>
                             <figure class="relative rounded-2xl overflow-hidden bg-gray-100 shadow-xl">
                                 <Image
                                     src={facilityJPG}
@@ -134,7 +134,7 @@ const sideImages = [
                     <aside class="col-span-4 space-y-4">
                         {sideImages.map(img => (
                             <div class="group relative">
-                                <div class="absolute -inset-2 bg-gradient-to-r from-[#800020]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" aria-hidden="true"></div>
+                                <div class="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" aria-hidden="true"></div>
                                 <figure class="relative rounded-2xl overflow-hidden bg-gray-100 shadow-lg">
                                     <Image
                                         src={img.src}
@@ -160,10 +160,10 @@ const sideImages = [
                     <!-- Logros -->
                     <article class="col-span-12">
                         <div class="relative">
-                            <div class="absolute -inset-2 bg-gradient-to-r from-[#800020]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" aria-hidden="true"></div>
+                            <div class="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" aria-hidden="true"></div>
                             <div class="relative p-6 bg-white rounded-2xl border border-gray-100 shadow-lg">
                                 <header class="flex items-center gap-4">
-                                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/10 text-[#800020]" aria-hidden="true">
+                                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary" aria-hidden="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={Visit.logros.icon} />
                                         </svg>
@@ -176,7 +176,7 @@ const sideImages = [
                                 <ul class="mt-4 space-y-3" role="list">
                                     {Visit.logros.achievements.map(achievement => (
                                         <li class="flex items-center gap-2">
-                                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#800020]/5 text-[#800020]" aria-hidden="true">
+                                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary/5 text-primary" aria-hidden="true">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                                 </svg>

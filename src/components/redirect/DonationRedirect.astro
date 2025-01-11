@@ -20,8 +20,8 @@ import SecundaryButton from '@components/buttons/SecundaryButton.astro';
         
         <!-- Formas decorativas -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
-            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-[#800020]/5 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#800020]/5 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
         </div>
     </aside>
 
@@ -32,18 +32,18 @@ import SecundaryButton from '@components/buttons/SecundaryButton.astro';
                 <header class="space-y-6">
                     <div class="flex items-center gap-3">
                         <span class="flex h-3 w-3" aria-hidden="true">
-                            <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-[#800020] opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-[#800020]"></span>
+                            <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                         </span>
-                        <span class="px-4 py-2 rounded-full bg-[#800020]/5 text-sm font-medium text-[#800020] tracking-wider">
+                        <span class="px-4 py-2 rounded-full bg-primary/5 text-sm font-medium text-primary tracking-wider">
                             {Donation.label}
                         </span>
                     </div>
 
                     <h1 id="donation-title" class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                         {Donation.titulo1}
-                        <span class="relative whitespace-nowrap text-[#800020]">
-                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                        <span class="relative whitespace-nowrap text-primary">
+                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-primary/20" preserveAspectRatio="none">
                                 <path d={Donation.icono}></path>
                             </svg>
                             <span class="relative">{Donation.span}</span>
@@ -60,7 +60,7 @@ import SecundaryButton from '@components/buttons/SecundaryButton.astro';
                 <ul class="space-y-6" role="list">
                     {Donation.features.map(feature => (
                         <li class="flex items-start gap-4">
-                            <span class="flex-none inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#800020]/10 text-[#800020]">
+                            <span class="flex-none inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary">
                                 <svg 
                                     xmlns="http://www.w3.org/2000/svg" 
                                     class="w-6 h-6" 
@@ -95,8 +95,8 @@ import SecundaryButton from '@components/buttons/SecundaryButton.astro';
                 <!-- Tarjeta Principal -->
                 <section class="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
                     <header class="flex items-center gap-6 mb-8">
-                        <span class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-[#800020]/10" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <span class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </span>
@@ -110,7 +110,7 @@ import SecundaryButton from '@components/buttons/SecundaryButton.astro';
                     <ul class="space-y-4" role="list">
                         {Donation.impactAreas.map(item => (
                             <li class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300">
-                                <span class="flex-none inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#800020]/10 text-[#800020]" aria-hidden="true">
+                                <span class="flex-none inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary" aria-hidden="true">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                     </svg>
@@ -123,7 +123,7 @@ import SecundaryButton from '@components/buttons/SecundaryButton.astro';
 
                 <!-- Elementos Decorativos -->
                 <div class="absolute -inset-4 -z-10" aria-hidden="true">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#800020]/20 to-transparent opacity-50 blur-2xl rounded-3xl"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-50 blur-2xl rounded-3xl"></div>
                 </div>
             </aside>
         </main>

@@ -28,8 +28,8 @@ const carrouselData = visitanos.sliders.map(imagen => ({
                     opacity: 0.03;">
         </div>
         <!-- Formas decorativas -->
-        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-[#800020]/10 to-transparent blur-3xl"></div>
-        <div class="absolute bottom-0 -mb-16 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[#800020]/10 to-transparent blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-primary/10 to-transparent blur-3xl"></div>
+        <div class="absolute bottom-0 -mb-16 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-primary/10 to-transparent blur-3xl"></div>
     </div>
 
     <div class="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,10 +39,10 @@ const carrouselData = visitanos.sliders.map(imagen => ({
                 <!-- Badge optimizado -->
                 <div class="inline-flex items-center gap-2 mb-6 animate-badge">
                     <span class="relative flex h-2 w-2">
-                        <span class="ping absolute inline-flex h-full w-full rounded-full bg-[#800020] opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#800020]"></span>
+                        <span class="ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                     </span>
-                    <span class="px-3 py-1.5 text-sm font-medium text-[#800020] bg-[#800020]/5 rounded-full">
+                    <span class="px-3 py-1.5 text-sm font-medium text-primary bg-primary/5 rounded-full">
                         {visitanos.header.label}
                     </span>
                 </div>
@@ -51,8 +51,8 @@ const carrouselData = visitanos.sliders.map(imagen => ({
                 <div class="space-y-6">
                     <h1 id="visit-title" class="animate-title text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
                         {visitanos.header.titulo}
-                        <span class="relative whitespace-nowrap text-[#800020]">
-                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-[90%] h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                        <span class="relative whitespace-nowrap text-primary">
+                            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-[90%] h-[0.4em] w-full fill-primary/20" preserveAspectRatio="none">
                                 <path d={visitanos.header.icono} />
                             </svg>
                             <span class="relative">{visitanos.header.span}</span>
@@ -67,7 +67,7 @@ const carrouselData = visitanos.sliders.map(imagen => ({
                     <div class="flex flex-col sm:flex-row gap-3 pt-2 animate-cta">
                         <a 
                             href="#tour-virtual"
-                            class="cta-secondary inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-[#800020] bg-[#800020]/5 hover:bg-[#800020]/10 transition-colors"
+                            class="cta-secondary inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg text-primary bg-primary/5 hover:bg-primary/10 transition-colors"
                         >
                             Tour Virtual 360°
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -80,14 +80,14 @@ const carrouselData = visitanos.sliders.map(imagen => ({
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 animate-features">
                         {visitanos.features.map(feature => (
                             <div class="feature-card group">
-                                <div class="relative p-4 lg:p-5 bg-white rounded-lg shadow-sm border border-gray-100 hover:border-[#800020]/20 transition-all duration-300">
+                                <div class="relative p-4 lg:p-5 bg-white rounded-lg shadow-sm border border-gray-100 hover:border-primary/20 transition-all duration-300">
                                     <div class="flex flex-col items-center gap-3 text-center">
-                                        <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-[#800020]/5 text-[#800020] transition-transform group-hover:scale-110">
+                                        <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/5 text-primary transition-transform group-hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={feature.icon} />
                                             </svg>
                                         </span>
-                                        <h3 class="text-sm font-medium text-gray-900 group-hover:text-[#800020] transition-colors">
+                                        <h3 class="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
                                             {feature.title}
                                         </h3>
                                     </div>
@@ -547,7 +547,7 @@ document.addEventListener('astro:page-load', initEnhancedCarousel);
             color: #4B5563;
         }
         
-        .bg-[#800020]/5 {
+        .bg-primary/5 {
             background-color: rgba(128, 0, 32, 0.1);
         }
     }

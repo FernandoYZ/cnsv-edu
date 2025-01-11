@@ -17,13 +17,13 @@ const { importancia, admission } = data;
         
         <!-- Círculos decorativos agrupados -->
         <div class="absolute top-0 right-0 -mt-16 -mr-16">
-            <div class="w-64 h-64 rounded-full bg-[#800020]/5 blur-3xl"></div>
+            <div class="w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
         </div>
         <div class="absolute bottom-0 left-0 -mb-16 -ml-16">
-            <div class="w-64 h-64 rounded-full bg-[#800020]/5 blur-3xl"></div>
+            <div class="w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
         </div>
         <div class="absolute bottom-0 right-0 -mt-16 -mr-16">
-            <div class="absolute w-[500px] h-[500px] -top-32 -right-16 rounded-full bg-[#800020]/10 blur-3xl"></div>
+            <div class="absolute w-[500px] h-[500px] -top-32 -right-16 rounded-full bg-primary/10 blur-3xl"></div>
         </div>
     </aside>
 
@@ -32,7 +32,7 @@ const { importancia, admission } = data;
             <!-- Columna de Contenido -->
             <section class="relative">
                 <div class="absolute -left-4 top-0 h-full w-1" aria-hidden="true">
-                    <div class="sticky top-0 w-full h-24 bg-gradient-to-b from-[#800020] via-[#800020]/50 to-transparent rounded-full"></div>
+                    <div class="sticky top-0 w-full h-24 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full"></div>
                 </div>
 
                 <div class="space-y-8">
@@ -40,10 +40,10 @@ const { importancia, admission } = data;
                         <!-- Badge de Admisiones -->
                         <div class="inline-flex items-center gap-3">
                             <span class="relative flex h-3 w-3" aria-hidden="true">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#800020] opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-3 w-3 bg-[#800020]"></span>
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                             </span>
-                            <span class="px-4 py-2 rounded-full bg-[#800020]/5 text-sm font-medium text-[#800020] tracking-wider">
+                            <span class="px-4 py-2 rounded-full bg-primary/5 text-sm font-medium text-primary tracking-wider">
                                 {admission.label} {AnioActual + 1}
                             </span>
                         </div>
@@ -51,8 +51,8 @@ const { importancia, admission } = data;
                         <!-- Título Principal -->
                         <h1 id="admission-title" class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                             {admission.titulo}
-                            <span class="relative whitespace-nowrap text-[#800020]">
-                                <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#800020]/20" preserveAspectRatio="none">
+                            <span class="relative whitespace-nowrap text-primary">
+                                <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-primary/20" preserveAspectRatio="none">
                                     <path d=`${admission.icon}`></path>
                                 </svg>
                                 {admission.span}
@@ -68,10 +68,10 @@ const { importancia, admission } = data;
                     <ul class="grid sm:grid-cols-2 gap-6" role="list">
                         {[...admission.features].map(feature => (
                             <li class="group relative">
-                                <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#800020]/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 blur-lg"></div>
+                                <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 blur-lg"></div>
                                 <article class="relative p-5 bg-white rounded-lg shadow-sm border border-gray-100">
                                     <div class="flex gap-4">
-                                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#800020]/10 text-[#800020]">
+                                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d={feature.icon === 'check' ? "M4.5 12.75l6 6 9-13.5" : "M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"} />
                                             </svg>
@@ -123,7 +123,7 @@ const { importancia, admission } = data;
                         <figcaption class="absolute bottom-6 left-6 right-6">
                             <div class="p-6 backdrop-blur-md bg-white/90 rounded-xl shadow-lg border border-white/40 transform translate-y-0 hover:-translate-y-1 transition-transform duration-300">
                                 <div class="flex items-center gap-4">
-                                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800020] text-white font-bold text-lg">
+                                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white font-bold text-lg">
                                         {AnioActual - importancia.aniversario.anio}
                                     </span>
                                     <div>

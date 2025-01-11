@@ -4,34 +4,33 @@ import data from '@data';
 const { cursos } = data;
 ---
 
-<section class="py-12 sm:py-16 lg:py-24 bg-gradient-to-tr from-black via-black/95 to-[#0052cc]/30 relative overflow-hidden">
+<section class="py-12 sm:py-16 lg:py-24 bg-gradient-to-tr from-white via-white to-primary/10 relative overflow-hidden">
     <!-- Elementos decorativos mejorados -->
     <div class="absolute inset-0">
         <div class="absolute inset-0 bg-[radial-gradient(#800020_0.5px,transparent_0.5px)] opacity-[0.1] [background-size:16px_16px]"></div>
-        <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-[#0052cc]/20 to-transparent blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-tr from-[#0052cc]/10 to-transparent blur-2xl"></div>
+        <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-primary/20 to-transparent blur-3xl animate-pulse-slow"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <!-- Encabezado mejorado -->
         <header class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
             <div class="inline-flex items-center justify-center space-x-3 mb-6">
-                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#0052cc] to-transparent"></div>
-                <span class="px-4 py-2 rounded-full bg-[#0052cc]/20 text-sm font-medium text-[#66b3ff] tracking-wider border border-[#0052cc]/30">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                <span class="px-4 py-2 rounded-full bg-primary/5 text-sm font-medium text-primary tracking-wider">
                     Oferta Educativa
                 </span>
-                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#0052cc] to-transparent"></div>
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
             </div>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Niveles 
-                <span class="relative whitespace-nowrap text-[#66b3ff]">
+                <span class="relative whitespace-nowrap text-primary">
                     Académicos
-                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-[#66b3ff]/30" preserveAspectRatio="none">
+                    <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute left-0 top-full h-[0.4em] w-full fill-primary/30" preserveAspectRatio="none">
                         <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
                     </svg>
                 </span>
             </h2>
-            <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 Formación integral que combina excelencia académica y valores católicos en modalidades adaptadas a cada etapa.
             </p>
         </header>
@@ -39,62 +38,61 @@ const { cursos } = data;
         <!-- Contenedor de niveles mejorado -->
         <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
             {Object.entries(cursos.niveles).map(([key, nivel], index) => (
-                <article class="group relative rounded-3xl transition-transform duration-300 hover:transform hover:scale-[1.02] focus-within:scale-[1.02]">
-                    <!-- Fondos mejorados -->
+                <article class="group relative rounded-3xl transition-transform duration-300 hover:transform hover:scale-[1.02] focus-within:scale-[1.02] shadow-lg hover:shadow-xl">
+                    <!-- Fondo decorativo con degradado mejorado -->
                     <div class="absolute inset-0 rounded-3xl">
-                        <div class="absolute inset-0 bg-gradient-to-br from-neutral-800/70 to-neutral-900/60 rounded-3xl"></div>
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#0052cc]/30 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                        <div class="absolute inset-0 border border-white/10 rounded-3xl"></div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-white rounded-3xl"></div>
+                        <div class="absolute inset-0 border border-gray-300 group-hover:border-primary transition-colors duration-500 rounded-3xl"></div>
                     </div>
 
-                    <!-- Contenido mejorado -->
+                    <!-- Contenido del card -->
                     <div class="relative p-6 sm:p-8 h-full flex flex-col">
-                        <!-- Etiqueta de modalidad mejorada -->
+                        <!-- Etiqueta de modalidad destacada -->
                         <div class="absolute top-4 sm:top-6 right-4 sm:right-6">
-                            <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-[#0052cc]/20 border border-[#0052cc]/30 backdrop-blur-sm">
+                            <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-xs sm:text-sm">
                                 <span class="relative flex h-2 w-2 mr-2">
-                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#66b3ff] opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#66b3ff]"></span>
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                 </span>
-                                <span class="text-xs sm:text-sm font-medium text-[#66b3ff]">{nivel.modalidad}</span>
+                                {nivel.modalidad}
                             </span>
                         </div>
 
-                        <!-- Título y descripción mejorados -->
+                        <!-- Título del nivel -->
                         <div class="mb-6">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#66b3ff] transition-colors duration-300">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors duration-300">
                                 {nivel.titulo}
                             </h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">
+                            <p class="text-base text-gray-600 leading-relaxed">
                                 {nivel.descripcion}
                             </p>
                         </div>
 
-                        <!-- Grados mejorados -->
+                        <!-- Grados con estilo mejorado -->
                         <div class="flex flex-wrap gap-2 sm:gap-3 mb-6">
                             {nivel.grados.map((grado) => (
-                                <span class="px-3 py-1.5 bg-white/5 rounded-lg text-sm text-white font-medium border border-white/10 backdrop-blur-sm">
+                                <span class="px-3 py-1.5 bg-primary/10 text-primary font-medium text-sm rounded-lg border border-primary/30">
                                     {grado}
                                 </span>
                             ))}
                         </div>
 
-                        <!-- Horario mejorado -->
-                        <div class="flex items-center gap-2 sm:gap-3 mb-6 text-[#66b3ff] bg-[#0052cc]/10 px-4 py-2 rounded-lg border border-[#0052cc]/20 backdrop-blur-sm">
+                        <!-- Horario destacado con icono -->
+                        <div class="flex items-center gap-2 sm:gap-3 mb-6 bg-primary/5 text-primary px-4 py-2 rounded-lg border border-primary/20">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-sm">{nivel.horario}</span>
+                            <span class="text-sm font-medium">{nivel.horario}</span>
                         </div>
 
-                        <!-- Características mejoradas -->
+                        <!-- Características -->
                         <ul class="space-y-3 mt-auto">
                             {nivel.caracteristicas.map((caracteristica) => (
-                                <li class="flex items-start gap-3 text-gray-300 group/item">
-                                    <svg class="h-5 w-5 text-[#0052cc] flex-shrink-0 mt-0.5 group-hover/item:text-[#66b3ff] transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
+                                <li class="flex items-start gap-3 text-gray-700 group/item">
+                                    <svg class="h-5 w-5 text-primary/60 flex-shrink-0 mt-0.5 group-hover/item:text-primary transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                     </svg>
-                                    <span class="text-sm sm:text-base leading-relaxed group-hover/item:text-white transition-colors duration-300">
+                                    <span class="text-sm sm:text-base leading-relaxed">
                                         {caracteristica}
                                     </span>
                                 </li>
@@ -105,7 +103,6 @@ const { cursos } = data;
             ))}
         </div>
     </div>
-    <div class="absolute top-0 -z-10 left-0 w-full h-full bg-black" aria-hidden="true"></div>
 </section>
 
 <style>

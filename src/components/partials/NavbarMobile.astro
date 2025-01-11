@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
                                 {/* Línea indicadora */}
                                 {isActive && (
                                     <div 
-                                        class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-[#800020] rounded-b-full shadow-sm"
+                                        class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-primary rounded-b-full shadow-sm"
                                         style="view-transition-name: nav-indicator;"
                                         aria-hidden="true"
                                     />
@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
                                 ]}>
                                     <div class:list={[
                                         "transition-colors duration-300",
-                                        isActive ? "text-[#800020]" : "text-gray-400 group-hover:text-gray-600"
+                                        isActive ? "text-primary" : "text-gray-400 group-hover:text-gray-600"
                                     ]}>
                                         <Fragment set:html={item.icon} />
                                     </div>
@@ -62,7 +62,7 @@ const currentPath = Astro.url.pathname;
 
                                 <span class:list={[
                                     "text-xs font-medium mt-1 transition-colors duration-300",
-                                    isActive ? "text-[#800020]" : "text-gray-500 group-hover:text-gray-700"
+                                    isActive ? "text-primary" : "text-gray-500 group-hover:text-gray-700"
                                 ]}>
                                     {item.label}
                                 </span>
@@ -130,7 +130,7 @@ class NavbarController {
                 if (!indicator) {
                     // Crear el indicador si no existe
                     const newIndicator = document.createElement('div');
-                    newIndicator.className = 'absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-[#800020] rounded-b-full shadow-sm';
+                    newIndicator.className = 'absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 h-[3.5px] bg-primary rounded-b-full shadow-sm';
                     newIndicator.setAttribute('aria-hidden', 'true');
                     newIndicator.style.viewTransitionName = 'nav-indicator';
                     item.insertBefore(newIndicator, item.firstChild);
@@ -140,13 +140,13 @@ class NavbarController {
                 const iconContainer = item.querySelector('div[class*="transition-colors"]');
                 if (iconContainer) {
                     iconContainer.classList.remove('text-gray-400', 'group-hover:text-gray-600');
-                    iconContainer.classList.add('text-[#800020]');
+                    iconContainer.classList.add('text-primary');
                 }
                 
                 const label = item.querySelector('span');
                 if (label) {
                     label.classList.remove('text-gray-500', 'group-hover:text-gray-700');
-                    label.classList.add('text-[#800020]');
+                    label.classList.add('text-primary');
                 }
             } else {
                 item.removeAttribute('aria-current');
@@ -160,13 +160,13 @@ class NavbarController {
                 // Restaurar colores por defecto
                 const iconContainer = item.querySelector('div[class*="transition-colors"]');
                 if (iconContainer) {
-                    iconContainer.classList.remove('text-[#800020]');
+                    iconContainer.classList.remove('text-primary');
                     iconContainer.classList.add('text-gray-400', 'group-hover:text-gray-600');
                 }
                 
                 const label = item.querySelector('span');
                 if (label) {
-                    label.classList.remove('text-[#800020]');
+                    label.classList.remove('text-primary');
                     label.classList.add('text-gray-500', 'group-hover:text-gray-700');
                 }
             }
