@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
     site: 'https://cnsv-edu.vercel.app/',
     integrations: [tailwind()],
-    output: 'static',
+    output: 'server',
     compressHTML: true,
     build: {
         inlineStylesheets: 'auto'
@@ -46,7 +46,7 @@ export default defineConfig({
         ],
         server: {
             hmr: {
-                overlay: false // Desactiva el overlay de errores para una experiencia de desarrollo más limpia
+                overlay: false
             }
         }
     },
