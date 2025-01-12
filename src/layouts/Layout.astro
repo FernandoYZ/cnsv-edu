@@ -1,7 +1,6 @@
 ---
 import Footer from '@components/partials/Footer.astro'
 import Header from '@components/partials/Header.astro'
-import SpeedInsights from "@vercel/speed-insights/astro"
 import Analytics from '@vercel/analytics/astro'
 import { ClientRouter } from 'astro:transitions'
 import data from '@data'
@@ -42,7 +41,6 @@ const {title} = Astro.props;
 			<slot />
 		</main>
 		<Footer />
-        <SpeedInsights />
         <Analytics/>
 	</body>
 </html>
