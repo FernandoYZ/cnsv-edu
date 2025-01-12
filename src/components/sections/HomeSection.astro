@@ -5,10 +5,7 @@ import data from '@data';
 import PrimaryButton from '@components/buttons/PrimaryButton.astro';
 
 const { hero, caracteristicas } = data.index;
-const preloadImageUrl = await import('@assets/images/hero/home_hero_org.webp?url').then(m => m.default);
 ---
-
-<link rel="preload" href={preloadImageUrl} as="image" />
 
 <section 
     class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-950/20 to-gray-900/5"

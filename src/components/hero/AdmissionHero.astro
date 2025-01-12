@@ -1,18 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import heroImage from '@assets/images/hero/about_organization.webp';
-import data from '@data';
-const preloadImageUrl = await import('@assets/images/hero/about_hero.webp?url').then(m => m.default);
-
-const { about } = data;
 ---
-
-<link rel="preload" href={preloadImageUrl} as="image" />
 
 <section 
     class="relative min-h-[70dvh] h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-950/20 to-gray-900/5"
     style="content-visibility: auto;"
-    aria-labelledby="about-hero-title"
+    aria-labelledby="admission-hero-title"
 >
     <!-- Fondo -->
     <div class="absolute inset-0">
@@ -48,7 +42,7 @@ const { about } = data;
 
             <!-- Título principal -->
             <h1 
-                id="about-hero-title" 
+                id="admission-hero-title" 
                 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6 animate-title"
             >
                 Postula y sé 

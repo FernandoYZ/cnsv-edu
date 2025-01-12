@@ -1,13 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import heroImage from '@assets/images/hero/about_hero.webp';
-import data from '@data';
-const preloadImageUrl = await import('@assets/images/hero/about_hero.webp?url').then(m => m.default);
-
-const { about } = data;
 ---
-
-<link rel="preload" href={preloadImageUrl} as="image" />
 
 <section 
     class="relative min-h-[70dvh] h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-950/20 to-gray-900/5"
