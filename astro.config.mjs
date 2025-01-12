@@ -7,7 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
     site: 'https://cnsv-edu.vercel.app/',
     integrations: [tailwind()],
-    output: 'server',
     compressHTML: true,
     build: {
         inlineStylesheets: 'auto'
