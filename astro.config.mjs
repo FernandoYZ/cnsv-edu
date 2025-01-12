@@ -16,13 +16,13 @@ export default defineConfig({
         build: {
             cssMinify: true,
             minify: 'terser',
-            cssCodeSplit: false,
+            cssCodeSplit: true,
             terserOptions: {
                 compress: {
-                    drop_console: true,
-                    passes: 2
+                    drop_console: false,
+                    passes: 1
                 },
-                mangle: true
+                mangle: false
             },
             rollupOptions: {
                 output: {
@@ -43,6 +43,11 @@ export default defineConfig({
                 apply: 'build',
                 enforce: 'post'
             }
-        ]
-    }
+        ],
+        server: {
+            hmr: {
+                overlay: false // Desactiva el overlay de errores para una experiencia de desarrollo más limpia
+            }
+        }
+    },
 });
