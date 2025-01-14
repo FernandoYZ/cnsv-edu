@@ -16,7 +16,7 @@ const {title} = Astro.props;
         
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
         <meta name="keywords" content="educación primaria, educación secundaria, seminario menor, educación religiosa, valores, formación integral, colegio con residencia, colegio internado">
-        <meta name="description" content="En el Colegio Nuestra Señora del Valle, brindamos educación integral y formación en valores en modalidad de residencia.">
+        <meta name="description" content="El Colegio Nuestra Señora del Valle ofrece educación integral, formación en valores y seminario menor en modalidad de residencia. Descubre nuestra propuesta educativa única.">
 
         <meta property="og:site_name" content="Colegio Nuestra Señora del Valle">
         <meta property="og:type" content="website">
@@ -33,7 +33,42 @@ const {title} = Astro.props;
         <meta name="google-site-verification" content="CTUjzXD8n1n0Xvwhj5oZoAdzNE3K4VItuzVnuPO3O1I" />
         
         <ClientRouter />
-        <title>CNSV - Colegio Nuestra Señora del Valle {title}</title>
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "School",
+                "name": "Colegio Nuestra Señora del Valle",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Carretera a Lunahuana km. 8, Apdo. 69, Nuevo Imperial, Peru",
+                    "addressLocality": "Nuevo Imperial",
+                    "addressRegion": "Cañete",
+                    "postalCode": "15723",
+                    "addressCountry": "Perú"
+                },
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+51940768184",
+                    "contactType": "Customer Service",
+                    "areaServed": "ES",
+                    "availableLanguage": "Spanish"
+                },
+                "url": "https://cnsv-edu.vercel.app/",
+                "logo": "https://cnsv-edu.vercel.app/cnsv-social.jpg",
+                "sameAs": [
+                    "https://www.facebook.com/seminariomenoryauyos"
+                ],
+                "author": {
+                    "@type": "Person",
+                    "name": "Yovera Zavala Fernando Cesar",
+                    "url": "https://fernando-yovera-zavala.vercel.app/",
+                    "sameAs": "https://www.linkedin.com/in/fernando-yovera-zavala-066904283/"
+                }
+            }
+        </script>          
+
+        <title>Colegio Nuestra Señora del Valle - Seminario Menor {title}</title>
     </head>
 	<body class="font-montserrat">
 		<Header />
