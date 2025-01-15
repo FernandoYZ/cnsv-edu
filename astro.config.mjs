@@ -5,10 +5,15 @@ import tailwind from '@astrojs/tailwind';
 
 import sitemap from '@astrojs/sitemap';
 
+
 // https://astro.build/config
 export default defineConfig({
     site: 'https://cnsv-edu.vercel.app/',
-    integrations: [tailwind(), sitemap()],
+    integrations: [tailwind(), sitemap({
+        changefreq: 'weekly',
+        priority: 0.8,
+        lastmod: new Date(),
+    })],
     output: 'static',
     compressHTML: true,
     build: {
