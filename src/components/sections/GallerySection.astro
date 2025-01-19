@@ -34,7 +34,7 @@ const gallery_data = gallery.galeria.map(item => ({
 // Preparar datos destacados con imágenes
 const destacados_data = gallery.destacados.map(item => ({
     ...item,
-    image: item.tipo === 'imagen' ? images[getImageKey(item.src) as keyof typeof images] || images.frontis : null
+    image: images[getImageKey(item.src) as keyof typeof images] || images.frontis
 }));
 ---
 
@@ -52,7 +52,7 @@ const destacados_data = gallery.destacados.map(item => ({
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Encabezado mejorado -->
+        <!-- Encabezado -->
         <header class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
             <div class="inline-flex items-center justify-center space-x-3 mb-4 md:mb-6">
                 <div class="h-[1px] w-8 md:w-12 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
@@ -77,13 +77,12 @@ const destacados_data = gallery.destacados.map(item => ({
             </p>
         </header>
 
-        <!-- Carrusel Principal Mejorado -->
+        <!-- Carrusel Principal -->
         <div class="relative mb-12 md:mb-16 rounded-2xl shadow-xl bg-white">
             <div class="overflow-hidden rounded-2xl" id="main-carousel">
                 <div class="flex transition-transform duration-700 ease-out" id="carousel-track">
                     {destacados_data.map((item) => (
                         <div class="w-full flex-shrink-0">
-                            {item.tipo === 'imagen' && item.image ? (
                                 <div class="relative aspect-[4/3] md:aspect-[16/9]">
                                     <Image
                                         src={item.image}
@@ -102,25 +101,11 @@ const destacados_data = gallery.destacados.map(item => ({
                                         </p>
                                     </div>
                                 </div>
-                            ) : (
-                                <div class="relative aspect-[4/3] md:aspect-[16/9]">
-                                    <video
-                                        class="w-full h-full object-cover"
-                                        poster={item.poster}
-                                        controls
-                                        preload="none"
-                                        aria-label={item.titulo}
-                                    >
-                                        <source src={item.src} type="video/mp4" />
-                                        Tu navegador no soporta el elemento de video.
-                                    </video>
-                                </div>
-                            )}
                         </div>
                     ))}
                 </div>
 
-                <!-- Controles del carrusel mejorados -->
+                <!-- Controles del carrusel -->
                 <div class="absolute top-1/2 -translate-y-1/2 left-2 md:left-4 right-2 md:right-4 flex justify-between pointer-events-none">
                     <button 
                         class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/30 text-white flex items-center justify-center pointer-events-auto hover:bg-black/50 active:bg-black/60 transition-all duration-300 backdrop-blur-sm group"
@@ -284,154 +269,170 @@ const destacados_data = gallery.destacados.map(item => ({
 </style>
 
 <script>
-interface CarouselState {
-    currentIndex: number;
-    autoplayInterval: number | null;
-}
-
-const initGallery = () => {
-    // Estado del carrusel
-    const carouselState: CarouselState = {
-        currentIndex: 0,
-        autoplayInterval: null
-    };
-
-    // Elementos del DOM
-    const track = document.getElementById('carousel-track') as HTMLDivElement | null;
-    const slides = track?.children as HTMLCollectionOf<HTMLElement>;
-    const prevButton = document.getElementById('prev-slide') as HTMLButtonElement | null;
-    const nextButton = document.getElementById('next-slide') as HTMLButtonElement | null;
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
-    const galleryItems = document.querySelectorAll<HTMLElement>('.gallery-item');
+    interface CarouselState {
+        currentIndex: number;
+        autoplayInterval: number | null;
+    }
     
-    if (!track || !slides?.length) return;
+    const initGallery = () => {
+        // Estado del carrusel
+        const carouselState: CarouselState = {
+            currentIndex: 0,
+            autoplayInterval: null
+        };
     
-    // Funciones del carrusel
-    const updateSlidePosition = () => {
-        if (track) {
-            track.style.transform = `translateX(-${carouselState.currentIndex * 100}%)`;
-        }
-    };
-    
-    const moveSlide = (direction: 'prev' | 'next') => {
-        if (direction === 'prev') {
-            carouselState.currentIndex = carouselState.currentIndex > 0 ? carouselState.currentIndex - 1 : slides.length - 1;
-        } else {
-            carouselState.currentIndex = carouselState.currentIndex < slides.length - 1 ? carouselState.currentIndex + 1 : 0;
-        }
-        updateSlidePosition();
-    };
-
-    // Control de autoplay
-    const startAutoplay = () => {
-        if (carouselState.autoplayInterval) return;
-        carouselState.autoplayInterval = window.setInterval(() => moveSlide('next'), 5000);
-    };
-    
-    const stopAutoplay = () => {
-        if (carouselState.autoplayInterval) {
-            clearInterval(carouselState.autoplayInterval);
-            carouselState.autoplayInterval = null;
-        }
-    };
-
-    // Control táctil
-    let touchState = {
-        startX: 0,
-        isDragging: false
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-        touchState.isDragging = true;
-        touchState.startX = e.touches[0].clientX;
-        stopAutoplay();
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-        if (!touchState.isDragging) return;
+        // Elementos del DOM
+        const track = document.getElementById('carousel-track') as HTMLDivElement | null;
+        const slides = track?.children as HTMLCollectionOf<HTMLElement>;
+        const prevButton = document.getElementById('prev-slide') as HTMLButtonElement | null;
+        const nextButton = document.getElementById('next-slide') as HTMLButtonElement | null;
+        const indicators = document.querySelectorAll<HTMLButtonElement>('#slide-indicators button');
+        const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
+        const galleryItems = document.querySelectorAll<HTMLElement>('.gallery-item');
         
-        const currentX = e.touches[0].clientX;
-        const diff = currentX - touchState.startX;
+        if (!track || !slides?.length) return;
         
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-                moveSlide('prev');
-            } else {
-                moveSlide('next');
+        // Funciones del carrusel
+        const updateSlidePosition = () => {
+            if (track) {
+                track.style.transform = `translateX(-${carouselState.currentIndex * 100}%)`;
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    indicator.setAttribute('data-active', (index === carouselState.currentIndex).toString());
+                });
             }
+        };
+        
+        const moveSlide = (direction: 'prev' | 'next') => {
+            if (direction === 'prev') {
+                carouselState.currentIndex = carouselState.currentIndex > 0 ? carouselState.currentIndex - 1 : slides.length - 1;
+            } else {
+                carouselState.currentIndex = carouselState.currentIndex < slides.length - 1 ? carouselState.currentIndex + 1 : 0;
+            }
+            updateSlidePosition();
+        };
+    
+        const goToSlide = (index: number) => {
+            carouselState.currentIndex = index;
+            updateSlidePosition();
+        };
+    
+        // Control de autoplay
+        const startAutoplay = () => {
+            if (carouselState.autoplayInterval) return;
+            carouselState.autoplayInterval = window.setInterval(() => moveSlide('next'), 5000);
+        };
+        
+        const stopAutoplay = () => {
+            if (carouselState.autoplayInterval) {
+                clearInterval(carouselState.autoplayInterval);
+                carouselState.autoplayInterval = null;
+            }
+        };
+    
+        // Control táctil
+        let touchState = {
+            startX: 0,
+            isDragging: false
+        };
+    
+        const handleTouchStart = (e: TouchEvent) => {
+            touchState.isDragging = true;
+            touchState.startX = e.touches[0].clientX;
+            stopAutoplay();
+        };
+    
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!touchState.isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const diff = currentX - touchState.startX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    moveSlide('prev');
+                } else {
+                    moveSlide('next');
+                }
+                touchState.isDragging = false;
+                startAutoplay();
+            }
+        };
+    
+        const handleTouchEnd = () => {
             touchState.isDragging = false;
             startAutoplay();
-        }
-    };
-
-    const handleTouchEnd = () => {
-        touchState.isDragging = false;
-        startAutoplay();
-    };
-
-    // Filtrado de galería
-    const filterGallery = (category: string) => {
-        requestAnimationFrame(() => {
-            galleryItems.forEach(item => {
-                const itemCategory = item.getAttribute('data-category');
-                const shouldShow = category === 'todas' || category === itemCategory;
-
-                if (shouldShow) {
-                    item.classList.remove('hidden');
-                    // Aseguramos que la animación se ejecute después de mostrar el elemento
-                    requestAnimationFrame(() => {
-                        item.classList.add('animate-fade-scale');
-                    });
-                } else {
-                    item.classList.add('hidden');
-                    item.classList.remove('animate-fade-scale');
-                }
+        };
+    
+        // Filtrado de galería
+        const filterGallery = (category: string) => {
+            requestAnimationFrame(() => {
+                galleryItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    const shouldShow = category === 'todas' || category === itemCategory;
+    
+                    if (shouldShow) {
+                        item.classList.remove('hidden');
+                        requestAnimationFrame(() => {
+                            item.classList.add('animate-fade-scale');
+                        });
+                    } else {
+                        item.classList.add('hidden');
+                        item.classList.remove('animate-fade-scale');
+                    }
+                });
+            });
+        };
+    
+        // Event Listeners
+        prevButton?.addEventListener('click', () => {
+            moveSlide('prev');
+            stopAutoplay();
+            startAutoplay();
+        });
+        
+        nextButton?.addEventListener('click', () => {
+            moveSlide('next');
+            stopAutoplay();
+            startAutoplay();
+        });
+    
+        // Agregar event listeners para los indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+                stopAutoplay();
+                startAutoplay();
             });
         });
-    };
-
-    // Event Listeners
-    prevButton?.addEventListener('click', () => {
-        moveSlide('prev');
-        stopAutoplay();
-        startAutoplay();
-    });
     
-    nextButton?.addEventListener('click', () => {
-        moveSlide('next');
-        stopAutoplay();
-        startAutoplay();
-    });
-
-    track.addEventListener('touchstart', handleTouchStart, { passive: true });
-    track.addEventListener('touchmove', handleTouchMove, { passive: true });
-    track.addEventListener('touchend', handleTouchEnd);
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Actualizar estado activo de los botones
-            filterButtons.forEach(btn => btn.setAttribute('data-active', 'false'));
-            button.setAttribute('data-active', 'true');
-            
-            // Aplicar filtro
-            const category = button.getAttribute('data-category') || 'todas';
-            filterGallery(category);
+        track.addEventListener('touchstart', handleTouchStart, { passive: true });
+        track.addEventListener('touchmove', handleTouchMove, { passive: true });
+        track.addEventListener('touchend', handleTouchEnd);
+    
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.setAttribute('data-active', 'false'));
+                button.setAttribute('data-active', 'true');
+                
+                const category = button.getAttribute('data-category') || 'todas';
+                filterGallery(category);
+            });
         });
-    });
-
-    // Inicializar componentes
-    startAutoplay();
-
-    // Limpiar al desmontar
-    return () => {
-        stopAutoplay();
-        track.removeEventListener('touchstart', handleTouchStart);
-        track.removeEventListener('touchmove', handleTouchMove);
-        track.removeEventListener('touchend', handleTouchEnd);
+    
+        // Inicializar componentes
+        updateSlidePosition(); // Asegurar que los indicadores estén sincronizados al inicio
+        startAutoplay();
+    
+        // Limpiar al desmontar
+        return () => {
+            stopAutoplay();
+            track.removeEventListener('touchstart', handleTouchStart);
+            track.removeEventListener('touchmove', handleTouchMove);
+            track.removeEventListener('touchend', handleTouchEnd);
+        };
     };
-};
-
-// Inicializar la galería cuando la página se carga
-document.addEventListener('astro:page-load', initGallery);
+    
+    // Inicializar la galería cuando la página se carga
+    document.addEventListener('astro:page-load', initGallery);
 </script>
-
