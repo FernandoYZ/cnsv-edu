@@ -1,7 +1,7 @@
 {
     "app": {
-        "url": "https://cnsv.vercel.app/",
-        "imagen": "https://cnsv.vercel.app/cnsv-social.jpg" 
+        "url": "https://cnsv-edu.vercel.app/",
+        "imagen": "https://cnsv-edu.vercel.app/cnsv-social.jpg" 
     },
     "admission": {
         "label": "Admisiones abiertas",
