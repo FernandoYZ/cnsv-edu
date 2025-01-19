@@ -12,4 +12,4 @@ Allow: /*.gif$
 Allow: /*.webp$
 
 # Agrega tu Sitemap
-Sitemap: https://cnsv-edu.vercel.app/sitemap-index.xml
+Sitemap: https://cnsv.vercel.app/sitemap-index.xml
