@@ -1,48 +1,46 @@
-# Astro Starter Kit: Basics
+# Colegio Nuestra Señora del Valle - Sitio Web Oficial
 
-```sh
-npm create astro@latest -- --template basics
+![Captura de la página de Inicio del Sitio Web](https://raw.githubusercontent.com/FernandoYZ/cnsv-edu/128eb4a6c1deca648ca32c5d5920a33dbf64605a/src/assets/images/captura_home.png)
+
+## 🎯 Descripción del Proyecto
+Sitio web oficial del Colegio Nuestra Señora del Valle, una institución educativa que ofrece formación integral con valores cristianos y excelencia académica. El proyecto está desarrollado con Astro y presenta una arquitectura moderna y optimizada para el rendimiento.
+
+### ⚡ Características Principales
+- **Diseño Responsivo**: Experiencia de usuario optimizada para todos los dispositivos
+- **Rendimiento Optimizado**: Implementación de técnicas modernas de optimización web
+- **Accesibilidad**: Cumplimiento de estándares WCAG para garantizar acceso universal
+- **SEO Optimizado**: Estructura y metadatos optimizados para motores de búsqueda
+- **Integración con Vercel**: Despliegue continuo y análisis de rendimiento
+
+### 🛠️ Tecnologías Utilizadas
+- [Astro 5](https://astro.build)
+- [TailwindCSS](https://tailwindcss.com)
+
+### 🚀 Instalación y Uso
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/FernandoYZ/cnsv-edu.git
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+2. **Instalar dependencias**
+```bash
+pnpm install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+3. **Ejecutar en desarrollo**
+```bash
+pnpm run dev
+```
 
-## 🧞 Commands
+### 📋 Scripts Disponibles
+- `dev`: Inicia el servidor de desarrollo
+- `build`: Construye el proyecto para producción
+- `preview`: Previsualiza la construcción de producción
 
-All commands are run from the root of the project, from a terminal:
+### 📄 Licencia
+Este proyecto está protegido por derechos de autor. El código es de acceso público y se permiten contribuciones al repositorio, sin embargo, la licencia no permite trabajos derivados, ya sean gratuitos o comerciales. Para más información sobre los términos y condiciones específicos, consulte el archivo [LICENSE.md](LICENSE.md).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## ✨ Agradecimientos
+- A la comunidad educativa del Colegio Nuestra Señora del Valle
+- A todos los que han ayudado a hacer este proyecto posible
