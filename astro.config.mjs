@@ -11,8 +11,7 @@ export default defineConfig({
     site: 'https://cnsv-edu.vercel.app/',
     integrations: [tailwind(), sitemap({
         changefreq: 'weekly',
-        priority: 0.8,
-        lastmod: new Date(),
+        priority: 0.8
     })],
     output: 'static',
     compressHTML: true,
@@ -34,12 +33,7 @@ export default defineConfig({
             rollupOptions: {
                 output: {
                     manualChunks(id) {
-                        if (id.includes('node_modules')) {
-                            return 'vendor';
-                        }
-                        if (id.includes('ui-library')) {
-                            return 'ui';
-                        }
+                        if (id.includes('node_modules')) return 'vendor';
                     }
                 }
             }

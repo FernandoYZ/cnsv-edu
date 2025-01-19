@@ -774,11 +774,25 @@
                 "descripcion": "Vista panorámica de nuestras instalaciones"
             },
             {
-                "tipo": "video",
-                "src": "video1.mp4",
-                "poster": "cnsv-social.jpg",
-                "titulo": "Vida Estudiantil",
-                "descripcion": "Un día en la vida de nuestros estudiantes"
+                "tipo": "imagen",
+                "src": "frontis.webp",
+                "alt": "Vista aérea del campus",
+                "titulo": "Nuestro Campus",
+                "descripcion": "Vista panorámica de nuestras instalaciones"
+            },
+            {
+                "tipo": "imagen",
+                "src": "frontis.webp",
+                "alt": "Vista aérea del campus",
+                "titulo": "Nuestro Campus",
+                "descripcion": "Vista panorámica de nuestras instalaciones"
+            },
+            {
+                "tipo": "imagen",
+                "src": "frontis.webp",
+                "alt": "Vista del campus",
+                "titulo": "Frontis del Seminario Menor",
+                "descripcion": "Vista panorámica de nuestras instalaciones"
             }
         ],
         "categorias": [
